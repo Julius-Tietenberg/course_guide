@@ -1,0 +1,11 @@
+{
+  "name": "course-guide",
+  "version": "1.0.0",
+  "description": "Online platform for helping students and prof in the field of courses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "William Kana",
+  "license": "ISC"
+}
