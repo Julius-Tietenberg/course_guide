@@ -1,3 +1,4 @@
 node_modules/
 mongo-volume/
-../frontend/.env
+../backend/.env
+data/

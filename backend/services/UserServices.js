@@ -1,7 +1,7 @@
-const User = require('../models/UserModels')
+const User = require('../models/UserModel')
 const bcrypt = require('bcryptjs');
 const auth = require('../helpers/jwt.js')
-
+const { getPagination } = require('../helpers/own_pagination')
 
 async function login({ username, password }) {
     const user = await User.findOne({username});
@@ -15,7 +15,7 @@ async function login({ username, password }) {
     }
 }
 
-async function register(params){
+async function register(params) {
     // instantiate a user modal and save to mongoDB
     const user = new User(params)
     await user.save();
@@ -29,15 +29,24 @@ async function getById(id) {
 }
 
 async function getAll() {
-    const users = await User.find();
-    console.log(users)
+    const users = await User.find({});
     return users;
-    // return JSON.stringify(users);// users;
+}
+
+async function filter(req) {
+    const { page, size, username } = req.query;
+    const condition = username
+        ? { username: { $regex: new RegExp(username), $options: "i" } }
+        : {};
+
+    const { limit, offset } = getPagination(page, size);
+    return await User.paginate(condition, { offset, limit });
 }
 
 module.exports = {
     login,
     register,
     getById,
-    getAll
+    getAll,
+    filter
 };

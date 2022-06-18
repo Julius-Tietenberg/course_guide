@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const UserSchema = new Schema({
     firstName: {
@@ -34,7 +35,7 @@ const UserSchema = new Schema({
     school: {
         type: String,
         required: true,
-    },
+    }
 });
 
 UserSchema.set('toJSON', {
@@ -46,6 +47,8 @@ UserSchema.set('toJSON', {
         delete returnedObject.password
     }
 })
+
+UserSchema.plugin(mongoosePaginate);
 
 const User =  mongoose.model("user", UserSchema);
 

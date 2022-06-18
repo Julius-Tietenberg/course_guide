@@ -8,8 +8,9 @@ router.post('/register', (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     req.body.password = bcrypt.hashSync(password, salt);
 
-    userServices.register(req.body).then(
-        res.json({success:true})
+    userServices.register(req.body).then( user => {
+            res.status(200).json({ success: true})
+        }
     ).catch(err => next(err))
 })
 
@@ -27,10 +28,22 @@ router.get('/:id', (req, res, next) => {
     ).catch(err => next(err))
 })
 
-router.get('/all', (req, res, next) => {
-    console.log("this one")
-    userServices.getAll().then(
-        (user) => res.json(user)
+router.get('/all/users', (req, res, next) => {
+    userServices.getAll().then(users => {
+        res.send(users)
+        }
+    ).catch(err => next(err))
+})
+
+router.get('/all/users_wc', (req, res, next) => {
+    userServices.filter(req).then(users => {
+        res.send({
+            totalItems: users.totalDocs,
+            users: users.docs,
+            totalPages: users.totalPages,
+            currentPage: users.page - 1,
+        });
+        }
     ).catch(err => next(err))
 })
 
