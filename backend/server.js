@@ -13,7 +13,7 @@ app.use(cors({origin: "http://localhost:3000"})) // Default = CORS-enabled for a
 app.use(express.json()) // middleware for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-module.exports.authenticateWithExpressJWT = verifyJwt;
+// module.exports.authenticateWithExpressJWT = verifyJwt;
 
 // middleware for authenticating token submitted with requests
 /*auth.authenticateToken.unless = unless
@@ -24,27 +24,10 @@ app.use(auth.authenticateToken.unless({
     ]
 }))*/
 
-auth.authenticateToken.unless = unless
-app.use(auth.authenticateToken.unless({
-    path: [
-        { url: '/users/login', methods: ['POST']},
-        { url: '/users/register', methods: ['POST']}
-    ]
-}))
-
 app.use('/user', users)
 app.use('/course', courses)
 app.use(errors.errorHandler); // middleware for error responses
 
-
-// simple route
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to Course Guide application." });
-});
-
-// MongoDB connection, success and error event responses
-// const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT} = process.env;
-// const uri = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/course_guide`;
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });

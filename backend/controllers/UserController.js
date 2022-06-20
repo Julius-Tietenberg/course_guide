@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 const bcrypt = require('bcryptjs')
 const userServices = require('../services/UserServices.js')
+const { authenticateToken } = require('../helpers/jwt')
 
 router.post('/register', (req, res, next) => {
     const {password} = req.body
@@ -28,11 +29,10 @@ router.get('/:id', (req, res, next) => {
     ).catch(err => next(err))
 })
 
-router.get('/all/users', (req, res, next) => {
+router.get('/all/users', authenticateToken, (req, res, next) => {
     userServices.getAll().then(users => {
         res.send(users)
-        }
-    ).catch(err => next(err))
+    }).catch(err => next(err))
 })
 
 router.get('/all/users_wc', (req, res, next) => {

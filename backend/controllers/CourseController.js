@@ -20,7 +20,7 @@ router.post('/add_all', (req, res, next) => {
     // const courses = transform_elas(req.body);
     const courses = transform_elas(load_courses);
 
-    courseServices.addAll(courses).then(courses => {
+    courseServices.addAll(load_courses).then(courses => {
             res.send({status: true})
         }
     ).catch(err => next(err))

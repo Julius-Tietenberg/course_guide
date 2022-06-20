@@ -14,11 +14,14 @@ async function filter(req) {
     let query = {}
 
     if (title) {
-        query.title = { $regex: new RegExp(title), $options: "i" }
+        query.name = { $regex: new RegExp(title), $options: "i" }
     }
     if (prof_name) {
-        query.prof_name = { $regex: new RegExp(prof_name), $options: "i" }
+        // query.prof_name = { $regex: new RegExp(prof_name), $options: "i" }
+        query.persons = { $elemMatch: { name: { $regex: new RegExp(prof_name), $options: "i" } } }
     }
+
+    console.log(JSON.stringify(query))
 
     query = (query.title !== undefined) || (query.prof_name !== undefined)
         ? query : {}
