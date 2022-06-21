@@ -18,7 +18,7 @@
 <div>
 <h3>Backend: How to run it?</h3>
 <ul>
-  <li>Make sure you have created the file ".env" and fill up with the variable "ATLAS_URI"</li>
+  <li>Make sure you have created the file ".env" and fill up with the variable "ATLAS_URI" and also the "TOKEN_SECRET"</li>
   <li>Run the command: node  server.js</li>
 </ul>  
 
