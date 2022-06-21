@@ -17,13 +17,12 @@ async function filter(req) {
         query.name = { $regex: new RegExp(title), $options: "i" }
     }
     if (prof_name) {
-        // query.prof_name = { $regex: new RegExp(prof_name), $options: "i" }
-        query.persons = { $elemMatch: { name: { $regex: new RegExp(prof_name), $options: "i" } } }
+        query.persons = { $elemMatch: { name: prof_name } }
+        // query.prof_names = { $regex: new RegExp(prof_name), $options: "i" }
+        // query.persons = { $elemMatch: { name: { $regex: new RegExp(prof_name), $options: "i" } } }
     }
 
-    console.log(JSON.stringify(query))
-
-    query = (query.title !== undefined) || (query.prof_name !== undefined)
+    query = (query.name !== undefined) || (query.persons !== undefined)
         ? query : {}
 
     const options = {
@@ -32,7 +31,7 @@ async function filter(req) {
     };
 
     const { limit, offset } = getPagination(page, size);
-    return await Course.paginate(query, { offset, limit, options });
+    return await Course.paginate(query, { offset, limit });
 }
 
 module.exports = {
