@@ -14,7 +14,7 @@ import { Card, CardContent } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { Link } from 'react-router-dom'
-import logo from '../assent/logo.jpg'
+import logo from '../assent/logo.png'
 
 function Login () {
   const handleSubmit = (event) => {

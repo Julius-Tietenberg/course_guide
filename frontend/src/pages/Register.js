@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { MenuItem } from '@mui/material'
 import { Link } from 'react-router-dom'
-import logo from '../assent/logo.jpg'
+import logo from '../assent/logo.png'
 
 
 function Register () {
