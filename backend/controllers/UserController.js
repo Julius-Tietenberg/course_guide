@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs')
 const userServices = require('../services/UserServices.js')
 const { authenticateToken } = require('../helpers/jwt')
+const { ownStatusCode } = require('../helpers/own_status')
 
 router.post('/register', (req, res, next) => {
     const {password} = req.body
@@ -10,15 +11,16 @@ router.post('/register', (req, res, next) => {
     req.body.password = bcrypt.hashSync(password, salt);
 
     userServices.register(req.body).then( user => {
-            res.status(200).json({ success: true})
+            res.status(ownStatusCode.ok).json({ success: true })
         }
-    ).catch(err => next(err))
+    )// .catch(err => next(err))
+    .catch(err =>  res.status(ownStatusCode.bad_request).json(ownStatusCode.register_fail))
 })
 
 router.post('/login', (req, res, next) => {
     const { username, password} = req.body;
     userServices.login({username, password}).then(user => {
-            user ? res.json(user) : res.json({ error: 'Username or password is incorrect' });
+            user ? res.json(user) : res.status(ownStatusCode.unauthorized).json({ error: 'Username or password is incorrect' });
         }
     ).catch(err => next(err))
 })
