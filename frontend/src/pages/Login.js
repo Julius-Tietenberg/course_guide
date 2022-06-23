@@ -13,21 +13,64 @@ import IconButton from '@mui/material/IconButton'
 import { Card, CardContent } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../assent/logo.png'
+import { useStore } from '../store'
+import Snackbar from '@mui/material/Snackbar'
+import MuiAlert from '@mui/material/Alert'
+
+const Alert = React.forwardRef(function Alert (props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+})
 
 function Login () {
-  const handleSubmit = (event) => {
-    console.log(event.target)
+  const { loginStore } = useStore()
+  const navigate = useNavigate()
+  const [error, setError] = React.useState('')
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false)
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      remember: data.get('remember')
-    })
-    // TODO: login function
+    /*  console.log({
+       email: data.get('username'),
+       password: data.get('password'),
+       remember: data.get('remember')
+     }) */
+
+    // login function
+    try {
+      await loginStore.login({
+        username: data.get('username'),
+        password: data.get('password'),
+      })
+      // Prompt to user login successfully
+      setSnackbarOpen(true)
+      // go to CourseOverview page
+      setTimeout(() => {
+        navigate("/", { replace: true })
+      }, 1000)
+      // alert('Login successful')
+    } catch (e) {
+      // FIXME: should catch error
+      if (e.response?.data?.message) {
+        setError(e.response?.data?.message)
+      } else {
+        setError("Login failed, please try again")
+      }
+      // Prompt to user error message
+      setSnackbarOpen(true)
+    }
   }
+
+  // close snackbar
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setSnackbarOpen(false)
+  }
+
   // show password
   const [showPassword, setShowPassword] = React.useState(false)
   const handleShowPassword = () => {
@@ -37,6 +80,15 @@ function Login () {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+      >
+        {/* If an error is caught, an error message is displayed, otherwise show success */}
+        {error ? <Alert severity="error">{error}</Alert> : <Alert severity="success">Login successfully</Alert>}
+      </Snackbar>
       <Box
         sx={{
           marginTop: 8,
@@ -53,13 +105,12 @@ function Login () {
           <CardContent>
             <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
-                name="email"
+                name="username"
                 margin="normal"
                 required
                 fullWidth
-                label="Email Address"
-                type="email"
-                autoComplete="email"
+                label="Username"
+                autoComplete="username"
                 autoFocus
               />
               <TextField

@@ -12,8 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../assent/logo.png'
 import startImg from '../assent/start.png'
 import Register from './Register'
-import { useSelector, useDispatch } from 'react-redux'
-import { loadData } from '../store/features/loginSlice'
+import { getToken } from '../utils'
 
 
 // tab items
@@ -69,16 +68,14 @@ function Start () {
 
   // go to login page
   const navigate = useNavigate()
+  const isToken = getToken()
   const login = () => {
-    navigate("/login")
+    if (isToken) {
+      navigate("/")
+    } else {
+      navigate("/login")
+    }
   }
-
-  //test store
-  const { list, totals } = useSelector(store => store.movie)
-  const dispatch = useDispatch()
-  React.useEffect(() => {
-    dispatch(loadData())
-  }, [])
 
   return (
     <Box sx={{ width: '100%' }} minWidth="ms" >
@@ -146,12 +143,7 @@ function Start () {
       </TabPanel>
       {/* Team */}
       <TabPanel value={tabValue} index={1}>
-        <Box>
-          {list.map((item) => (
-            <Typography key={item.tvId}>{item.name}</Typography>
-          ))}
-          <p>totals:{totals}</p>
-        </Box>
+        Team
       </TabPanel>
       {/* register */}
       <TabPanel value={tabValue} index={2} >
