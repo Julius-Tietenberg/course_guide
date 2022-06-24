@@ -16,7 +16,6 @@ async function login({ username, password }) {
 }
 
 async function register(params) {
-    // instantiate a user modal and save to mongoDB
     const user = new User(params)
     await user.save();
 }

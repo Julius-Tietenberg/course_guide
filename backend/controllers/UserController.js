@@ -14,7 +14,7 @@ router.post('/register', (req, res, next) => {
             res.status(ownStatusCode.ok).json({ success: true })
         }
     )// .catch(err => next(err))
-    .catch(err =>  res.status(ownStatusCode.bad_request).json(ownStatusCode.register_fail))
+    .catch(err =>  res.status(ownStatusCode.unauthorized).json(ownStatusCode.register_fail))
 })
 
 router.post('/login', (req, res, next) => {
