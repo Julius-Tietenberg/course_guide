@@ -51,10 +51,11 @@ function Login () {
         navigate("/", { replace: true })
       }, 1000)
       // alert('Login successful')
-    } catch (e) {
-      // FIXME: should catch error
-      if (e.response?.data?.message) {
-        setError(e.response?.data?.message)
+    }
+    // catch error
+    catch (e) {
+      if (e.response?.data?.error) {
+        setError(e.response?.data?.error)
       } else {
         setError("Login failed, please try again")
       }
@@ -69,6 +70,10 @@ function Login () {
       return
     }
     setSnackbarOpen(false)
+    // clear error message
+    setTimeout(() => {
+      setError('')
+    }, 1000)
   }
 
   // show password

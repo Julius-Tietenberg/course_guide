@@ -56,7 +56,7 @@ function Register () {
         navigate("/login", { replace: true })
       }, 2000)
     }
-    //catch error
+    //catch error 
     catch (e) {
       if (e.response?.data?.message) {
         setError(e.response?.data?.message)
@@ -73,6 +73,10 @@ function Register () {
       return
     }
     setSnackbarOpen(false)
+    // clear error message
+    setTimeout(() => {
+      setError('')
+    }, 1000)
   }
   //  value of select type input
   const [university, setUniversity] = React.useState('')
