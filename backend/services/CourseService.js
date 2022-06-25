@@ -10,16 +10,14 @@ async function addAll(courses) {
 }
 
 async function filter(req) {
-    const { page, size, title, prof_name } = req.query;
+    const { page, size, course_name, prof_name } = req.query;
     let query = {}
 
-    if (title) {
-        query.name = { $regex: new RegExp(title), $options: "i" }
+    if (course_name) {
+        query.name = { $regex: new RegExp(course_name), $options: "i" }
     }
     if (prof_name) {
-        query.persons = { $elemMatch: { name: prof_name } }
-        // query.prof_names = { $regex: new RegExp(prof_name), $options: "i" }
-        // query.persons = { $elemMatch: { name: { $regex: new RegExp(prof_name), $options: "i" } } }
+        query.persons = { $elemMatch: { name: { $regex: new RegExp(prof_name), $options: "i" } } }
     }
 
     query = (query.name !== undefined) || (query.persons !== undefined)
@@ -29,6 +27,8 @@ async function filter(req) {
         // select: ('title', 'prof_name', 'description'),
         sort: ({'score' : -1}) // ({ title: -1, prof_name: -1 })
     };
+
+    console.log(query);
 
     const { limit, offset } = getPagination(page, size);
     return await Course.paginate(query, { offset, limit });

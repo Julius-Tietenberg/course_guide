@@ -2,10 +2,9 @@ const express = require('express')
 const router = express.Router();
 const courseServices = require('../services/CourseService.js')
 const { getDocs } = require('../helpers/own_pagination')
-// const { transform_elas } = require('../helpers/transfrom_courses_from_elas')
 
-// load courses
-const load_courses = require('../data/courses.json')
+/*const load_courses = require('../data/courses.json')
+const { transform_elas } = require('../helpers/transfrom_courses_from_elas')*/
 
 router.post('/add', (req, res, next) => {
     courseServices.add(req.body).then(user => {
@@ -15,7 +14,8 @@ router.post('/add', (req, res, next) => {
 })
 
 router.post('/add_all', (req, res, next) => {
-    const courses = req.body; // transform_elas(load_courses);
+    // const courses =  load_courses; // transform_elas(load_courses);
+    const courses = req.body;
     courseServices.addAll(courses).then(courses => {
             res.send({status: true})
         }

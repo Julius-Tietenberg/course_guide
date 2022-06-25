@@ -31,7 +31,8 @@ const UserSchema = new Schema({
     },
     position: {
         type: String,
-        required: true, // student, prof, employee
+        required: true, // student, prof, employee,
+        // default : "student"
     },
     school: {
         type: String,
