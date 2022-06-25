@@ -84,6 +84,24 @@ CourseSchema.set('toJSON', {
         delete returnedObject.__v
 
         delete returnedObject.parent_id
+        delete returnedObject.root_id
+
+        kws = returnedObject.keywords
+        keywords = [];
+        for (let i in kws) {
+            keywords.push(kws[i].text);
+        }
+        returnedObject.keywords = keywords;
+
+        times = returnedObject.timetable
+        timetable = [];
+        for (let i in times) {
+            timetable.push({
+                day: times[i].day,
+                interval: `${times[i].time.from} - ${times[i].time.to}`
+            });
+        }
+        returnedObject.timetable = timetable;
     }
 })
 

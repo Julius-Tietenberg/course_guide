@@ -11,7 +11,9 @@ const ownStatusCode = {
     not_found: 404,
     method_not_allowed: 405,
     not_acceptable: 406,
-    register_fail: { message: "username/email was already used" }
+    register_fail: { message: "username/email was already used" },
+    internal_server_error: 500,
+    element_not_found: { message: "Couldn't find this item"}
 }
 
 module.exports = {

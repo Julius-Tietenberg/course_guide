@@ -5,11 +5,17 @@ async function add(course) {
     await Course.collection.insertOne(course);
 }
 
+async function findById(req) {
+    const { id } = req.query;
+    const course = await Course.findById(id);
+    return course.toJSON();
+}
+
 async function addAll(courses) {
     await Course.collection.insertMany(courses);
 }
 
-async function filter(req) {
+async function search(req) {
     const { page, size, course_name, prof_name, sort } = req.query;
     let query = {}
     let options = {};
@@ -35,6 +41,7 @@ async function filter(req) {
 
 module.exports = {
     add,
+    findById,
     addAll,
-    filter
+    search
 };

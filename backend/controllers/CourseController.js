@@ -2,15 +2,25 @@ const express = require('express')
 const router = express.Router();
 const courseServices = require('../services/CourseService.js')
 const { getDocs } = require('../helpers/own_pagination')
+const {ownStatusCode} = require("../helpers/own_status");
 
 /*const load_courses = require('../data/courses.json')
 const { transform_elas } = require('../helpers/transfrom_courses_from_elas')*/
 
 router.post('/add', (req, res, next) => {
-    courseServices.add(req.body).then(user => {
-            res.json(user)
+    courseServices.add(req.body).then(course => {
+            res.json(course)
         }
     ).catch(err => next(err))
+})
+
+router.get('/course_detail', (req, res, next) => {
+    courseServices.findById(req).then(course => {
+            res.json(course)
+        }
+    ).catch(err =>  res.status(ownStatusCode.internal_server_error)
+                        .json({ error: "Couldn't find a course with this id " +  req.params.id })
+    )
 })
 
 router.post('/add_all', (req, res, next) => {
@@ -22,8 +32,8 @@ router.post('/add_all', (req, res, next) => {
     ).catch(err => next(err))
 })
 
-router.get('/filter', (req, res, next) => {
-    courseServices.filter(req).then(courses => {
+router.get('/search', (req, res, next) => {
+    courseServices.search(req).then(courses => {
             res.send(getDocs(courses));
         }
     ).catch(err => next(err))
