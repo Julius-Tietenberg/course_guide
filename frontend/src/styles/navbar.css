@@ -1,0 +1,61 @@
+.Navbar {
+    width: 100%;
+    height: 120px;
+    background-color: rgb(78, 243, 161);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.left {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.middle {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+   margin-right: 150px;
+   margin-left: 15px;
+    max-width: 450px;
+}
+
+.middle #searchBar {
+    height: 30px;
+    border-radius: 15px;
+    border: 0;
+    flex: 1;
+    width: 0;
+}
+
+.searchButton {
+   margin-left: 5px;
+   margin-right: 5px;
+}
+
+.right {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.right #filterBar {
+    width: 80px;
+}
+
+.right #sortBar {
+    width: 80px;
+}
+
+
+
