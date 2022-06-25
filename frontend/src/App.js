@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/header';
 import React, {useState} from 'react';
 import Navbar from './components/navbar';
-import Courses from "./components/courses";
+import Courses from './Page/courses'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
