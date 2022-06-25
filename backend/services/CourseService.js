@@ -10,8 +10,9 @@ async function addAll(courses) {
 }
 
 async function filter(req) {
-    const { page, size, course_name, prof_name } = req.query;
+    const { page, size, course_name, prof_name, sort } = req.query;
     let query = {}
+    let options = {};
 
     if (course_name) {
         query.name = { $regex: new RegExp(course_name), $options: "i" }
@@ -23,15 +24,13 @@ async function filter(req) {
     query = (query.name !== undefined) || (query.persons !== undefined)
         ? query : {}
 
-    const options = {
-        // select: ('title', 'prof_name', 'description'),
-        sort: ({'score' : -1}) // ({ title: -1, prof_name: -1 })
-    };
 
-    console.log(query);
+    if (sort) {
+        options.sort = sort == "asc" ? {"name": 1} : {"name": -1}
+    }
 
     const { limit, offset } = getPagination(page, size);
-    return await Course.paginate(query, { offset, limit });
+    return await Course.paginate(query, { offset, limit, options });
 }
 
 module.exports = {
