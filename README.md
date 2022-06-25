@@ -24,8 +24,10 @@
 
 <h4>Available API Routes: Running local</h4>
 <ul>
-  <li>http://localhost:3000/user/login</li>
-  <li>http://localhost:3000/user/register</li>
-  <li>http://localhost:3000/course/filter</li>
+  <li>http://localhost:port_number/user/login</li>
+  <li>http://localhost:port_number/user/register</li>
+  <li>http://localhost:port_number/course/course_detail?id=x</li>
+  <li>http://localhost:port_number/course/search (to get all the course)</li>
+  <li>http://localhost:port_number/course/search?page=0&size=5&course_name=x&prof_name=y&sort=desc (filter by courses)</li>
 </ul>  
 </div>
