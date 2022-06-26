@@ -8,6 +8,7 @@ import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import InputAdornment from '@mui/material/InputAdornment'
 import SearchIcon from '@mui/icons-material/Search'
+import Pagination from "@mui/material/Pagination"
 import { useStore } from '../store'
 
 
@@ -17,25 +18,31 @@ function CourseOverview () {
 
   }
 
+  const [page, setPage] = React.useState(1)
+  const [totalPages, setTotalPages] = React.useState()
+  const handleChange = (event, value) => {
+    setPage(value)
+  }
+
   const [courseList, setCourseList] = React.useState([])
   React.useEffect(() => {
-    const courseList = async () => {
-      const res = await courseStore.getAllCourse()
+    const loadCourseList = async () => {
+      const res = await courseStore.getAllCourse(page)
       console.log(res)
       setCourseList(res.content)
+      setTotalPages(res.totalPages - 1)
     }
-    courseList()
-    //courseList()
-  }, [courseStore])
+    loadCourseList()
+  }, [page])
   return (
     <>
       <HeadBar />
       <Box sx={{ backgroundColor: "rgb(25 118 210 / 8%)", pt: "20px" }}>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
-          <Grid item xs={2}>
-            <Typography variant="h4">Courses</Typography>
+          <Grid item xs={3}>
+            <Typography variant="h5">Study Program Courses</Typography>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={5}>
             <Box component="form" onSubmit={handleSearch} >
               <TextField
                 name="search"
@@ -53,8 +60,8 @@ function CourseOverview () {
             </Box>
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained" sx={{ ml: "15px" }}>Filter</Button>
-            <Button variant="contained" sx={{ ml: "15px" }}>Sort</Button>
+            <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Filter</Button>
+            <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Sort</Button>
           </Grid>
         </Grid>
 
@@ -64,12 +71,13 @@ function CourseOverview () {
               <Grid item xs={2} sm={3} md={4} key={item.id}>
                 <CourseCard
                   name={item.name}
-                  prof={item.persons[0].name}
+                  prof={item.persons[0]?.name}
                   language={item.language} />
               </Grid>
             ))}
           </Grid>
         </Box>
+        <Pagination count={totalPages} page={page} onChange={handleChange} sx={{ display: "flex", justifyContent: "center", pb: "20px" }} />
       </Box>
     </>
   )

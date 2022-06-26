@@ -27,7 +27,7 @@ const HeadBar = () => {
   }
 
   return (
-    <AppBar position="static" >
+    <AppBar position="static" color='transparent' >
       <Container maxWidth="xl">
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>

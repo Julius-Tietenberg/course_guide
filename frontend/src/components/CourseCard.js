@@ -3,11 +3,20 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import { Button, CardActionArea, CardActions } from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import Stack from '@mui/material/Stack'
+import { deepOrange, deepPurple } from '@mui/material/colors'
 
 const CourseCard = (props) => {
   const { name, prof, language } = props
   return (
     <Card >
+      <Stack direction="row" spacing={1} alignItems="center" justifyContent="flex-end" sx={{ mr: "8px", mt: "5px" }}>
+        <Typography variant="subtitle2" >
+          Student Ratings
+        </Typography>
+        <Avatar sx={{ bgcolor: "#5dac90" }}>9.8</Avatar>
+      </Stack>
       <CardActionArea sx={{ height: "180px" }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -19,10 +28,11 @@ const CourseCard = (props) => {
           <Typography variant="body2" color="text.secondary">
             language: {language}
           </Typography>
+
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
+      <CardActions sx={{ justifyContent: "flex-end" }}>
+        <Button size="small" color="primary" >
           add to my course
         </Button>
       </CardActions>

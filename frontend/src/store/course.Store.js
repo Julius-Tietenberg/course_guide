@@ -1,4 +1,4 @@
-// register module
+
 import { makeAutoObservable } from "mobx"
 import { http } from "../utils"
 
@@ -7,10 +7,10 @@ class CourseStore {
     //  make data responsive
     makeAutoObservable(this)
   }
-  // register function
-  getAllCourse = async () => {
-    //   call register API
-    const res = await http.get("course/search")
+
+  getAllCourse = async (page) => {
+    //   call course API
+    const res = await http.get("course/search", { params: { page: page, size: 12 } })
     console.log(res)
     return res.data
   };
