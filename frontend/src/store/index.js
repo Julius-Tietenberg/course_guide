@@ -4,12 +4,14 @@
 import React from "react"
 import LoginStore from "./login.Store"
 import RegisterStore from "./register.Store"
+import CourseStore from "./course.Store"
 
 
 class RootStore {
   constructor() {
     this.loginStore = new LoginStore()
     this.registerStore = new RegisterStore()
+    this.courseStore = new CourseStore()
   }
 }
 
