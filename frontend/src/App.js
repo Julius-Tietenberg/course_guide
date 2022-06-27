@@ -6,6 +6,7 @@ import Register from './pages/Register'
 import NotFound from './pages/NotFound'
 import CourseOverview from './pages/CourseOverview'
 import AuthRoute from './components/AuthRouter'
+import CourseDetail from './pages/CouseDetail'
 // import './App.css'
 
 const App = () => {
@@ -17,6 +18,12 @@ const App = () => {
           element={
             <AuthRoute>
               <CourseOverview />
+            </AuthRoute>
+          } />
+        <Route path={"/course/:id"}
+          element={
+            <AuthRoute>
+              <CourseDetail />
             </AuthRoute>
           } />
         <Route path={"/start"} element={<Start />} />

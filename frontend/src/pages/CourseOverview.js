@@ -14,26 +14,31 @@ import { useStore } from '../store'
 
 function CourseOverview () {
   const { courseStore } = useStore()
-  const handleSearch = () => {
-
-  }
 
   const [page, setPage] = React.useState(1)
+  const [searchValue, setSearchValue] = React.useState('')
   const [totalPages, setTotalPages] = React.useState()
   const handleChange = (event, value) => {
     setPage(value)
+  }
+  const handleSearch = (event) => {
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
+    setSearchValue(data.get("search"))
   }
 
   const [courseList, setCourseList] = React.useState([])
   React.useEffect(() => {
     const loadCourseList = async () => {
-      const res = await courseStore.getAllCourse(page)
+      const res = await courseStore.getAllCourse(page, searchValue)
       console.log(res)
       setCourseList(res.content)
-      setTotalPages(res.totalPages - 1)
+      setTotalPages(res.totalPages)
     }
     loadCourseList()
-  }, [page])
+  }, [page, searchValue, courseStore])
+
+
   return (
     <>
       <HeadBar />
@@ -43,15 +48,15 @@ function CourseOverview () {
             <Typography variant="h5">Study Program Courses</Typography>
           </Grid>
           <Grid item xs={5}>
-            <Box component="form" onSubmit={handleSearch} >
+            <Box component="form" onChange={handleSearch} >
               <TextField
                 name="search"
                 margin="normal"
                 placeholder="Find Courses"
                 fullWidth
                 InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
+                  startAdornment: (
+                    <InputAdornment position="start">
                       <SearchIcon />
                     </InputAdornment>
                   ),
@@ -70,6 +75,7 @@ function CourseOverview () {
             {courseList.map((item) => (
               <Grid item xs={2} sm={3} md={4} key={item.id}>
                 <CourseCard
+                  id={item.id}
                   name={item.name}
                   prof={item.persons[0]?.name}
                   language={item.language} />

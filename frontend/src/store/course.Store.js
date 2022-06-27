@@ -8,11 +8,12 @@ class CourseStore {
     makeAutoObservable(this)
   }
 
-  getAllCourse = async (page) => {
+  getAllCourse = async (page, courseName) => {
     //   call course API
-    const res = await http.get("course/search", { params: { page: page, size: 12 } })
+    const res = await http.get("course/search", { params: { page: page - 1, size: 12, course_name: courseName } })
     console.log(res)
     return res.data
   };
+
 }
 export default CourseStore
