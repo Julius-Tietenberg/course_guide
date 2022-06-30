@@ -15,7 +15,8 @@ import { useStore } from '../store'
 import { useNavigate } from 'react-router-dom'
 
 
-const HeadBar = () => {
+const HeadBar = (props) => {
+  const { hiddenButton } = props
   const [anchorElUser, setAnchorElUser] = React.useState(null)
   const { loginStore } = useStore()
   const navigate = useNavigate()
@@ -42,7 +43,12 @@ const HeadBar = () => {
     loginStore.logout()
     navigate("/login")
   }
+  const handleFindCourses = () => {
+    navigate("/")
+  }
+  const handleMyCourses = () => {
 
+  }
   return (
     <AppBar position="static" color='transparent' >
       <Container maxWidth="xl">
@@ -64,8 +70,14 @@ const HeadBar = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ display: "flex", alignItems: "center", width: "25%" }}>
-            <Button sx={{ mr: "10%", color: "#61af82", fontWeight: "bold" }}>My Courses</Button>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            {hiddenButton !== 'find' && <Button
+              sx={{ mr: "10%", color: "#61af82", fontWeight: "bold" }}
+              onClick={handleFindCourses}>
+              Find Courses</Button>}
+            {hiddenButton !== 'my' && <Button
+              sx={{ mr: "10%", color: "#61af82", fontWeight: "bold" }}
+              onClick={handleMyCourses}>My Courses</Button>}
             <Typography sx={{ mr: "3%" }}>username</Typography>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
