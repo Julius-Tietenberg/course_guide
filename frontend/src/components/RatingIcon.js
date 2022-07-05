@@ -11,7 +11,7 @@ function RatingIcon (props) {
   if (Number(score) <= 3.5) {
     ratingColor = "#e76f51"
   } else if (Number(score) <= 6.5) {
-    ratingColor = "#e9c46a"
+    ratingColor = "#eca700"
   } else if (Number(score) <= 10) {
     ratingColor = "#2a9d8f"
   }

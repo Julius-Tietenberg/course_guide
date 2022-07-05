@@ -7,13 +7,11 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import logo from '../assent/logo.png'
 import startImg from '../assent/start.png'
 import Register from './Register'
 import { getToken } from '../utils'
-
 
 // tab items
 function TabPanel (props) {
@@ -49,16 +47,6 @@ function a11yProps (index) {
 }
 
 function Start () {
-  //theme for start button
-  const buttonTheme = createTheme({
-    palette: {
-      primary: {
-        main: '#5dac90',
-        contrastText: '#fff',
-      },
-    },
-  })
-
   const [tabValue, setTabValue] = React.useState(0)
 
   //lable change
@@ -111,13 +99,11 @@ function Start () {
           {/* <Tab label="Team" {...a11yProps(1)} /> */}
           <Tab label="Register" {...a11yProps(1)} />
           {/* start button, link to login page */}
-          <ThemeProvider theme={buttonTheme} >
-            <Button variant="contained"
-              sx={{ fontWeight: "bold", m: "5px 10px 0 10px", minWidth: "80px" }}
-              onClick={login}>
-              Get Started
-            </Button>
-          </ThemeProvider>
+          <Button variant="contained"
+            sx={{ fontWeight: "bold", m: "5px 10px 0 10px", minWidth: "80px" }}
+            onClick={login}>
+            Get Started
+          </Button>
         </Tabs>
       </Box>
       {/* About */}
@@ -130,13 +116,11 @@ function Start () {
             <Typography variant='h6' > Empower the newbies</Typography>
             <Typography variant='h6' > Share your experience</Typography>
 
-            <ThemeProvider theme={buttonTheme} >
-              <Button variant="contained" size='large'
-                sx={{ fontWeight: "bold", mt: 4, minWidth: "80px" }}
-                onClick={login}>
-                Get Started
-              </Button>
-            </ThemeProvider>
+            <Button variant="contained" size='large'
+              sx={{ fontWeight: "bold", mt: 4, minWidth: "80px" }}
+              onClick={login}>
+              Get Started
+            </Button>
           </Container>
           <img src={startImg} alt="" style={{ height: "550px" }} />
         </Box>

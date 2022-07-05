@@ -3,10 +3,9 @@ import Rating from '@mui/material/Rating'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import TextareaAutosize from '@mui/material/TextareaAutosize'
-import { Box } from '@mui/system'
+import Box from '@mui/material/Box'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
 import Button from '@mui/material/Button'
 import RatingIcon from './RatingIcon'
 import { IconButton } from '@mui/material'
@@ -85,13 +84,13 @@ function RatingForm ({ courseName, setOpen }) {
             <TextareaAutosize
               name="comment"
               minRows={5}
+              required
               placeholder="Tell us what you think..."
               style={{ width: "99%" }}
             />
             <Button
               type="submit"
-              variant="outlined"
-              sx={{ borderColor: "#5dac90", color: "#5dac90" }}
+              variant="contained"
             >
               Submit
             </Button>

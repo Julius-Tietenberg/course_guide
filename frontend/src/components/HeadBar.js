@@ -72,11 +72,11 @@ const HeadBar = (props) => {
 
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {hiddenButton !== 'find' && <Button
-              sx={{ mr: "10%", color: "#61af82", fontWeight: "bold" }}
+              sx={{ mr: "10%", fontWeight: "bold" }}
               onClick={handleFindCourses}>
               Find Courses</Button>}
             {hiddenButton !== 'my' && <Button
-              sx={{ mr: "10%", color: "#61af82", fontWeight: "bold" }}
+              sx={{ mr: "10%", fontWeight: "bold" }}
               onClick={handleMyCourses}>My Courses</Button>}
             <Typography sx={{ mr: "3%" }}>username</Typography>
             <Box sx={{ flexGrow: 0 }}>

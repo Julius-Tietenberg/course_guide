@@ -100,7 +100,7 @@ function CourseOverview () {
           </Grid>
           <Grid item xs={2}>
             {/* <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Filter</Button> */}
-            <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Sort</Button>
+            <Button variant="contained" sx={{ ml: "15px", mt: "10px" }}>Sort</Button>
           </Grid>
         </Grid>
         {/* CourseCard */}
