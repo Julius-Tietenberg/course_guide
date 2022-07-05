@@ -20,7 +20,7 @@ const App = () => {
               <CourseOverview />
             </AuthRoute>
           } />
-        <Route path={"/course/:id"}
+        <Route path={"/course"}
           element={
             <AuthRoute>
               <CourseDetail />

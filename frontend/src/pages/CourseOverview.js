@@ -27,6 +27,10 @@ function CourseOverview () {
   }
   const handlePageChange = (event, value) => {
     setPage(value)
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 300)
+
   }
   const handleSearch = (event) => {
     console.log(event.target.value)
@@ -60,7 +64,7 @@ function CourseOverview () {
             <Typography variant="h5">Study Program Courses</Typography>
           </Grid>
           <Grid item xs={5}>
-
+            {/* search box */}
             <TextField
               name="search"
               margin="normal"
@@ -79,25 +83,27 @@ function CourseOverview () {
                   </InputAdornment>
                 ),
                 endAdornment: (
-                  <Select
-                    size="large"
-                    value={searchType}
-                    onChange={handleTypeChange}
-                    sx={{ borderRadius: " 0 4px 4px 0" }}
-                  >
-                    <MenuItem value="courseName">course name</MenuItem>
-                    <MenuItem value="profName">professor name</MenuItem>
-                  </Select>
+                  <InputAdornment position="end">
+                    <Select
+                      size="large"
+                      value={searchType}
+                      onChange={handleTypeChange}
+                      sx={{ borderRadius: " 0 4px 4px 0" }}
+                    >
+                      <MenuItem value="courseName">course name</MenuItem>
+                      <MenuItem value="profName">professor name</MenuItem>
+                    </Select>
+                  </InputAdornment>
                 ),
               }}
             />
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Filter</Button>
+            {/* <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Filter</Button> */}
             <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Sort</Button>
           </Grid>
         </Grid>
-
+        {/* CourseCard */}
         <Box sx={{ flexGrow: 1, p: "3%" }}>
           <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 6, md: 12 }}>
             {courseList.map((item) => (
@@ -105,7 +111,7 @@ function CourseOverview () {
                 <CourseCard
                   id={item.id}
                   name={item.name}
-                  prof={item.persons[0]?.name}
+                  prof={item.persons.map(item => (item.name))}
                   language={item.language} />
               </Grid>
             ))}

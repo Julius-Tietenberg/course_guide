@@ -16,5 +16,11 @@ class CourseStore {
     return res.data
   };
 
+  getCourseDetail = async (id) => {
+    const res = await http.get("course/course_detail", { params: { id: id } })
+    console.log(res)
+    return res.data
+  }
+
 }
 export default CourseStore

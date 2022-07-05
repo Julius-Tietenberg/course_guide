@@ -18,7 +18,7 @@ import { getToken } from '../utils'
 // tab items
 function TabPanel (props) {
   const { children, value, index } = props
-
+  console.log('value:' + value, 'index:' + index)
   return (
     <div
       role="tabpanel"
@@ -53,8 +53,8 @@ function Start () {
   const buttonTheme = createTheme({
     palette: {
       primary: {
-        main: '#61af82',
-        contrastText: '#221f1f',
+        main: '#5dac90',
+        contrastText: '#fff',
       },
     },
   })
@@ -81,7 +81,7 @@ function Start () {
     <Box sx={{ width: '100%' }} minWidth="ms" >
       <CssBaseline />
       {/* tab bar */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-around' }} >
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', p: '0 5%' }} >
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <img className="login-logo" src={logo} alt="" style={{ width: "50px", marginTop: "5px" }} />
           <span style={{
@@ -99,30 +99,30 @@ function Start () {
           textColor='inherit'
           sx={{
             '& .MuiTabs-indicator': {
-              backgroundColor: '#5ead8d'
+              backgroundColor: '#5dac90'
             },
             '& .MuiTabs-flexContainer': {
               justifyContent: 'flex-end',
-              color: '#5ead8d'
+              color: '#5dac90'
             }
           }}
         >
           <Tab label="About" {...a11yProps(0)} />
-          <Tab label="Team" {...a11yProps(1)} />
-          <Tab label="Register" {...a11yProps(3)} />
+          {/* <Tab label="Team" {...a11yProps(1)} /> */}
+          <Tab label="Register" {...a11yProps(1)} />
           {/* start button, link to login page */}
           <ThemeProvider theme={buttonTheme} >
             <Button variant="contained"
-              sx={{ fontWeight: "bold", border: "2px solid black", m: "5px 10px 0 10px", minWidth: "80px" }}
+              sx={{ fontWeight: "bold", m: "5px 10px 0 10px", minWidth: "80px" }}
               onClick={login}>
-              Get Start
+              Get Started
             </Button>
           </ThemeProvider>
         </Tabs>
       </Box>
       {/* About */}
       <TabPanel value={tabValue} index={0}>
-        <Box sx={{ display: 'flex', alignItems: 'center', ml: '10%', mr: '10%', mt: '5%' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', m: '0 10%', mr: '10%', }}>
           <Container>
             <Typography variant='h3'>
               Welcome to CourseGuide</Typography>
@@ -132,21 +132,21 @@ function Start () {
 
             <ThemeProvider theme={buttonTheme} >
               <Button variant="contained" size='large'
-                sx={{ fontWeight: "bold", m: 4, minWidth: "80px" }}
+                sx={{ fontWeight: "bold", mt: 4, minWidth: "80px" }}
                 onClick={login}>
-                Get Start
+                Get Started
               </Button>
             </ThemeProvider>
           </Container>
-          <img src={startImg} alt="" />
+          <img src={startImg} alt="" style={{ height: "550px" }} />
         </Box>
       </TabPanel>
       {/* Team */}
-      <TabPanel value={tabValue} index={1}>
+      {/* <TabPanel value={tabValue} index={1}>
         Team
-      </TabPanel>
+      </TabPanel> */}
       {/* register */}
-      <TabPanel value={tabValue} index={2} >
+      <TabPanel value={tabValue} index={1} >
         <Register />
       </TabPanel>
     </Box >
