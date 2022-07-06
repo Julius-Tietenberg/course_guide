@@ -9,6 +9,7 @@ import RatingCard from '../components/RatingCard'
 import RatingIcon from '../components/RatingIcon'
 import { useSearchParams } from "react-router-dom"
 import { useStore } from "../store"
+import { Tooltip } from '@mui/material'
 
 function CourseDetail () {
   const { courseStore } = useStore()
@@ -31,7 +32,7 @@ function CourseDetail () {
       <HeadBar />
       <Box sx={{ p: "5%", bgcolor: "rgb(209 233 213 / 80%)" }}>
         {/* banner */}
-        <Paper sx={{ p: "17px" }}>
+        <Paper sx={{ p: "17px" }} elevation={3}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
             <Stack>
               <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px"}} variant="h4" >{courseInfo.name}</Typography>
@@ -43,7 +44,7 @@ function CourseDetail () {
         {/* main area */}
         <Stack direction="row" justifyContent="space-between" spacing={2} sx={{ mt: "20px" }}>
           {/* course info */}
-          <Paper sx={{ minWidth: "40%" }}>
+          <Paper sx={{ minWidth: "40%" }} elevation={3}>
             <Stack sx={{ m: "15px" }}>
               <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Description</Typography>
               <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}}>{courseInfo.description} </Typography>
@@ -56,13 +57,17 @@ function CourseDetail () {
               {courseInfo.timetable?.map((item, index) => <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}} key={index}>{item.day} {item.interval}</Typography>)}
               <Divider variant="middle" />
               <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Course Page </Typography>
-              <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}} component="a" href={courseInfo.url}>Send me to the university page!</Typography>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}} component="a" href={courseInfo.url}>
+                  Send me to the university page!
+              </Typography>
+
+              
 
             </Stack>
           </Paper>
           {/* rating */}
           <Stack>
-            <Paper>
+            <Paper elevation={3}>
               <Stack direction="row" spacing={1} sx={{ m: "15px", justifyContent: "space-around" }}>
                 <RatingIcon field="Teaching" score={8.5} />
                 <RatingIcon field="Learning" score={8.2} />
@@ -70,7 +75,7 @@ function CourseDetail () {
                 <RatingIcon field="Difficulty" score={1.5} />
               </Stack>
             </Paper>
-            <Paper sx={{ mt: "20px" }}>
+            <Paper sx={{ mt: "20px" }} elevation={3}>
               <RatingCard courseName={courseInfo.name} />
             </Paper>
           </Stack>

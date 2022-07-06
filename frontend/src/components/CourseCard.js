@@ -10,6 +10,7 @@ import Stack from '@mui/material/Stack'
 import RatingIcon from './RatingIcon'
 import { useNavigate } from 'react-router-dom'
 import { Box } from '@mui/system'
+import { Tooltip } from '@mui/material'
 
 
 const CourseCard = (props) => {
@@ -19,7 +20,7 @@ const CourseCard = (props) => {
   const goCourseDetail = () => navigate(`/course?id=${id}`)
 
   return (
-    <Card elevation={3} >
+    <Card elevation={3}>
       <Box sx={{ p: "15px 15px 0 0" }}>
         <RatingIcon field="Student Rating" score={9.8} />
       </Box>
@@ -42,9 +43,11 @@ const CourseCard = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ justifyContent: "flex-end" }}>
-        <Button sx={{fontSmooth: "always"}}size="small" color="secondary" >
-          add to my courses
-        </Button>
+        <Tooltip title="You can find added courses on your personal dashboard."> 
+          <Button sx={{fontSmooth: "always"}}size="small" color="secondary" >
+            add to my courses
+          </Button>
+        </Tooltip>
       </CardActions>
     </Card>
   )

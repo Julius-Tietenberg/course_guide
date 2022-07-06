@@ -8,6 +8,7 @@ import CardContent from "@mui/material/CardContent"
 import Dialog from "@mui/material/Dialog"
 import RatingForm from './RatingForm'
 import AddIcon from '@mui/icons-material/Add'
+import { Tooltip } from '@mui/material'
 
 
 function CommentCard (props) {
@@ -48,7 +49,9 @@ function RatingCard (props) {
     <Box sx={{ p: "15px" }}>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "5px"}} variant="h6">Student Ratings</Typography>
-        <IconButton sx={{ color: "#5dac90" }} onClick={handleClickOpen}><AddIcon /></IconButton>
+        <Tooltip title="Click here to add your own rating for this course.">
+          <IconButton sx={{ color: "#5dac90" }} onClick={handleClickOpen}><AddIcon /></IconButton>
+        </Tooltip>
         {/* pop-up rating form */}
         <Dialog open={open} onClose={handleClose} scroll="body" >
           <RatingForm courseName={courseName} setOpen={setOpen} />
