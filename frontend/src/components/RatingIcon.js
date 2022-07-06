@@ -18,10 +18,10 @@ function RatingIcon (props) {
 
   return (
     <Stack direction="row" spacing={1} alignItems="center" justifyContent="flex-end">
-      <Typography variant="subtitle2" sx={{ color: ratingColor }} >
+      <Typography variant="subtitle1" sx={{ paddingLeft:"6px", color: ratingColor, fontSizeAdjust:".58" }} >
         {field}
       </Typography>
-      <Avatar sx={{ bgcolor: ratingColor }}>{score}</Avatar>
+      <Avatar sx={{ fontWeight:"bold", bgcolor: ratingColor }}>{score}</Avatar>
     </Stack>)
 }
 

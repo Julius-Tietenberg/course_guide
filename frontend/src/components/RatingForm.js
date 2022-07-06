@@ -91,7 +91,7 @@ function RatingForm ({ courseName, setOpen }) {
             <Button
               type="submit"
               variant="outlined"
-              sx={{ borderColor: "#5dac90", color: "#5dac90" }}
+              sx={{ borderWidth:"2px", borderColor: "#5dac90", color: "#5dac90" }}
             >
               Submit
             </Button>

@@ -58,10 +58,16 @@ function CourseOverview () {
   return (
     <Box>
       <HeadBar hiddenButton={'find'} />
-      <Box sx={{ backgroundColor: "rgb(25 118 210 / 8%)", pt: "20px" }}>
-        <Grid container spacing={2} justifyContent="center" alignItems="center">
-          <Grid item xs={3}>
-            <Typography variant="h5">Study Program Courses</Typography>
+      <Box sx={{ bgcolor: "rgb(209 233 213 / 80%)", pt: "40px" }}>
+        <Grid container spacing={10} justifyContent="center" alignItems="center">
+          <Grid item xs={4}>
+            <Typography sx={{
+            fontWeight: "bold",
+            fontSmooth: "always"}} 
+            variant="h3">UDE Courses</Typography>
+            <Typography sx={{
+            fontSmooth: "always"}} 
+            fontStyle='oblique' variant="h5">Computer Science and Applied Cognitive Science</Typography>
           </Grid>
           <Grid item xs={5}>
             {/* search box */}
@@ -90,17 +96,17 @@ function CourseOverview () {
                       onChange={handleTypeChange}
                       sx={{ borderRadius: " 0 4px 4px 0" }}
                     >
-                      <MenuItem value="courseName">course name</MenuItem>
-                      <MenuItem value="profName">professor name</MenuItem>
+                      <MenuItem value="courseName">Course Name</MenuItem>
+                      <MenuItem value="profName">Professor Name</MenuItem>
                     </Select>
                   </InputAdornment>
                 ),
               }}
             />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} >
             {/* <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Filter</Button> */}
-            <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Sort</Button>
+            <Button variant="contained" color="primary" sx={{ ml: "15px", mt: "10px" }}>Sort</Button>
           </Grid>
         </Grid>
         {/* CourseCard */}
@@ -112,7 +118,7 @@ function CourseOverview () {
                   id={item.id}
                   name={item.name}
                   prof={item.persons.map(item => (item.name))}
-                  language={item.language} />
+                  language={item.language}/>
               </Grid>
             ))}
           </Grid>
