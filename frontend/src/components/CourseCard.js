@@ -2,38 +2,34 @@ import * as React from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
-import { Button, CardActionArea, CardActions } from '@mui/material'
-import Avatar from '@mui/material/Avatar'
-import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
+import CardActionArea from '@mui/material/CardActionArea'
+import CardActions from '@mui/material/CardActions'
+import RatingIcon from './RatingIcon'
 import { useNavigate } from 'react-router-dom'
+import { Box } from '@mui/system'
 
 
 const CourseCard = (props) => {
   const { name, prof, language, id } = props
   const navigate = useNavigate()
 
-  const goCourseDetail = () => navigate(`/course/id=${id}`)
+  const goCourseDetail = () => navigate(`/course?id=${id}`)
 
   return (
-    <Card >
-      <Stack direction="row" spacing={1} alignItems="center" justifyContent="flex-end" sx={{ mr: "8px", mt: "5px" }}>
-        <Typography variant="subtitle2" >
-          Student Ratings
-        </Typography>
-        <Avatar sx={{ bgcolor: "#5dac90" }}>9.8</Avatar>
-      </Stack>
+    <Card>
+      <Box sx={{ p: "10px 5px 0 0" }}>
+        <RatingIcon field="Student Rating" score={9.8} />
+      </Box>
       <CardActionArea sx={{ height: "180px" }} onClick={goCourseDetail}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {prof}
-          </Typography>
+          {prof.map((item, index) => <Typography variant="body2" color="text.secondary" key={index}>{item}</Typography>)}
           <Typography variant="body2" color="text.secondary">
             language: {language}
           </Typography>
-
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ justifyContent: "flex-end" }}>
