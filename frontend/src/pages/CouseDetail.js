@@ -9,6 +9,7 @@ import RatingCard from '../components/RatingCard'
 import RatingIcon from '../components/RatingIcon'
 import { useSearchParams } from "react-router-dom"
 import { useStore } from "../store"
+import Button from '@mui/material/Button'
 
 function CourseDetail () {
   const { courseStore } = useStore()
@@ -33,11 +34,14 @@ function CourseDetail () {
         {/* banner */}
         <Paper sx={{ p: "10px" }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
-            <Stack>
+            <Box>
               <Typography variant="h5" >{courseInfo.name}</Typography>
               {courseInfo.persons?.map((item, index) => <Typography variant="body2" key={index}>{item.name}</Typography>)}
-            </Stack>
-            <RatingIcon field="Student Rating" score={8.3} />
+            </Box>
+            <Box>
+              <RatingIcon field="Student Rating" score={8.3} />
+              <Button variant='contained' size='small' sx={{ mt: "5px" }}>Add to my courses</Button>
+            </Box>
           </Stack>
         </Paper>
         {/* main area */}

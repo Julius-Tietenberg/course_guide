@@ -47,8 +47,9 @@ const HeadBar = (props) => {
     navigate("/")
   }
   const handleMyCourses = () => {
-    navigate("/profile")
+    navigate("/userdashboard")
   }
+
   return (
     <AppBar position="static" color='transparent' >
       <Container maxWidth="xl">

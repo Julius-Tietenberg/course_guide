@@ -11,7 +11,7 @@ import { Box } from '@mui/system'
 
 
 const CourseCard = (props) => {
-  const { name, prof, language, id } = props
+  const { name, prof, language, id, added } = props
   const navigate = useNavigate()
 
   const goCourseDetail = () => navigate(`/course?id=${id}`)
@@ -33,9 +33,10 @@ const CourseCard = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ justifyContent: "flex-end" }}>
-        <Button size="small" color="primary" >
-          add to my course
-        </Button>
+        {added === true ?
+          <Button size="small"  >remove</Button> :
+          <Button size="small"  >add to my course</Button>}
+
       </CardActions>
     </Card>
   )
