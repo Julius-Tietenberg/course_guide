@@ -43,6 +43,8 @@ const HeadBar = () => {
     navigate("/login")
   }
 
+  const goToUserdashboard = () => navigate("/userdashboard");
+
   return (
     <AppBar position="static" color='transparent' >
       <Container maxWidth="xl">
@@ -65,7 +67,7 @@ const HeadBar = () => {
           </Box>
 
           <Box sx={{ display: "flex", alignItems: "center", width: "25%" }}>
-            <Button sx={{ mr: "10%", color: "#61af82", fontWeight: "bold" }}>My Courses</Button>
+            <Button sx={{ mr: "10%", color: "#61af82", fontWeight: "bold" }} onClick={goToUserdashboard}>My Courses</Button>
             <Typography sx={{ mr: "3%" }}>username</Typography>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
