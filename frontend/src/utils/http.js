@@ -16,9 +16,7 @@ http.interceptors.response.use(
   (error) => {
     // Status codes outside the 2xx range will trigger this function.
     // do something with the response error
-    if (error.response.status === 500) {
-      console.log(error.response.data.message)
-    }
+
     return Promise.reject(error)
   }
 )

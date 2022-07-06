@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound'
 import CourseOverview from './pages/CourseOverview'
 import AuthRoute from './components/AuthRouter'
 import CourseDetail from './pages/CouseDetail'
+import Profile from './pages/Profile'
 // import './App.css'
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path={"/start"} element={<Start />} />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/register"} element={<Register />} />
+        <Route path={"/profile"} element={<Profile />} />
         <Route path={"*"} element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -122,7 +122,7 @@ function Start () {
               Get Started
             </Button>
           </Container>
-          <img src={startImg} alt="" style={{ height: "550px" }} />
+          <img src={startImg} alt="" style={{ height: "500px" }} />
         </Box>
       </TabPanel>
       {/* Team */}

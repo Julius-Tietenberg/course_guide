@@ -47,7 +47,7 @@ const HeadBar = (props) => {
     navigate("/")
   }
   const handleMyCourses = () => {
-
+    navigate("/profile")
   }
   return (
     <AppBar position="static" color='transparent' >
