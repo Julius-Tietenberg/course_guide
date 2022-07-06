@@ -49,6 +49,7 @@ const HeadBar = (props) => {
   const handleMyCourses = () => {
 
   }
+
   return (
     <AppBar position="static" color='transparent' >
       <Container maxWidth="xl">
