@@ -7,6 +7,7 @@ const unless = require('express-unless')
 const auth = require('./helpers/jwt.js');
 const users = require('./controllers/UserController.js')
 const courses = require('./controllers/CourseController.js')
+const ratings = require('./controllers/RatingMessageController.js')
 const errors = require('./helpers/errorHandler.js')
 
 app.use(cors({origin: "http://localhost:3000"})) // Default = CORS-enabled for all origins Access-Control-Allow-Origin: *!
@@ -26,6 +27,7 @@ app.use(auth.authenticateToken.unless({
 
 app.use('/user', users)
 app.use('/course', courses)
+app.use('/ratings', ratings)
 app.use(errors.errorHandler); // middleware for error responses
 
 

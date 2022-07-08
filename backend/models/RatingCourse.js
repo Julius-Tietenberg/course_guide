@@ -1,17 +1,26 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const mongoosePaginate = require('mongoose-paginate-v2');
-const {ObjectId} = require("mongodb");
 
 const RatingCourseSchema = new Schema({
-    id_course: {
+    /*id_course: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'course',
+        required: true
     },
     id_message: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'rating_message',
+        required: true
     },
+    created_at: {
+        type: Date,
+        default: Date.now(),
+    }*/
+
+    id_course: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
+    id_message: [{ type: Schema.Types.ObjectId, ref:'rating_message' }],
     created_at: {
         type: Date,
         default: Date.now(),

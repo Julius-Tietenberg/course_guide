@@ -5,7 +5,7 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 const RatingMessageSchema = new Schema({
     id_user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
+        required: true
     },
     content: {
         type: String,
@@ -16,9 +16,9 @@ const RatingMessageSchema = new Schema({
         default: Date.now(),
     },
     stars: {
-        type: Number,
+        type: {teacher: Number, learning: Number, workload: Number, difficulty: Number},
         required: true,
-    }
+    },
 });
 
 RatingMessageSchema.set('toJSON', {
@@ -26,6 +26,12 @@ RatingMessageSchema.set('toJSON', {
         returnedObject.id = returnedObject._id.toString()
         delete returnedObject._id
         delete returnedObject.__v
+
+        const stars = returnedObject.stars;
+        returnedObject['avg'] = (stars.teacher != null ? stars.teacher : 0)     +
+                                (stars.learning != null ? stars.learning : 0)   +
+                                (stars.workload != null ? stars.workload : 0)   +
+                                (stars.difficulty != null ? stars.difficulty : 0)
     }
 })
 

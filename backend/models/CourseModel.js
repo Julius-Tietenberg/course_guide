@@ -74,7 +74,19 @@ const CourseSchema = new Schema({
     keywords: {
         type: [ {text: String, value: String} ],
         required: false,
-    }
+    },
+    fullDescription: {
+        type: { description: String, targets: String,
+                literature: String, preQualification: String,
+                infoLink: String, notice: String
+        },
+        required: false,
+    },
+    rating: {
+        type: Number,
+        required: false,
+    },
+    rating_messages: [{ type: Schema.Types.ObjectId, ref:'rating_message' }],
 });
 
 CourseSchema.set('toJSON', {

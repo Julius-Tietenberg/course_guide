@@ -1,3 +1,9 @@
+const {transformDescription} = require("./course_helper");
+
+function getRatingArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 const transform_elas = (courses) => {
     let result = [];
     for (let course of courses) {
@@ -19,6 +25,17 @@ const transform_elas = (courses) => {
         }
         course['keywords'] = keywords_list;
 
+        const description = course.description;
+        delete course.description;
+
+        course['description'] = transformDescription(description, "Description:", "Learning Targets:");
+        course['targets'] = transformDescription(description, "Learning Targets:", "Literature:");
+        course['literature'] = transformDescription(description, "Literature:", "Pre-Qualifications:");
+        course['preQualification'] = transformDescription(description, "Pre-Qualifications:", "Info Link:");
+        course['infoLink'] = transformDescription(description,"Info Link:", "Notice:");
+        course['notice'] = transformDescription(description,"Notice:", "§$%");
+
+        course['rating'] = getRatingArbitrary(1,6)
         result.push(course);
     }
 

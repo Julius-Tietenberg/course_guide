@@ -15,7 +15,8 @@ router.post('/add', (req, res, next) => {
 })
 
 router.get('/course_detail', (req, res, next) => {
-    courseServices.findById(req).then(course => {
+    const { id } = req.query;
+    courseServices.findById(id).then(course => {
             res.json(course)
         }
     ).catch(err =>  res.status(ownStatusCode.internal_server_error)
@@ -24,7 +25,7 @@ router.get('/course_detail', (req, res, next) => {
 })
 
 router.post('/add_all', (req, res, next) => {
-    // const courses =  load_courses; // transform_elas(load_courses);
+    // const courses =  transform_elas(load_courses);
     const courses = req.body;
     courseServices.addAll(courses).then(courses => {
             res.send({status: true})

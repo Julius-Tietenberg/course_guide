@@ -5,8 +5,12 @@ async function add(course) {
     await Course.collection.insertOne(course);
 }
 
-async function findById(req) {
-    const { id } = req.query;
+async function update(course) {
+    const res = await Course.updateOne(course);
+    return res.acknowledged;
+}
+
+async function findById(id) {
     const course = await Course.findById(id);
     return course.toJSON();
 }
@@ -32,7 +36,7 @@ async function search(req) {
 
 
     if (sort) {
-        options.sort = sort == "asc" ? {"name": 1} : {"name": -1}
+        options.sort = sort == "asc" ? {"rating": 1} : {"rating": -1}
     }
 
     const { limit, offset } = getPagination(page, size);
@@ -41,6 +45,7 @@ async function search(req) {
 
 module.exports = {
     add,
+    update,
     findById,
     addAll,
     search
