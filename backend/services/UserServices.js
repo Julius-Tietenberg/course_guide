@@ -27,6 +27,23 @@ async function getById(id) {
     return user.toJSON()
 }
 
+async function getByUsername(req) {
+    const username = req.user["data"];
+    const user = await User.findOne({username});
+    return user.toJSON();
+}
+
+async function updateUser(req) {
+    const username = req.user["data"];
+    const params = req.body;
+    const user = await User.findOneAndUpdate(
+        {username},
+        {...params},
+        { new: true, useFindAndModify: false }
+    );
+    return user;
+}
+
 async function getAll() {
     const users = await User.find({});
     return users;
@@ -46,6 +63,8 @@ module.exports = {
     login,
     register,
     getById,
+    getByUsername,
+    updateUser,
     getAll,
     filter
 };

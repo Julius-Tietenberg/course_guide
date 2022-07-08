@@ -31,6 +31,20 @@ router.get('/:id', (req, res, next) => {
     ).catch(err => next(err))
 })
 
+router.get('/dashboard/account', authenticateToken, (req, res, next) => {
+    userServices.getByUsername(req).then(user => {
+            res.json(user)
+        }
+    ).catch(err => next(err))
+})
+
+router.post('/dashboard/account_update', authenticateToken, (req, res, next) => {
+    userServices.updateUser(req).then(user => {
+            res.json(user)
+        }
+    ).catch(err => next(err))
+})
+
 router.get('/all/users', authenticateToken, (req, res, next) => {
     userServices.getAll().then(users => {
         res.send(users)

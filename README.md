@@ -22,14 +22,16 @@
   <li>Run the command: node  server.js</li>
 </ul>  
 
-<h4>Available API Routes: Running local</h4>
+<h4>Available API Routes: Running local(XXX: http://localhost:9000 with po)</h4>
 <ul>
-  <li>http://localhost:port_number/user/login</li>
-  <li>http://localhost:port_number/user/register</li>
-  <li>http://localhost:port_number/course/course_detail?id=x</li>
-  <li>http://localhost:port_number/course/search (to get all the course)</li>
-  <li>http://localhost:port_number/course/search?page=0&size=5&course_name=x&prof_name=y&sort=desc (filter by courses)</li>
-  <li>http://localhost:9000/ratings/add?id_course=x (to rating)</li>
-  <li>http://localhost:9000/ratings/ratings_by_ic_course?id_course=x (to get all ratings by one course_id)</li>
+  <li>XXX/user/login</li>
+  <li>XXX/user/register</li>
+  <li>XXX/course/course_detail?id=x</li>
+  <li>XXX/course/search (to get all the course)</li>
+  <li>XXX/course/search?page=0&size=5&course_name=x&prof_name=y&sort=desc (filter by courses)</li>
+  <li>XXX/ratings/add?id_course=x (to rating)</li>
+  <li>XXX/ratings/ratings_by_ic_course?id_course=x (to get all ratings by one course_id)</li>
+  <li>XXX/user/dashboard/account (to get user profile infos)</li>
+  <li>XXX/user/dashboard/account_update (to update user profile)</li>
 </ul>  
 </div>
