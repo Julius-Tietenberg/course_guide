@@ -5,6 +5,7 @@ import React from "react"
 import LoginStore from "./login.Store"
 import RegisterStore from "./register.Store"
 import CourseStore from "./course.Store"
+import RatingStore from "./rating.Store"
 
 
 class RootStore {
@@ -12,6 +13,7 @@ class RootStore {
     this.loginStore = new LoginStore()
     this.registerStore = new RegisterStore()
     this.courseStore = new CourseStore()
+    this.ratingStore = new RatingStore()
   }
 }
 

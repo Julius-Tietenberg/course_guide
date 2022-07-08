@@ -11,7 +11,7 @@ import { Box } from '@mui/system'
 
 
 const CourseCard = (props) => {
-  const { name, prof, language, id, added } = props
+  const { name, prof, language, id, rating, added } = props
   const navigate = useNavigate()
 
   const goCourseDetail = () => navigate(`/course?id=${id}`)
@@ -19,7 +19,7 @@ const CourseCard = (props) => {
   return (
     <Card>
       <Box sx={{ p: "10px 5px 0 0" }}>
-        <RatingIcon field="Student Rating" score={9.8} />
+        <RatingIcon field="Student Rating" score={rating} />
       </Box>
       <CardActionArea sx={{ height: "180px" }} onClick={goCourseDetail}>
         <CardContent>

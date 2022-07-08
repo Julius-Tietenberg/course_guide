@@ -38,10 +38,10 @@ function CourseDetail () {
               <Typography variant="h5" >{courseInfo.name}</Typography>
               {courseInfo.persons?.map((item, index) => <Typography variant="body2" key={index}>{item.name}</Typography>)}
             </Box>
-            <Box>
-              <RatingIcon field="Student Rating" score={8.3} />
-              <Button variant='contained' size='small' sx={{ mt: "5px" }}>Add to my courses</Button>
-            </Box>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Button variant='outlined' size='small' sx={{ height: "30px" }}>Add to my courses</Button>
+              <RatingIcon field="Student Rating" score={courseInfo.rating} />
+            </Stack>
           </Stack>
         </Paper>
         {/* main area */}
@@ -52,9 +52,17 @@ function CourseDetail () {
               <Typography variant="h5">Description</Typography>
               <Typography>{courseInfo.description} </Typography>
               <Divider variant="middle" />
-              <Typography variant="h5">Semester</Typography><Typography>{courseInfo.semester}</Typography>
+              <Typography variant="h5">Learning Targets</Typography>
+              <Typography>{courseInfo.targets} </Typography>
               <Divider variant="middle" />
-              <Typography variant="h5">Subject Type</Typography><Typography>{courseInfo.subject_type}</Typography>
+              <Typography variant="h5">Semester</Typography>
+              <Typography>{courseInfo.semester}</Typography>
+              <Divider variant="middle" />
+              <Typography variant="h5">Subject Type</Typography>
+              <Typography>{courseInfo.subject_type}</Typography>
+              <Divider variant="middle" />
+              <Typography variant="h5">Language</Typography>
+              <Typography>{courseInfo.language}</Typography>
               <Divider variant="middle" />
               <Typography variant="h5">Timetable</Typography>
               {courseInfo.timetable?.map((item, index) => <Typography key={index}>{item.day} {item.interval}</Typography>)}
@@ -68,14 +76,14 @@ function CourseDetail () {
           <Stack>
             <Paper>
               <Stack direction="row" spacing={1} sx={{ m: "5px", justifyContent: "space-around" }}>
-                <RatingIcon field="Teaching" score={8.5} />
-                <RatingIcon field="Learning" score={8.2} />
-                <RatingIcon field="Wordload" score={5.7} />
-                <RatingIcon field="Difficulty" score={1.5} />
+                <RatingIcon field="Teaching" score={courseInfo.stars?.teacher} />
+                <RatingIcon field="Learning" score={courseInfo.stars?.learning} />
+                <RatingIcon field="Wordload" score={courseInfo.stars?.workload} />
+                <RatingIcon field="Difficulty" score={courseInfo.stars?.difficulty} />
               </Stack>
             </Paper>
             <Paper sx={{ mt: "20px" }}>
-              <RatingCard courseName={courseInfo.name} />
+              <RatingCard courseName={courseInfo.name} courseId={id} />
             </Paper>
           </Stack>
         </Stack>

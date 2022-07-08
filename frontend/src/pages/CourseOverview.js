@@ -112,7 +112,8 @@ function CourseOverview () {
                   id={item.id}
                   name={item.name}
                   prof={item.persons.map(item => (item.name))}
-                  language={item.language} />
+                  language={item.language}
+                  rating={item.rating} />
               </Grid>
             ))}
           </Grid>

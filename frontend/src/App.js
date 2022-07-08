@@ -1,5 +1,8 @@
-
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import {
+  unstable_HistoryRouter as HistoryRouter,
+  Routes,
+  Route,
+} from "react-router-dom"
 import Start from './pages/Start'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -9,6 +12,7 @@ import AuthRoute from './components/AuthRouter'
 import CourseDetail from './pages/CouseDetail'
 import Profile from './pages/Profile'
 import UserDashboard from './pages/UserDashboard'
+import history from "./utils/history"
 
 // import './App.css'
 
@@ -16,7 +20,7 @@ const App = () => {
 
   return (
 
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <Routes>
         <Route path={"/"}
           element={
@@ -37,7 +41,7 @@ const App = () => {
         <Route path={"/profile"} element={<Profile />} />
         <Route path={"*"} element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
 
 
   )

@@ -21,7 +21,7 @@ function RatingIcon (props) {
       <Typography variant="subtitle2" sx={{ color: ratingColor }} >
         {field}
       </Typography>
-      <Avatar sx={{ bgcolor: ratingColor }}>{score}</Avatar>
+      <Avatar sx={{ bgcolor: ratingColor }}>{score?.toFixed(1)}</Avatar>
     </Stack>)
 }
 
