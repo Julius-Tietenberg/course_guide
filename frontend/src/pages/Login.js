@@ -50,7 +50,6 @@ function Login () {
       setTimeout(() => {
         navigate("/", { replace: true })
       }, 1000)
-      // alert('Login successful')
     }
     // catch error
     catch (e) {
