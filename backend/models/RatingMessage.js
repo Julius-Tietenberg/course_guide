@@ -7,6 +7,7 @@ const RatingMessageSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
+    /*user: { type: Schema.Types.ObjectId, ref:'users' },*/
     content: {
         type: String,
         required: true,
@@ -32,6 +33,8 @@ RatingMessageSchema.set('toJSON', {
                                 (stars.learning != null ? stars.learning : 0)   +
                                 (stars.workload != null ? stars.workload : 0)   +
                                 (stars.difficulty != null ? stars.difficulty : 0)
+
+        delete returnedObject.stars._id;
     }
 })
 

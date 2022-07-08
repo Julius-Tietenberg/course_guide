@@ -1,5 +1,4 @@
 const RatingMessage = require('../models/RatingMessage')
-const RatingCourse = require('../models/RatingCourse')
 const { getPagination } = require('../helpers/own_pagination')
 const {ObjectId} = require("mongodb");
 const {ownStatusCode} = require("../helpers/own_status");
@@ -26,12 +25,13 @@ async function add(req, res) {
         const rm = await RatingMessage.collection.insertOne(body);
 
         // add new rating value to the courses
-        const course = await courseServices.findById(id_course)
-        const allRatingValue = course.rating != undefined || course.rating != null ? course.rating : 0;
+        const course = await courseServices.findById(id_course);
+        const avgR = getAvgStars(body.stars, course.stars, course.rating);
+        // const allRatingValue = course.rating != undefined || course.rating != null ? course.rating : 0;
 
         await Course.findOneAndUpdate(
             {_id: ObjectId(id_course)},
-            { $push: { rating_messages: rm.insertedId }, rating: getAvgStars(body.stars, allRatingValue) },
+            { $push: { rating_messages: rm.insertedId }, rating: avgR.total_rating, stars: avgR.stars },
             { new: true, useFindAndModify: false }
         )
 
@@ -66,12 +66,26 @@ async function findAllByIdCourse(req) {
     };
 
     const skips = page * (size - 1)
-    const cm = await Course.findOne(query).populate({
-        path: 'rating_messages', sort: {created_at: -1}
-    })
+
+    let cm = await Course.findOne(query)
+                .populate({
+                path: 'rating_messages', sort: {created_at: -1}
+            })
+
+    let mgs = [];
+    for (let rm of cm.rating_messages) {
+        let final = rm;
+        const user = await User.findById(rm['id_user']);
+        final = JSON.parse(JSON.stringify(final));
+        final['username'] = user.username;
+        delete final.id_user;
+        mgs.push(final);
+    }
+    mgs.reverse();
+    cm = JSON.parse(JSON.stringify(cm))
+    cm["rating_messages"] = mgs;
 
     //const cm = await Course.paginateSubDocs(query, option);
-    // console.log(cm)
     return cm;
 }
 

@@ -52,6 +52,6 @@ UserSchema.set('toJSON', {
 
 UserSchema.plugin(mongoosePaginate);
 
-const User =  mongoose.model("user", UserSchema);
+const User =  mongoose.model("users", UserSchema);
 
 module.exports = User;

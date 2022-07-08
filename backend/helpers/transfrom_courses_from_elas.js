@@ -1,4 +1,5 @@
 const {transformDescription} = require("./course_helper");
+const {getAvgStars} = require("./rating_helper");
 
 function getRatingArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -35,7 +36,17 @@ const transform_elas = (courses) => {
         course['infoLink'] = transformDescription(description,"Info Link:", "Notice:");
         course['notice'] = transformDescription(description,"Notice:", "§$%");
 
-        course['rating'] = getRatingArbitrary(1,6)
+        const rating = getRatingArbitrary(1,2)
+        const user_stars = {
+            teacher: getRatingArbitrary(7,10),
+            learning: getRatingArbitrary(7,10),
+            workload: getRatingArbitrary(7,10),
+            difficulty: getRatingArbitrary(7,10)
+        }
+        const avgR = getAvgStars(user_stars, {}, rating);
+        course['rating'] = avgR.total_rating;
+        course['stars'] = avgR.stars;
+
         result.push(course);
     }
 
