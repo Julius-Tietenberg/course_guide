@@ -69,11 +69,9 @@ async function findAllByIdCourse(req) {
     const cm = await Course.findOne(query).populate({
         path: 'rating_messages', sort: {created_at: -1}
     })
+
     //const cm = await Course.paginateSubDocs(query, option);
-
-    console.log(cm)
-
-
+    // console.log(cm)
     return cm;
 }
 

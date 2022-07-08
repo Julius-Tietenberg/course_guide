@@ -29,5 +29,7 @@
   <li>http://localhost:port_number/course/course_detail?id=x</li>
   <li>http://localhost:port_number/course/search (to get all the course)</li>
   <li>http://localhost:port_number/course/search?page=0&size=5&course_name=x&prof_name=y&sort=desc (filter by courses)</li>
+  <li>http://localhost:9000/ratings/add?id_course=x (to rating)</li>
+  <li>http://localhost:9000/ratings/ratings_by_ic_course?id_course=x (to get all ratings by one course_id)</li>
 </ul>  
 </div>
