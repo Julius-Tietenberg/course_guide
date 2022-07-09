@@ -42,26 +42,20 @@ function RatingBar ({ name, value, setValue }) {
     </Box>)
 }
 
-function RatingForm ({ courseName, setOpen, id }) {
+function RatingForm (props) {
+  const { courseName, setOpen, id, trigger, setTrigger } = props
   const { ratingStore } = useStore()
   const [teachingValue, setTeachingValue] = React.useState(5)
   const [learningValue, setLearningValue] = React.useState(5)
   const [wordloadValue, setWordloadValue] = React.useState(5)
   const [difficultyValue, setDifficultyValue] = React.useState(5)
 
+
   let average = (teachingValue + learningValue + wordloadValue + difficultyValue) / 4
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    /*  console.log({
-       Teaching: teachingValue,
-       Learning: learningValue,
-       Wordload: wordloadValue,
-       Difficulty: difficultyValue,
-       Average: average,
-       Comment: data.get('comment'),
-     }) */
     const token = getToken()
     try {
       await ratingStore.addRating(
@@ -77,6 +71,7 @@ function RatingForm ({ courseName, setOpen, id }) {
     } catch (e) {
       console.log(e)
     }
+    setTrigger(!trigger)
     setOpen(false)
   }
 
@@ -113,7 +108,6 @@ function RatingForm ({ courseName, setOpen, id }) {
           </Stack>
         </Stack>
       </DialogContent>
-
     </Box >
   )
 }

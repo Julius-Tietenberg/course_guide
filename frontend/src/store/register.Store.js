@@ -25,7 +25,6 @@ class RegisterStore {
       position,
       school,
     })
-    console.log("success" + res)
   };
 }
 export default RegisterStore

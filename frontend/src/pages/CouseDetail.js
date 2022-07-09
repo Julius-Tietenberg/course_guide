@@ -12,7 +12,7 @@ import { useStore } from "../store"
 import Button from '@mui/material/Button'
 
 function CourseDetail () {
-  const { courseStore } = useStore()
+  const { courseStore, userStore } = useStore()
   const [courseInfo, setCourseInfo] = React.useState({})
   let [params] = useSearchParams()
   let id = params.get('id')
@@ -20,13 +20,19 @@ function CourseDetail () {
   React.useEffect(() => {
     const loadCouseInfo = async () => {
       const res = await courseStore.getCourseDetail(id)
-      console.log(res)
       setCourseInfo(res)
     }
     loadCouseInfo()
   }, [id, courseStore])
 
-
+  const handleAddCourse = async () => {
+    try {
+      await userStore.addCourse(id)
+      console.log('detail add success')
+    } catch (e) {
+      console.log(e)
+    }
+  }
   return (
     <Box sx={{ minWidth: "900px" }}>
       <HeadBar />
@@ -39,7 +45,7 @@ function CourseDetail () {
               {courseInfo.persons?.map((item, index) => <Typography variant="body2" key={index}>{item.name}</Typography>)}
             </Box>
             <Stack direction="row" spacing={2} alignItems="center">
-              <Button variant='outlined' size='small'>Add to my courses</Button>
+              <Button variant='outlined' size='small' onClick={handleAddCourse}>Add to my courses</Button>
               <RatingIcon field="Student Rating" score={courseInfo.rating} />
             </Stack>
           </Stack>

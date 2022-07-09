@@ -30,6 +30,7 @@ function RatingCard (props) {
   const { ratingStore } = useStore()
   const [ratingInfo, setRatingInfo] = React.useState({})
   const { courseName, courseId } = props
+  const [trigger, setTrigger] = React.useState(true)
 
   const [open, setOpen] = React.useState(false)
   const handleClickOpen = () => {
@@ -47,7 +48,7 @@ function RatingCard (props) {
       setRatingInfo(res)
     }
     loadRatingInfo()
-  }, [courseId, ratingStore])
+  }, [trigger, courseId, ratingStore])
 
   return (
     <Box sx={{ p: "10px" }}>
@@ -56,11 +57,16 @@ function RatingCard (props) {
         <IconButton sx={{ color: "#5dac90" }} onClick={handleClickOpen}><AddIcon /></IconButton>
         {/* pop-up rating form */}
         <Dialog open={open} onClose={handleClose} scroll="body" >
-          <RatingForm courseName={courseName} setOpen={setOpen} id={courseId} />
+          <RatingForm
+            courseName={courseName}
+            setOpen={setOpen}
+            id={courseId}
+            trigger={trigger}
+            setTrigger={setTrigger} />
         </Dialog>
       </Stack>
       {/* user comment */}
-      {ratingInfo.rating_messages?.map((item, index) => <CommentCard name={item.id_user} time={item.created_at} text={item.content} key={index} />)}
+      {ratingInfo.rating_messages?.map((item, index) => <CommentCard name={item.username} time={item.created_at} text={item.content} key={index} />)}
     </Box>
   )
 }

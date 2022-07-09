@@ -25,7 +25,6 @@ const HeadBar = (props) => {
   React.useEffect(() => {
     const getUserName = async () => {
       const res = await userStore.getUserInfo()
-      console.log(res)
       setUsername(res.username)
     }
     getUserName()
@@ -40,7 +39,6 @@ const HeadBar = (props) => {
   }
 
   const handleDashboard = () => {
-    console.log('handleDashboard')
     navigate("/userdashboard")
   }
 

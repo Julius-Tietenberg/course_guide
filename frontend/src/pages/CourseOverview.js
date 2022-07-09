@@ -58,7 +58,6 @@ function CourseOverview () {
       } else {
         res = await courseStore.getAllCourse(page, '', searchValue, sortType)
       }
-      console.log(res)
       setCourseList(res.content)
       setTotalPages(res.totalPages)
     }

@@ -8,13 +8,17 @@ import HeadBar from "../components/HeadBar"
 import Button from "@mui/material/Button"
 import Dialog from '@mui/material/Dialog'
 import TextField from '@mui/material/TextField'
+import Pagination from '@mui/material/Pagination'
+import Container from '@mui/material/Container'
 import CourseCard from "../components/CourseCard"
 import { useStore } from "../store"
-import { Container } from '@mui/system'
 
 function UserDashboard () {
-  const { courseStore, userStore } = useStore()
+  const { userStore } = useStore()
   const [courseList, setCourseList] = React.useState([])
+  const [trigger, setTrigger] = React.useState(true)
+  const [page, setPage] = React.useState(1)
+  const [totalPages, setTotalPages] = React.useState()
   const [sortType, setSortType] = React.useState('')
   const [open, setOpen] = React.useState(false)
   const [username, setUsername] = React.useState('')
@@ -32,24 +36,31 @@ function UserDashboard () {
   }
 
   // set sort type
-  const handleAsc = () => {
-    setSortType('asc')
-  }
-  const handleDesc = () => {
-    setSortType('desc')
-  }
-  const cleanSort = () => {
-    setSortType('')
+  /*   const handleAsc = () => {
+      setSortType('asc')
+    }
+    const handleDesc = () => {
+      setSortType('desc')
+    }
+    const cleanSort = () => {
+      setSortType('')
+    } */
+
+  const handlePageChange = (event, value) => {
+    setPage(value)
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 300)
   }
 
   React.useEffect(() => {
     const loadCourseList = async () => {
-      const res = await courseStore.getAllCourse(1, '', '', sortType)
-      console.log(res)
+      const res = await userStore.getCourseList(page)
       setCourseList(res.content)
+      setTotalPages(res.totalPages)
     }
     loadCourseList()
-  }, [sortType, courseStore])
+  }, [page, userStore])
 
   React.useEffect(() => {
     const loadUserInfo = async () => {
@@ -61,8 +72,9 @@ function UserDashboard () {
       setSchool(res.school)
     }
     loadUserInfo()
-  }, [userStore])
+  }, [trigger, userStore])
 
+  // edite profile function
   const handleProfileChange = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
@@ -70,12 +82,15 @@ function UserDashboard () {
       await userStore.editeUserInfo({
         firstname: data.get('firstname'),
         lastname: data.get('lastname'),
-        school: data.get('university'),
-        email: data.get('email'),
+        school: data.get('school'),
+        // email: data.get('email'),
       })
     } catch (e) {
       console.log(e)
     }
+    // control rerender DOM
+    setTrigger(!trigger)
+    setOpen(false)
   }
   return (
     <Box sx={{ minWidth: "900px" }}>
@@ -87,11 +102,11 @@ function UserDashboard () {
             <Paper sx={{ p: "10px" }}>
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
                 <Typography variant="h5" >My Courses</Typography>
-                <Box>
+                {/*                 <Box>
                   <Button variant="contained" size="small" onClick={handleDesc}>Desc</Button>
                   <Button variant="contained" size="small" sx={{ m: "0 15px" }} onClick={handleAsc}>Asc</Button>
                   <Button variant="contained" size="small" onClick={cleanSort}>Clean</Button>
-                </Box>
+                </Box> */}
               </Stack>
             </Paper>
             <Grid container spacing={2} sx={{ mt: 0 }}>
@@ -107,6 +122,9 @@ function UserDashboard () {
                   />
                 </Grid>
               ))}
+              <Grid item xs={12} >
+                <Pagination count={totalPages} page={page} onChange={handlePageChange} sx={{ display: "flex", justifyContent: "center" }} />
+              </Grid>
             </Grid>
           </Grid>
           {/* my profile */}
@@ -114,7 +132,7 @@ function UserDashboard () {
             <Paper sx={{ p: "10px", minWidth: "280px" }}>
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
                 <Typography variant="h5" >My profile</Typography>
-                <Button variant="outlined" onClick={handleClickOpen}>Edite Profile</Button>
+                <Button variant="outlined" size="small" onClick={handleClickOpen}>Edite Profile</Button>
                 <Dialog open={open} onClose={handleClose} scroll="body" >
                   {/* edite profile form */}
                   <Box component="form" sx={{ p: "5%" }} onSubmit={handleProfileChange}>
@@ -150,16 +168,19 @@ function UserDashboard () {
                           name="email"
                           type="email"
                           fullWidth
+                          required
                           label="University Email Address"
                           inputProps={{
                             pattern: "[^\r\n\t\f\v ]+@[^\r\n\t\f\v ]*uni-due.de",
                             title: "Please enter valid university email,with the suffix uni-due.de"
                           }}
+                          disabled
+                          value={email}
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
-                          name="scholl"
+                          name="school"
                           fullWidth
                           label="University"
                         />

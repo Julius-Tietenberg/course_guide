@@ -21,7 +21,6 @@ class RatingStore {
       {
         params: { id_course: id },
       }).then()
-    console.log('success', res)
   }
 }
 export default RatingStore
