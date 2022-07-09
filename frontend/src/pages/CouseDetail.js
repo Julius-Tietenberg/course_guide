@@ -39,8 +39,10 @@ function CourseDetail () {
               <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px"}} variant="h4" >{courseInfo.name}</Typography>
               {courseInfo.persons?.map((item, index) => <Typography sx={{fontSmooth: "always", paddingLeft: "10px"}} variant="h5" key={index}>{item.name}</Typography>)}
             </Box>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Button variant='outlined' size='small'>Add to my courses</Button>
+            <Stack direction="row" spacing={4} alignItems="center">
+              <Tooltip title="You can find all added courses on your personal dashboard.">
+                <Button  variant='outlined' size='medium'>Add to my courses</Button>
+              </Tooltip>
               <RatingIcon field="Student Rating" score={courseInfo.rating} />
             </Stack>
           </Stack>
@@ -50,26 +52,26 @@ function CourseDetail () {
           {/* course info */}
           <Paper sx={{ minWidth: "40%" }} elevation={3}>
             <Stack sx={{ m: "15px" }}>
-              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Description</Typography>
-              <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}}>{courseInfo.description} </Typography>
-              <Divider variant="middle" />
-              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Learning Targets</Typography>
-              <Typography>{courseInfo.targets} </Typography>
-              <Divider variant="middle" />
-              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Semester</Typography>
-              <Typography>{courseInfo.semester}</Typography>
-              <Divider variant="middle" />
-              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Subject Type</Typography>
-              <Typography>{courseInfo.subject_type}</Typography>
-              <Divider variant="middle" />
-              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Language</Typography>
-              <Typography>{courseInfo.language}</Typography>
-              <Divider variant="middle" />
-              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Timeslot</Typography>
-              {courseInfo.timetable?.map((item, index) => <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}} key={index}>{item.day} {item.interval}</Typography>)}
-              <Divider variant="middle" />
-              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Course Page </Typography>
-              <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}} component="a" href={courseInfo.url}>
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", paddingTop: "10px", mb:"8px"}} variant="h5">Description</Typography>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "30px", mb:"8px" , textAlign:"justify", paddingRight: "30px"}}>{courseInfo.description} </Typography>
+              <Divider sx={{mb:"10px"}} variant="middle" />
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb:"8px"}} variant="h5">Learning Targets</Typography>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "30px", mb:"8px" , textAlign:"justify", paddingRight: "30px"}}>{courseInfo.targets} </Typography>
+              <Divider sx={{mb:"10px"}} variant="middle" />
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb:"8px"}} variant="h5">Semester</Typography>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "30px", mb:"8px", textAlign:"justify", paddingRight: "30px"}}>{courseInfo.semester}</Typography>
+              <Divider sx={{mb:"10px"}} variant="middle" />
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb:"8px"}} variant="h5">Course Type</Typography>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "30px", mb:"8px", textAlign:"justify", paddingRight: "30px"}}>{courseInfo.subject_type}</Typography>
+              <Divider sx={{mb:"10px"}} variant="middle" />
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb:"8px"}} variant="h5">Language</Typography>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "30px", mb:"8px", textAlign:"justify", paddingRight: "30px"}}>{courseInfo.language}</Typography>
+              <Divider sx={{mb:"10px"}} variant="middle" />
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb:"8px"}} variant="h5">Timeslot</Typography>
+              {courseInfo.timetable?.map((item, index) => <Typography sx={{fontSmooth: "always", paddingLeft: "30px", mb:"8px", textAlign:"justify", paddingRight: "30px"}} key={index}>{item.day} {item.interval}</Typography>)}
+              <Divider sx={{mb:"10px"}} variant="middle" />
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb:"8px"}} variant="h5">Course Page </Typography>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "30px", paddingBottom: "10px", mb:"8px", textAlign:"justify", paddingRight: "30px"}} component="a" href={courseInfo.url}>
                   Send me to the university page!
               </Typography>
 
@@ -79,15 +81,15 @@ function CourseDetail () {
           </Paper>
           {/* rating */}
           <Stack>
-            <Paper elevation={3}>
-              <Stack direction="row" spacing={1} sx={{ m: "5px", justifyContent: "space-around" }}>
+            <Paper sx={{ p: "15px" }} elevation={3}>
+              <Stack direction="row" spacing={2} sx={{ m: "5px", justifyContent: "space-around" }}>
                 <RatingIcon field="Teaching" score={courseInfo.stars?.teacher} />
                 <RatingIcon field="Learning" score={courseInfo.stars?.learning} />
                 <RatingIcon field="Wordload" score={courseInfo.stars?.workload} />
                 <RatingIcon field="Difficulty" score={courseInfo.stars?.difficulty} />
               </Stack>
-            </Paper elevation={3}>
-            <Paper sx={{ mt: "20px" }}>
+            </Paper >
+            <Paper elevation={3} sx={{ mt: "20px" }}>
               <RatingCard courseName={courseInfo.name} courseId={id} />
             </Paper>
           </Stack>

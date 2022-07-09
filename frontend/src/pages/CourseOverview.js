@@ -71,8 +71,8 @@ function CourseOverview () {
     <Box>
       <HeadBar hiddenButton={'find'} />
       <Box sx={{ bgcolor: "rgb(209 233 213 / 80%)", pt: "40px" }}>
-        <Grid container spacing={10} justifyContent="center" alignItems="center">
-          <Grid item xs={4}>
+        <Grid sx={{ ml:"1%" }} container spacing={5} justifyContent="center" alignItems="center">
+          <Grid  item xs={4}>
             <Typography sx={{
             fontWeight: "bold",
             fontSmooth: "always"}} 
@@ -117,9 +117,9 @@ function CourseOverview () {
             />
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={handleDesc}>Desc</Button>
-            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={handleAsc}>Asc</Button>
-            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={cleanSort}>Clean</Button>
+            <Button variant="contained" size="medium" sx={{ ml: "15px", mt: "10px" }} onClick={handleDesc}>Highest</Button>
+            <Button variant="contained" size="medium" sx={{ ml: "15px", mt: "10px" }} onClick={handleAsc}>Lowest</Button>
+            <Button variant="outlined" size="medium" sx={{ ml: "15px", mt: "10px" }} onClick={cleanSort}>Reset</Button>
           </Grid>
         </Grid>
         {/* CourseCard */}

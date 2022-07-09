@@ -43,7 +43,7 @@ const CourseCard = (props) => {
       <CardActions sx={{ justifyContent: "flex-end" }}>
         {added === true ?
 
-          <Tooltip title="tooltip">
+          <Tooltip title="Remove this course from your courses.">
             <Button size="small">remove</Button> 
           </Tooltip>
             :

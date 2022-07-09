@@ -62,7 +62,7 @@ const HeadBar = (props) => {
         <Toolbar  sx={{ justifyContent: "space-between" }}>
           {/* logo & title */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <img className="login-logo" src={logo} alt=" " style={{ width: "70px", margin: "8px"}} />
+            <img className="login-logo" src={logo} alt=" " style={{ width: "70px", margin: "5px"}} />
             <Typography
               variant="h5"
               noWrap

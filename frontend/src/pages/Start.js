@@ -96,34 +96,34 @@ function Start () {
             }
           }}
         >
-          <Tab label="About" {...a11yProps(0)} />
+           {/*<Tab label="About" {...a11yProps(0)} /> */}
           {/* <Tab label="Team" {...a11yProps(1)} /> */}
-          <Tab label="Register" {...a11yProps(1)} />
+          <Tab sx={{ fontWeight: "bold", m: "45px 10px 0 10px", minWidth: "110px" }} label="Register" {...a11yProps(1)} /> 
           {/* start button, link to login page */}
           <Button variant="contained"
-            sx={{ fontWeight: "bold", m: "5px 10px 0 10px", minWidth: "80px" }}
+            sx={{ fontWeight: "bold", m: "45px 60px 0 20px", minWidth: "110px" }}
             onClick={login}>
-            Get Started
+            LogIn
           </Button>
         </Tabs>
       </Box>
       {/* About */}
       <TabPanel value={tabValue} index={0}>
-        <Box sx={{ display: 'flex', alignItems: 'center', m: '0 10%', mr: '10%', }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', m: '0 10%', mr: '12%', mt: '5%' }}>
           <Container>
-            <Typography  variant='h3'>
-              Welcome to CourseGuide</Typography>
-            <Typography variant='h5' > Rate your courses</Typography>
-            <Typography variant='h5' > Empower the newbies</Typography>
-            <Typography variant='h5' > Share your experience</Typography>
+            <Typography sx={{ fontWeight:"bold", pb:"15px"}} variant='h3'>
+              Welcome to CourseGuide...</Typography>
+            <Typography sx={{ pb:"8px", fontSizeAdjust:".65", fontStyle:"oblique"}} variant='h5' > Rate your courses</Typography>
+            <Typography sx={{ pb:"8px", fontSizeAdjust:".65", fontStyle:"oblique"}} variant='h5' > Empower the newbies</Typography>
+            <Typography sx={{ pb:"8px", fontSizeAdjust:".65", fontStyle:"oblique"}} variant='h5' > Share your experiences</Typography>
 
-            <ThemeProvider theme={buttonTheme} >
+            
               <Button variant="contained" size='large'
-                sx={{ fontWeight: "bold", mt: 4, minWidth: "80px" }}
+                sx={{ fontWeight: "bold", mt: 5, minWidth: "80px" }}
                 onClick={login}>
                 LogIn
               </Button>
-            </ThemeProvider>
+  
           </Container>
           <img src={startImg} alt="" style={{ height: "500px" }} />
         </Box>
