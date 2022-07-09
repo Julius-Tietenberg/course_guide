@@ -107,9 +107,7 @@ function RatingForm ({ courseName, setOpen, id }) {
             <Button 
               type="submit"
               variant="contained"
-
-              // So lassen??
-              sx={{ width:"25%", borderWidth:"2px", borderColor: "#5dac90", color: "#5dac90", fontWeight:"bold", fontSizeAdjust:".6" }}
+              sx={{ width:"25%", borderColor: "#5dac90", color: "white", fontWeight:"bold", fontSizeAdjust:".6" }}
             >
               Submit
             </Button>

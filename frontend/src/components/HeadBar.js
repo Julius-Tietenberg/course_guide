@@ -84,9 +84,9 @@ const HeadBar = (props) => {
             {hiddenButton !== 'my' && <Button
               sx={{ mr: "10%", fontWeight: "bold" }}
               onClick={handleMyCourses}>My Courses</Button>}
-            <Typography variant="subtitle1"sx={{ mr: "3%" }}>{username}</Typography>
+            <Typography variant="subtitle1"sx={{ mr: "10%", ml: "10%" }}>{username}</Typography>
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
+              <Tooltip title="Open Menu">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar >{username.charAt(0).toUpperCase()}</Avatar>
                 </IconButton>
@@ -111,7 +111,7 @@ const HeadBar = (props) => {
                   <Typography textAlign="center">Dashboard</Typography>
                 </MenuItem>
                 <MenuItem key='logout' onClick={handlelogout}>
-                  <Typography textAlign="center">logout</Typography>
+                  <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
 
               </Menu>
