@@ -115,7 +115,7 @@ function Start () {
             <Typography sx={{ fontWeight:"bold", pb:"15px", color: 'white', textShadow: '4px 4px 16px #174731'}} variant='h3'>
               Welcome to CourseGuide...</Typography>
             <Typography sx={{ ml: '5%', pb:"8px", fontSizeAdjust:".65", fontStyle:"oblique", color: 'white', textShadow: '4px 4px 10px #174731'}} variant='h5' > Rate your courses</Typography>
-            <Typography sx={{ ml: '5%', pb:"8px", fontSizeAdjust:".65", fontStyle:"oblique", color: 'white', textShadow: '4px 4px 10px #174731'}} variant='h5' > Empower the newbies</Typography>
+            <Typography sx={{ ml: '5%', pb:"8px", fontSizeAdjust:".65", fontStyle:"oblique", color: 'white', textShadow: '4px 4px 10px #174731'}} variant='h5' > Help out the newbies</Typography>
             <Typography sx={{ ml: '5%', pb:"8px", fontSizeAdjust:".65", fontStyle:"oblique", color: 'white', textShadow: '4px 4px 10px #174731'}} variant='h5' > Share your experiences</Typography>
 
             
@@ -126,7 +126,7 @@ function Start () {
               </Button>
   
           </Container>
-          <Container style={{ height: "751px" }}>
+          <Container style={{ height: "826px" }}>
             <img  src={startImg} alt="" style={{ height: "520px" }} />
           </Container>
           
