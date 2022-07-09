@@ -26,8 +26,8 @@ function Profile () {
             <Paper sx={{ p: "10px", minWidth: "285px" }}>
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
                 {/* <Stack> */}
-                <Typography variant="h5" >My profile</Typography>
-                <Button variant="outlined">Edite Profile</Button>
+                <Typography  variant="h5" >My profile</Typography>
+                <Button variant="outlined">Edit Profile</Button>
                 {/* </Stack> */}
               </Stack>
             </Paper>

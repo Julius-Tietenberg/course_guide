@@ -78,7 +78,7 @@ function CourseCard (props) {
         {added === true ?
 
           <Tooltip title="Remove this course from your courses.">
-            <Button size="small">remove</Button> 
+            <Button sx={{ color: "#9e4e42" }} size="small">remove</Button> 
           </Tooltip>
             :
           <Tooltip title="You can find added courses on your personal dashboard.">

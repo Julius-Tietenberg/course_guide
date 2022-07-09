@@ -77,7 +77,7 @@ function CourseDetail () {
               {courseInfo.timetable?.map((item, index) => <Typography sx={{fontSmooth: "always", paddingLeft: "30px", mb:"8px", textAlign:"justify", paddingRight: "30px"}} key={index}>{item.day} {item.interval}</Typography>)}
               <Divider sx={{mb:"10px"}} variant="middle" />
               <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb:"8px"}} variant="h5">Course Page </Typography>
-              <Typography sx={{fontSmooth: "always", paddingLeft: "30px", paddingBottom: "10px", mb:"8px", textAlign:"justify", paddingRight: "30px"}} component="a" href={courseInfo.url}>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "30px", paddingBottom: "10px", mb:"8px", textAlign:"justify", paddingRight: "30px", fontStyle:'oblique'}} component="a" href={courseInfo.url}>
                   Send me to the university page!
               </Typography>
 

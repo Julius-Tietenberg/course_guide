@@ -60,7 +60,7 @@ const HeadBar = (props) => {
         <Toolbar  sx={{ justifyContent: "space-between" }}>
           {/* logo & title */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <img className="login-logo" src={logo} alt=" " style={{ width: "70px", margin: "5px"}} />
+            <img className="login-logo" src={logo} alt=" " style={{ width: "70px", margin: "6px"}} />
             <Typography
               variant="h5"
               noWrap
@@ -76,12 +76,12 @@ const HeadBar = (props) => {
 
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {hiddenButton !== 'find' && <Button
-              sx={{ mr: "10%", fontWeight: "bold" }}
+              sx={{ mr: "10%", fontWeight: "bold"}}
               onClick={handleFindCourses}>
               Find Courses</Button>}
             {hiddenButton !== 'my' && <Button
               sx={{ mr: "10%", fontWeight: "bold" }}
-              onClick={handleMyCourses}>My Courses</Button>}
+              onClick={handleMyCourses}>Dashboard</Button>}
             <Typography variant="subtitle1"sx={{ mr: "10%", ml: "10%" }}>{username}</Typography>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open Menu">
