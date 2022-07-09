@@ -36,7 +36,6 @@ function RatingCard (props) {
     setOpen(true)
   }
   const handleClose = () => {
-    // loadRatingInfo()
     setOpen(false)
   }
 

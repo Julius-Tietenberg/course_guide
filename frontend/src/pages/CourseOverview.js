@@ -21,6 +21,7 @@ function CourseOverview () {
   const [searchValue, setSearchValue] = React.useState('')
   const [totalPages, setTotalPages] = React.useState()
   const [searchType, setSearchType] = React.useState('courseName')
+  const [sortType, setSortType] = React.useState('')
   const handleTypeChange = (event) => {
     console.log(event.target.value)
     setSearchType(event.target.value)
@@ -38,21 +39,31 @@ function CourseOverview () {
     setSearchValue(event.target.value)
   }
 
+  const handleAsc = () => {
+    setSortType('asc')
+  }
+  const handleDesc = () => {
+    setSortType('desc')
+  }
+  const cleanSort = () => {
+    setSortType('')
+  }
+
   const [courseList, setCourseList] = React.useState([])
   React.useEffect(() => {
     const loadCourseList = async () => {
       let res
       if (searchType === 'courseName') {
-        res = await courseStore.getAllCourse(page, searchValue)
+        res = await courseStore.getAllCourse(page, searchValue, '', sortType)
       } else {
-        res = await courseStore.getAllCourse(page, '', searchValue)
+        res = await courseStore.getAllCourse(page, '', searchValue, sortType)
       }
       console.log(res)
       setCourseList(res.content)
       setTotalPages(res.totalPages)
     }
     loadCourseList()
-  }, [page, searchValue, searchType, courseStore])
+  }, [page, searchValue, searchType, sortType, courseStore])
 
 
   return (
@@ -98,9 +109,10 @@ function CourseOverview () {
               }}
             />
           </Grid>
-          <Grid item xs={2}>
-            {/* <Button variant="contained" color="info" sx={{ ml: "15px", mt: "10px" }}>Filter</Button> */}
-            <Button variant="contained" sx={{ ml: "15px", mt: "10px" }}>Sort</Button>
+          <Grid item xs={3}>
+            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={handleDesc}>Desc</Button>
+            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={handleAsc}>Asc</Button>
+            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={cleanSort}>Clean</Button>
           </Grid>
         </Grid>
         {/* CourseCard */}

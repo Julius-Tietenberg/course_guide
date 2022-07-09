@@ -39,7 +39,7 @@ function CourseDetail () {
               {courseInfo.persons?.map((item, index) => <Typography variant="body2" key={index}>{item.name}</Typography>)}
             </Box>
             <Stack direction="row" spacing={2} alignItems="center">
-              <Button variant='outlined' size='small' sx={{ height: "30px" }}>Add to my courses</Button>
+              <Button variant='outlined' size='small'>Add to my courses</Button>
               <RatingIcon field="Student Rating" score={courseInfo.rating} />
             </Stack>
           </Stack>
