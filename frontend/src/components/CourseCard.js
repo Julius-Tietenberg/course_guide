@@ -11,6 +11,7 @@ import RatingIcon from './RatingIcon'
 import { useNavigate } from 'react-router-dom'
 import { Box } from '@mui/system'
 import { useStore } from '../store'
+import { Tooltip } from '@mui/material'
 
 const Alert = React.forwardRef(function Alert (props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -50,26 +51,42 @@ function CourseCard (props) {
         onClose={handleSnackbarClose}
       >
         {/* If an error is caught, an error message is displayed, otherwise show success */}
-        <Alert severity="success">Add successfully</Alert>
+        <Alert severity="success">Added successfully</Alert>
       </Snackbar>
-      <Box sx={{ p: "10px 5px 0 0" }}>
+      <Box sx={{ p: "15px 15px 0 0" }}>
         <RatingIcon field="Student Rating" score={rating} />
       </Box>
       <CardActionArea sx={{ height: "180px" }} onClick={goCourseDetail}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div"
+          sx={{
+            fontWeight: "bold",
+            fontSmooth: "always",
+            paddingLeft: "5px", 
+            fontSizeAdjust:".58"
+          }}
+          >
             {name}
           </Typography>
-          {prof.map((item, index) => <Typography variant="body2" color="text.secondary" key={index}>{item}</Typography>)}
-          <Typography variant="body2" color="text.secondary">
-            language: {language}
+          {prof.map((item, index) => <Typography sx={{paddingLeft: "5px", fontSmooth: "always", fontSizeAdjust:".65"}} variant="subtitle1" color="text.secondary" key={index}>{item}</Typography>)}
+          <Typography  sx={{paddingLeft: "5px", fontSmooth: "always", fontSizeAdjust:".65"}} variant="subtitle1" color="text.secondary">
+          Language: {language}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ justifyContent: "flex-end" }}>
         {added === true ?
-          <Button size="small"  >remove</Button> :
-          <Button size="small" onClick={handleAdd} >add to my course</Button>}
+
+          <Tooltip title="Remove this course from your courses.">
+            <Button size="small">remove</Button> 
+          </Tooltip>
+            :
+          <Tooltip title="You can find added courses on your personal dashboard.">
+          <Button size="small" onClick={handleAdd} >add to my courses</Button>
+          </Tooltip>
+          }
+          
+
       </CardActions>
     </Card>
   )

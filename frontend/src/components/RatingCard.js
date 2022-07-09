@@ -10,6 +10,7 @@ import RatingForm from './RatingForm'
 import AddIcon from '@mui/icons-material/Add'
 import { useStore } from '../store'
 import { getToken } from '../utils'
+import { Tooltip } from '@mui/material'
 
 function CommentCard (props) {
   const { name, time, text } = props
@@ -51,10 +52,12 @@ function RatingCard (props) {
   }, [trigger, courseId, ratingStore])
 
   return (
-    <Box sx={{ p: "10px" }}>
+    <Box sx={{ p: "15px" }}>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <Typography variant="h6">Student Ratings</Typography>
-        <IconButton sx={{ color: "#5dac90" }} onClick={handleClickOpen}><AddIcon /></IconButton>
+        <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "5px"}} variant="h6">Student Ratings</Typography>
+        <Tooltip title="Click here to add your own rating for this course.">
+          <IconButton sx={{ color: "#5dac90" }} onClick={handleClickOpen}><AddIcon /></IconButton>
+        </Tooltip>
         {/* pop-up rating form */}
         <Dialog open={open} onClose={handleClose} scroll="body" >
           <RatingForm

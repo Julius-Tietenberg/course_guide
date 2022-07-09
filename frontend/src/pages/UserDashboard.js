@@ -12,6 +12,8 @@ import Pagination from '@mui/material/Pagination'
 import Container from '@mui/material/Container'
 import CourseCard from "../components/CourseCard"
 import { useStore } from "../store"
+import { Container } from '@mui/system'
+import { Tooltip } from '@mui/material'
 
 function UserDashboard () {
   const { userStore } = useStore()
@@ -95,11 +97,11 @@ function UserDashboard () {
   return (
     <Box sx={{ minWidth: "900px" }}>
       <HeadBar hiddenButton={'my'} />
-      <Box sx={{ p: "5%", bgcolor: "rgb(25 118 210 / 8%)" }}>
+      <Box sx={{ p: "5%", bgcolor: "rgb(209 233 213 / 80%)" }}>
         <Grid container spacing={2} justifyContent="center" alignItems="stretch">
           {/* my course */}
           <Grid item xs={8}>
-            <Paper sx={{ p: "10px" }}>
+            <Paper sx={{ p: "20px" }} elevation={3} >
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
                 <Typography variant="h5" >My Courses</Typography>
                 {/*                 <Box>
@@ -129,16 +131,16 @@ function UserDashboard () {
           </Grid>
           {/* my profile */}
           <Grid item xs={4}>
-            <Paper sx={{ p: "10px", minWidth: "280px" }}>
+            <Paper sx={{ p: "20px", minWidth: "280px" }} elevation={3} >
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
-                <Typography variant="h5" >My profile</Typography>
+                <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px"}} variant="h4" >My Profile</Typography>
                 <Button variant="outlined" size="small" onClick={handleClickOpen}>Edite Profile</Button>
                 <Dialog open={open} onClose={handleClose} scroll="body" >
                   {/* edite profile form */}
                   <Box component="form" sx={{ p: "5%" }} onSubmit={handleProfileChange}>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <Typography variant='h5'>Edite Profile</Typography>
+                        <Typography variant='h5'>Edit Profile</Typography>
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
@@ -172,7 +174,7 @@ function UserDashboard () {
                           label="University Email Address"
                           inputProps={{
                             pattern: "[^\r\n\t\f\v ]+@[^\r\n\t\f\v ]*uni-due.de",
-                            title: "Please enter valid university email,with the suffix uni-due.de"
+                            title: "Please enter valid university email, with the suffix @uni-due.de"
                           }}
                           disabled
                           value={email}
@@ -198,26 +200,32 @@ function UserDashboard () {
                 </Dialog>
               </Stack>
             </Paper>
-            <Paper sx={{ p: "10px", minWidth: "280px", mt: "16px" }}>
-              <Container sx={{ m: "10px 0" }}>
-                <Typography >Username</Typography>
-                <Typography variant="h6" color="#2a9d8f">{username}</Typography>
+            <Paper sx={{ p: "10px", minWidth: "280px", mt: "16px" }} elevation={3} >
+              <Container sx={{ m: "10px 0" }}> 
+                <Tooltip title="This name will be displayed to other users.">
+                  <Typography variant='overline' sx={{ fontWeight:"bold"}}>Username</Typography>
+                </Tooltip>
+                <Typography variant="h5" color="#2a9d8f">{username}</Typography>
               </Container>
               <Container sx={{ m: "10px 0" }}>
-                <Typography >First Name</Typography>
-                <Typography variant="h6" color="#2a9d8f">{firstname}</Typography>
+                <Tooltip title="This name will not be displayed to anyone else.">
+                  <Typography variant='overline' sx={{ fontWeight:"bold"}}>First Name</Typography>
+                </Tooltip>
+                <Typography variant="h5" color="#2a9d8f">{firstname}</Typography>
               </Container >
               <Container>
-                <Typography >Last Name</Typography>
-                <Typography variant="h6" color="#2a9d8f">{lastname}</Typography>
+                <Tooltip title="This name will not be displayed to anyone else.">
+                  <Typography variant='overline' sx={{ fontWeight:"bold"}}>Last Name</Typography>
+                </Tooltip>
+                <Typography variant="h5" color="#2a9d8f">{lastname}</Typography>
               </Container>
               <Container sx={{ m: "10px 0" }}>
-                <Typography >E-mail</Typography>
-                <Typography variant="h6" color="#2a9d8f" >{email}</Typography>
+                <Typography variant='overline' sx={{ fontWeight:"bold"}}>E-mail</Typography>
+                <Typography variant="h5" color="#2a9d8f" >{email}</Typography>
               </Container>
               <Container sx={{ m: "10px 0" }}>
-                <Typography >University</Typography>
-                <Typography variant='h6' color="#2a9d8f">{school}</Typography>
+                <Typography variant='overline' sx={{ fontWeight:"bold"}}>University</Typography>
+                <Typography variant='h5' color="#2a9d8f">{school}</Typography>
               </Container>
             </Paper>
           </Grid>

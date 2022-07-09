@@ -12,6 +12,7 @@ import Pagination from "@mui/material/Pagination"
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import { useStore } from '../store'
+import { Tooltip } from "@mui/material"
 
 
 function CourseOverview () {
@@ -68,10 +69,16 @@ function CourseOverview () {
   return (
     <Box>
       <HeadBar hiddenButton={'find'} />
-      <Box sx={{ backgroundColor: "rgb(25 118 210 / 8%)", pt: "20px" }}>
-        <Grid container spacing={2} justifyContent="center" alignItems="center">
-          <Grid item xs={3}>
-            <Typography variant="h5">Study Program Courses</Typography>
+      <Box sx={{ bgcolor: "rgb(209 233 213 / 80%)", pt: "40px" }}>
+        <Grid sx={{ ml:"1%" }} container spacing={5} justifyContent="center" alignItems="center">
+          <Grid  item xs={4}>
+            <Typography sx={{
+            fontWeight: "bold",
+            fontSmooth: "always"}} 
+            variant="h3">UDE Courses</Typography>
+            <Typography sx={{
+            fontSmooth: "always"}} 
+            fontStyle='oblique' variant="h5">Computer Science and Applied Cognitive Science</Typography>
           </Grid>
           <Grid item xs={5}>
             {/* search box */}
@@ -100,8 +107,8 @@ function CourseOverview () {
                       onChange={handleTypeChange}
                       sx={{ borderRadius: " 0 4px 4px 0" }}
                     >
-                      <MenuItem value="courseName">course name</MenuItem>
-                      <MenuItem value="profName">professor name</MenuItem>
+                      <MenuItem value="courseName">Course Name</MenuItem>
+                      <MenuItem value="profName">Professor Name</MenuItem>
                     </Select>
                   </InputAdornment>
                 ),
@@ -109,9 +116,9 @@ function CourseOverview () {
             />
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={handleDesc}>Desc</Button>
-            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={handleAsc}>Asc</Button>
-            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={cleanSort}>Clean</Button>
+            <Button variant="contained" size="medium" sx={{ ml: "15px", mt: "10px" }} onClick={handleDesc}>Highest</Button>
+            <Button variant="contained" size="medium" sx={{ ml: "15px", mt: "10px" }} onClick={handleAsc}>Lowest</Button>
+            <Button variant="outlined" size="medium" sx={{ ml: "15px", mt: "10px" }} onClick={cleanSort}>Reset</Button>
           </Grid>
         </Grid>
         {/* CourseCard */}
