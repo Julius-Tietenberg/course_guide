@@ -19,7 +19,6 @@ function UserDashboard () {
   const [trigger, setTrigger] = React.useState(true)
   const [page, setPage] = React.useState(1)
   const [totalPages, setTotalPages] = React.useState()
-  const [sortType, setSortType] = React.useState('')
   const [open, setOpen] = React.useState(false)
   const [username, setUsername] = React.useState('')
   const [firstname, setFirstname] = React.useState('')

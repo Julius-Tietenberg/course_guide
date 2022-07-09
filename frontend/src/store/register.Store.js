@@ -16,7 +16,7 @@ class RegisterStore {
     position,
     school, }) => {
     //   call register API
-    const res = await http.post("user/register", {
+    await http.post("user/register", {
       firstName,
       lastName,
       username,

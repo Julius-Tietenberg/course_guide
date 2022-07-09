@@ -17,7 +17,7 @@ class RatingStore {
   };
 
   addRating = async ({ content, stars }, id, token) => {
-    const res = await http.post("ratings/add", { content, stars },
+    await http.post("ratings/add", { content, stars },
       {
         params: { id_course: id },
       }).then()
