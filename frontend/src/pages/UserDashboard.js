@@ -12,7 +12,6 @@ import Pagination from '@mui/material/Pagination'
 import Container from '@mui/material/Container'
 import CourseCard from "../components/CourseCard"
 import { useStore } from "../store"
-import { Container } from '@mui/system'
 import { Tooltip } from '@mui/material'
 
 function UserDashboard () {
@@ -103,7 +102,7 @@ function UserDashboard () {
           <Grid item xs={8}>
             <Paper sx={{ p: "20px" }} elevation={3} >
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
-                <Typography variant="h5" >My Courses</Typography>
+                <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px"}} variant="h4" >My Courses</Typography>
                 {/*                 <Box>
                   <Button variant="contained" size="small" onClick={handleDesc}>Desc</Button>
                   <Button variant="contained" size="small" sx={{ m: "0 15px" }} onClick={handleAsc}>Asc</Button>
@@ -134,7 +133,7 @@ function UserDashboard () {
             <Paper sx={{ p: "20px", minWidth: "280px" }} elevation={3} >
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
                 <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px"}} variant="h4" >My Profile</Typography>
-                <Button variant="outlined" size="small" onClick={handleClickOpen}>Edite Profile</Button>
+                <Button variant="outlined" size="small" onClick={handleClickOpen}>Edit Profile</Button>
                 <Dialog open={open} onClose={handleClose} scroll="body" >
                   {/* edite profile form */}
                   <Box component="form" sx={{ p: "5%" }} onSubmit={handleProfileChange}>
