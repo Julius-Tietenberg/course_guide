@@ -43,6 +43,7 @@ async function search(req) {
     return await Course.paginate(query, { offset, limit, options });
 }
 
+
 module.exports = {
     add,
     update,
