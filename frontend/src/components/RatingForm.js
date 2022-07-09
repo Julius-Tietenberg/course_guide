@@ -85,28 +85,31 @@ function RatingForm ({ courseName, setOpen, id }) {
       <DialogTitle>
         <IconButton onClick={() => setOpen(false)} sx={{ left: "95%", top: "-10px" }}><CloseIcon /></IconButton>
         <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-around">
-          <Typography variant="h6">{courseName}</Typography>
+          <Typography sx={{ fontWeight:"bold", paddingLeft: "5px", fontSmooth: "always", fontSizeAdjust:".55"}} variant="h6">{courseName}</Typography>
           <RatingIcon field="Overall Rating" score={average} />
         </Stack>
       </DialogTitle>
       <DialogContent>
-        <Stack spacing={1} sx={{ ml: "20px" }}>
+        <Stack spacing={2} sx={{ ml: "20px" }}>
           <RatingBar name="Teaching" value={teachingValue} setValue={setTeachingValue} />
           <RatingBar name="Learning" value={learningValue} setValue={setLearningValue} />
           <RatingBar name="Wordload" value={wordloadValue} setValue={setWordloadValue} />
           <RatingBar name="Difficulty" value={difficultyValue} setValue={setDifficultyValue} />
-          <Typography>Add a comment</Typography>
+          <Typography sx={{fontSmooth: "always"}}>Add a comment</Typography>
           <Stack spacing={3} component="form" onSubmit={handleSubmit}>
             <TextareaAutosize
               name="comment"
               minRows={5}
               required
-              placeholder="Tell us what you think..."
+              placeholder=" Tell us what you think..."
               style={{ width: "99%" }}
             />
-            <Button
+            <Button 
               type="submit"
               variant="contained"
+
+              // So lassen??
+              sx={{ width:"25%", borderWidth:"2px", borderColor: "#5dac90", color: "#5dac90", fontWeight:"bold", fontSizeAdjust:".6" }}
             >
               Submit
             </Button>

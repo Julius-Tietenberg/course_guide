@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem'
 import logo from '../assent/logo.png'
 import { useStore } from '../store'
 import { useNavigate } from 'react-router-dom'
+import { color, fontFamily, fontStyle } from '@mui/system'
 
 
 const HeadBar = (props) => {
@@ -58,21 +59,20 @@ const HeadBar = (props) => {
   return (
     <AppBar position="static" color='transparent' >
       <Container maxWidth="xl">
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+        <Toolbar  sx={{ justifyContent: "space-between" }}>
           {/* logo & title */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <img className="login-logo" src={logo} alt=" " style={{ width: "50px", marginTop: "5px" }} />
+            <img className="login-logo" src={logo} alt=" " style={{ width: "70px", margin: "8px"}} />
             <Typography
-              variant="h6"
+              variant="h5"
               noWrap
               sx={{
                 fontStyle: "oblique",
-                fontSize: "larger",
-                fontWeight: "lighter",
-                paddingLeft: "15px"
+                color: "#2d6a4f",
+                fontSizeAdjust:".65",
               }}
             >
-              Course Guide
+              CourseGuide
             </Typography>
           </Box>
 
@@ -84,7 +84,7 @@ const HeadBar = (props) => {
             {hiddenButton !== 'my' && <Button
               sx={{ mr: "10%", fontWeight: "bold" }}
               onClick={handleMyCourses}>My Courses</Button>}
-            <Typography sx={{ mr: "3%" }}>{username}</Typography>
+            <Typography variant="subtitle1"sx={{ mr: "3%" }}>{username}</Typography>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

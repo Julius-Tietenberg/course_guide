@@ -70,15 +70,16 @@ function Start () {
       <CssBaseline />
       {/* tab bar */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', p: '0 5%' }} >
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <img className="login-logo" src={logo} alt="" style={{ width: "50px", marginTop: "5px" }} />
-          <span style={{
-            fontStyle: "oblique",
-            fontSize: "larger",
-            fontWeight: "lighter",
-            paddingLeft: "15px"
-          }
-          }>Course Guide</span>
+        <Box sx={{ display: 'flex', alignItems: 'center', marginTop: "20px"}}>
+          <img className="login-logo" src={logo} alt="" style={{ width: "80px"}} />
+          <Typography  sx={{
+                fontStyle: "oblique",
+                paddingLeft:"10px",
+                color: "#2d6a4f",
+                fontSizeAdjust:"1",
+                variant:"h5"
+              }}
+          >CourseGuide</Typography>
         </Box>
         <Tabs
           value={tabValue}
@@ -110,17 +111,19 @@ function Start () {
       <TabPanel value={tabValue} index={0}>
         <Box sx={{ display: 'flex', alignItems: 'center', m: '0 10%', mr: '10%', }}>
           <Container>
-            <Typography variant='h3'>
+            <Typography  variant='h3'>
               Welcome to CourseGuide</Typography>
-            <Typography variant='h6' > Rate your courses</Typography>
-            <Typography variant='h6' > Empower the newbies</Typography>
-            <Typography variant='h6' > Share your experience</Typography>
+            <Typography variant='h5' > Rate your courses</Typography>
+            <Typography variant='h5' > Empower the newbies</Typography>
+            <Typography variant='h5' > Share your experience</Typography>
 
-            <Button variant="contained" size='large'
-              sx={{ fontWeight: "bold", mt: 4, minWidth: "80px" }}
-              onClick={login}>
-              Get Started
-            </Button>
+            <ThemeProvider theme={buttonTheme} >
+              <Button variant="contained" size='large'
+                sx={{ fontWeight: "bold", mt: 4, minWidth: "80px" }}
+                onClick={login}>
+                LogIn
+              </Button>
+            </ThemeProvider>
           </Container>
           <img src={startImg} alt="" style={{ height: "500px" }} />
         </Box>

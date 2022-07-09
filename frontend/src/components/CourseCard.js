@@ -8,6 +8,7 @@ import CardActions from '@mui/material/CardActions'
 import RatingIcon from './RatingIcon'
 import { useNavigate } from 'react-router-dom'
 import { Box } from '@mui/system'
+import { Tooltip } from '@mui/material'
 
 
 const CourseCard = (props) => {
@@ -18,24 +19,39 @@ const CourseCard = (props) => {
 
   return (
     <Card>
-      <Box sx={{ p: "10px 5px 0 0" }}>
+      <Box sx={{ p: "15px 15px 0 0" }}>
         <RatingIcon field="Student Rating" score={rating} />
       </Box>
       <CardActionArea sx={{ height: "180px" }} onClick={goCourseDetail}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div"
+          sx={{
+            fontWeight: "bold",
+            fontSmooth: "always",
+            paddingLeft: "5px", 
+            fontSizeAdjust:".58"
+          }}
+          >
             {name}
           </Typography>
-          {prof.map((item, index) => <Typography variant="body2" color="text.secondary" key={index}>{item}</Typography>)}
-          <Typography variant="body2" color="text.secondary">
-            language: {language}
+          {prof.map((item, index) => <Typography sx={{paddingLeft: "5px", fontSmooth: "always", fontSizeAdjust:".65"}} variant="subtitle1" color="text.secondary" key={index}>{item}</Typography>)}
+          <Typography  sx={{paddingLeft: "5px", fontSmooth: "always", fontSizeAdjust:".65"}} variant="subtitle1" color="text.secondary">
+          Language: {language}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ justifyContent: "flex-end" }}>
         {added === true ?
-          <Button size="small"  >remove</Button> :
-          <Button size="small"  >add to my course</Button>}
+
+          <Tooltip title="tooltip">
+            <Button size="small">remove</Button> 
+          </Tooltip>
+            :
+          <Tooltip title="You can find added courses on your personal dashboard.">
+            <Button size="small"  >add to my course</Button>
+          </Tooltip>
+          }
+          
 
       </CardActions>
     </Card>

@@ -10,6 +10,7 @@ import RatingIcon from '../components/RatingIcon'
 import { useSearchParams } from "react-router-dom"
 import { useStore } from "../store"
 import Button from '@mui/material/Button'
+import { Tooltip } from '@mui/material'
 
 function CourseDetail () {
   const { courseStore } = useStore()
@@ -30,13 +31,13 @@ function CourseDetail () {
   return (
     <Box sx={{ minWidth: "900px" }}>
       <HeadBar />
-      <Box sx={{ p: "5%", bgcolor: "rgb(25 118 210 / 8%)" }}>
+      <Box sx={{ p: "5%", bgcolor: "rgb(209 233 213 / 80%)" }}>
         {/* banner */}
-        <Paper sx={{ p: "10px" }}>
+        <Paper sx={{ p: "17px" }} elevation={3}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
             <Box>
-              <Typography variant="h5" >{courseInfo.name}</Typography>
-              {courseInfo.persons?.map((item, index) => <Typography variant="body2" key={index}>{item.name}</Typography>)}
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px"}} variant="h4" >{courseInfo.name}</Typography>
+              {courseInfo.persons?.map((item, index) => <Typography sx={{fontSmooth: "always", paddingLeft: "10px"}} variant="h5" key={index}>{item.name}</Typography>)}
             </Box>
             <Stack direction="row" spacing={2} alignItems="center">
               <Button variant='outlined' size='small'>Add to my courses</Button>
@@ -47,41 +48,45 @@ function CourseDetail () {
         {/* main area */}
         <Stack direction="row" justifyContent="space-between" spacing={2} sx={{ mt: "20px" }}>
           {/* course info */}
-          <Paper sx={{ minWidth: "40%" }}>
-            <Stack sx={{ m: "10px" }}>
-              <Typography variant="h5">Description</Typography>
-              <Typography>{courseInfo.description} </Typography>
+          <Paper sx={{ minWidth: "40%" }} elevation={3}>
+            <Stack sx={{ m: "15px" }}>
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Description</Typography>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}}>{courseInfo.description} </Typography>
               <Divider variant="middle" />
-              <Typography variant="h5">Learning Targets</Typography>
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Learning Targets</Typography>
               <Typography>{courseInfo.targets} </Typography>
               <Divider variant="middle" />
-              <Typography variant="h5">Semester</Typography>
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Semester</Typography>
               <Typography>{courseInfo.semester}</Typography>
               <Divider variant="middle" />
-              <Typography variant="h5">Subject Type</Typography>
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Subject Type</Typography>
               <Typography>{courseInfo.subject_type}</Typography>
               <Divider variant="middle" />
-              <Typography variant="h5">Language</Typography>
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Language</Typography>
               <Typography>{courseInfo.language}</Typography>
               <Divider variant="middle" />
-              <Typography variant="h5">Timetable</Typography>
-              {courseInfo.timetable?.map((item, index) => <Typography key={index}>{item.day} {item.interval}</Typography>)}
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Timeslot</Typography>
+              {courseInfo.timetable?.map((item, index) => <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}} key={index}>{item.day} {item.interval}</Typography>)}
               <Divider variant="middle" />
-              <Typography variant="h5">Course URL</Typography>
-              <Typography component="a" href={courseInfo.url}>click here</Typography>
+              <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "15px"}} variant="h5">Course Page </Typography>
+              <Typography sx={{fontSmooth: "always", paddingLeft: "15px"}} component="a" href={courseInfo.url}>
+                  Send me to the university page!
+              </Typography>
+
+              
 
             </Stack>
           </Paper>
           {/* rating */}
           <Stack>
-            <Paper>
+            <Paper elevation={3}>
               <Stack direction="row" spacing={1} sx={{ m: "5px", justifyContent: "space-around" }}>
                 <RatingIcon field="Teaching" score={courseInfo.stars?.teacher} />
                 <RatingIcon field="Learning" score={courseInfo.stars?.learning} />
                 <RatingIcon field="Wordload" score={courseInfo.stars?.workload} />
                 <RatingIcon field="Difficulty" score={courseInfo.stars?.difficulty} />
               </Stack>
-            </Paper>
+            </Paper elevation={3}>
             <Paper sx={{ mt: "20px" }}>
               <RatingCard courseName={courseInfo.name} courseId={id} />
             </Paper>

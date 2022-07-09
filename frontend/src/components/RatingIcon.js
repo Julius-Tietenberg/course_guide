@@ -2,6 +2,7 @@ import * as React from "react"
 import Stack from "@mui/material/Stack"
 import Avatar from "@mui/material/Avatar"
 import Typography from "@mui/material/Typography"
+import Tooltip from '@mui/material/Tooltip'
 
 
 function RatingIcon (props) {
@@ -18,9 +19,11 @@ function RatingIcon (props) {
 
   return (
     <Stack direction="row" spacing={1} alignItems="center" justifyContent="flex-end">
-      <Typography variant="subtitle2" sx={{ color: ratingColor }} >
-        {field}
-      </Typography>
+      <Tooltip title="Current average rating.">
+          <Typography variant="subtitle1" sx={{ paddingLeft:"6px", color: ratingColor, fontSizeAdjust:".58" }} >
+          {field}
+          </Typography>
+        </Tooltip>
       <Avatar sx={{ bgcolor: ratingColor }}>{score?.toFixed(1)}</Avatar>
     </Stack>)
 }
