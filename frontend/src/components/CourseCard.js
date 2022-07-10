@@ -65,7 +65,6 @@ function CourseCard (props) {
         onClose={handleSnackbarClose}
       >
         {/* If an error is caught, an error message is displayed, otherwise show success */}
-        {/* <Alert severity="success">Add successfully</Alert> */}
         {error ? <Alert severity="error">{error}</Alert> : <Alert severity="success">Add successfully</Alert>}
       </Snackbar>
       <Box sx={{ p: "10px 5px 0 0" }}>

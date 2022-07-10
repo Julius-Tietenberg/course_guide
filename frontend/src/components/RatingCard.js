@@ -9,6 +9,7 @@ import CardContent from "@mui/material/CardContent"
 import Dialog from "@mui/material/Dialog"
 import RatingForm from './RatingForm'
 import AddIcon from '@mui/icons-material/Add'
+import Pagination from '@mui/material/Pagination'
 import Moment from 'react-moment'
 import { useStore } from '../store'
 import { getToken } from '../utils'
@@ -31,8 +32,17 @@ function CommentCard (props) {
 function RatingCard (props) {
   const { ratingStore } = useStore()
   const [ratingInfo, setRatingInfo] = React.useState({})
-  const { courseName, courseId } = props
-  const [trigger, setTrigger] = React.useState(true)
+  const { courseName, courseId, trigger, setTrigger } = props
+  const [page, setPage] = React.useState(1)
+  const [totalPages, setTotalPages] = React.useState()
+  const [totalItems, setTotalItems] = React.useState()
+
+  const handlePageChange = (event, value) => {
+    setPage(value)
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 300)
+  }
 
   const [open, setOpen] = React.useState(false)
   const handleClickOpen = () => {
@@ -45,12 +55,14 @@ function RatingCard (props) {
   React.useEffect(() => {
     const token = getToken()
     const loadRatingInfo = async () => {
-      const res = await ratingStore.getRatingMessage(courseId, token)
+      const res = await ratingStore.getRatingMessage(courseId, page)
       console.log(res)
-      setRatingInfo(res)
+      setRatingInfo(res.content)
+      setTotalPages(res.totalPages)
+      setTotalItems(res.totalItems)
     }
     loadRatingInfo()
-  }, [trigger, courseId, ratingStore])
+  }, [trigger, page, courseId, ratingStore])
 
   return (
     <Box sx={{ p: "10px" }}>
@@ -71,7 +83,13 @@ function RatingCard (props) {
         </Dialog>
       </Stack>
       {/* user comment */}
-      {ratingInfo.rating_messages?.map((item, index) => <CommentCard name={item.username} time={item.created_at} text={item.content} key={index} />)}
+      <Stack  >
+        {ratingInfo.rating_messages?.map((item, index) =>
+          <CommentCard name={item.username} time={item.created_at} text={item.content} key={index} />)}
+        {totalItems >= 6 &&
+          <Pagination count={totalPages} page={page} onChange={handlePageChange}
+            sx={{ mt: "5px", display: "flex", justifyContent: "center" }} />}
+      </Stack>
     </Box>
   )
 }

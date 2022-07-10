@@ -10,10 +10,19 @@ import RatingIcon from '../components/RatingIcon'
 import { useSearchParams } from "react-router-dom"
 import { useStore } from "../store"
 import Button from '@mui/material/Button'
+import Snackbar from '@mui/material/Snackbar'
+import MuiAlert from '@mui/material/Alert'
+
+const Alert = React.forwardRef(function Alert (props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+})
 
 function CourseDetail () {
   const { courseStore, userStore } = useStore()
   const [courseInfo, setCourseInfo] = React.useState({})
+  const [trigger, setTrigger] = React.useState(true)
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false)
+  const [error, setError] = React.useState('')
   let [params] = useSearchParams()
   let id = params.get('id')
 
@@ -23,18 +32,37 @@ function CourseDetail () {
       setCourseInfo(res)
     }
     loadCouseInfo()
-  }, [id, courseStore])
+  }, [trigger, id, courseStore])
 
   const handleAddCourse = async () => {
     try {
       await userStore.addCourse(id)
+      setSnackbarOpen(true)
       console.log('detail add success')
     } catch (e) {
-      console.log(e)
+      setError(e.response.data.message)
+      setSnackbarOpen(true)
     }
+  }
+
+  // close snackbar
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setSnackbarOpen(false)
   }
   return (
     <Box sx={{ minWidth: "900px" }}>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+      >
+        {/* If an error is caught, an error message is displayed, otherwise show success */}
+        {error ? <Alert severity="error">{error}</Alert> : <Alert severity="success">Add successfully</Alert>}
+      </Snackbar>
       <HeadBar />
       <Box sx={{ p: "5%", bgcolor: "rgb(25 118 210 / 8%)" }}>
         {/* banner */}
@@ -90,7 +118,12 @@ function CourseDetail () {
               </Stack>
             </Paper>
             <Paper sx={{ mt: "20px" }}>
-              <RatingCard courseName={courseInfo.name} courseId={id} />
+              <RatingCard
+                courseName={courseInfo.name}
+                courseId={id}
+                trigger={trigger}
+                setTrigger={setTrigger}
+              />
             </Paper>
           </Stack>
         </Stack>

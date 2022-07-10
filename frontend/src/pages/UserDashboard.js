@@ -19,6 +19,7 @@ function UserDashboard () {
   const [trigger, setTrigger] = React.useState(true)
   const [page, setPage] = React.useState(1)
   const [totalPages, setTotalPages] = React.useState()
+  const [totalItems, setTotalItems] = React.useState()
   const [open, setOpen] = React.useState(false)
   const [username, setUsername] = React.useState('')
   const [firstname, setFirstname] = React.useState('')
@@ -26,24 +27,13 @@ function UserDashboard () {
   const [email, setEmail] = React.useState('')
   const [school, setSchool] = React.useState('')
 
-  // control edite form open
+  // control edit form open
   const handleClickOpen = () => {
     setOpen(true)
   }
   const handleClose = () => {
     setOpen(false)
   }
-
-  // set sort type
-  /*   const handleAsc = () => {
-      setSortType('asc')
-    }
-    const handleDesc = () => {
-      setSortType('desc')
-    }
-    const cleanSort = () => {
-      setSortType('')
-    } */
 
   const handlePageChange = (event, value) => {
     setPage(value)
@@ -57,6 +47,7 @@ function UserDashboard () {
       const res = await userStore.getCourseList(page)
       setCourseList(res.content)
       setTotalPages(res.totalPages)
+      setTotalItems(res.totalItems)
     }
     loadCourseList()
   }, [trigger, page, userStore])
@@ -73,12 +64,12 @@ function UserDashboard () {
     loadUserInfo()
   }, [trigger, userStore])
 
-  // edite profile function
+  // edit profile function
   const handleProfileChange = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     try {
-      await userStore.editeUserInfo({
+      await userStore.editUserInfo({
         firstname: data.get('firstname'),
         lastname: data.get('lastname'),
         school: data.get('school'),
@@ -101,11 +92,6 @@ function UserDashboard () {
             <Paper sx={{ p: "15px" }}>
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
                 <Typography variant="h5" sx={{ fontWeight: "bold", pl: "10px" }} >My Courses</Typography>
-                {/*                 <Box>
-                  <Button variant="contained" size="small" onClick={handleDesc}>Desc</Button>
-                  <Button variant="contained" size="small" sx={{ m: "0 15px" }} onClick={handleAsc}>Asc</Button>
-                  <Button variant="contained" size="small" onClick={cleanSort}>Clean</Button>
-                </Box> */}
               </Stack>
             </Paper>
             <Grid container spacing={2} sx={{ mt: 0 }}>
@@ -124,7 +110,8 @@ function UserDashboard () {
                 </Grid>
               ))}
               <Grid item xs={12} >
-                <Pagination count={totalPages} page={page} onChange={handlePageChange} sx={{ display: "flex", justifyContent: "center" }} />
+                {totalItems >= 4 &&
+                  <Pagination count={totalPages} page={page} onChange={handlePageChange} sx={{ display: "flex", justifyContent: "center" }} />}
               </Grid>
             </Grid>
           </Grid>
@@ -135,11 +122,11 @@ function UserDashboard () {
                 <Typography variant="h5" sx={{ fontWeight: "bold", pl: "10px" }}>My Profile</Typography>
                 <Button variant="outlined" onClick={handleClickOpen}>Edit Profile</Button>
                 <Dialog open={open} onClose={handleClose} scroll="body" >
-                  {/* edite profile form */}
+                  {/* edit profile form */}
                   <Box component="form" sx={{ p: "5%" }} onSubmit={handleProfileChange}>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <Typography variant='h5'>Edite Profile</Typography>
+                        <Typography variant='h5'>Edit Profile</Typography>
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
@@ -199,6 +186,7 @@ function UserDashboard () {
                 </Dialog>
               </Stack>
             </Paper>
+            {/* show userInfo */}
             <Paper sx={{ p: "10px", minWidth: "280px", mt: "16px" }}>
               <Container sx={{ m: "10px 0" }}>
                 <Typography variant="overline">Username</Typography>

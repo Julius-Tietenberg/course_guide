@@ -12,7 +12,7 @@ class UserStore {
     return res.data
   }
 
-  editeUserInfo = async ({ firstname, lastname, email, school }) => {
+  editUserInfo = async ({ firstname, lastname, email, school }) => {
     const res = await http.post("user/dashboard/account_update",
       {
         firstName: firstname,
@@ -25,7 +25,7 @@ class UserStore {
 
   getCourseList = async (page) => {
     const res = await http.get("dashboard/my-courses",
-      { params: { page: page - 1, size: 6 } }
+      { params: { page: page - 1, size: 4 } }
     )
     return res.data
   }
