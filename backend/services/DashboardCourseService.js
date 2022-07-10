@@ -13,7 +13,7 @@ async function addToMyCourse(req) {
         course_id: course_id
     });
     if (dc) {
-        return {message: "already exists"}
+        return {status: "error", message: "already exists"}
     }
 
     await DashboardCourse.collection.insertOne({
