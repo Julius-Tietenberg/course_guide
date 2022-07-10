@@ -8,15 +8,17 @@ import CardContent from "@mui/material/CardContent"
 import Dialog from "@mui/material/Dialog"
 import RatingForm from './RatingForm'
 import AddIcon from '@mui/icons-material/Add'
+import Moment from 'react-moment'
 import { useStore } from '../store'
 import { getToken } from '../utils'
 
 function CommentCard (props) {
   const { name, time, text } = props
+
   return (
     <Box sx={{ m: "5px" }}>
       <Typography component="span" variant="subtitle1">{name}  </Typography>
-      <Typography component="span" variant="caption">{time}</Typography>
+      <Typography component="span" variant="caption"><Moment format="MMMM Do YYYY, h:mm:ss a">{time}</Moment></Typography>
       <Card variant="outlined" sx={{ bgcolor: "rgb(25 118 210 / 8%)" }}>
         <CardContent>
           <Typography>{text}</Typography>
@@ -24,7 +26,6 @@ function CommentCard (props) {
       </Card>
     </Box>)
 }
-
 
 function RatingCard (props) {
   const { ratingStore } = useStore()
