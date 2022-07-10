@@ -86,7 +86,7 @@ const HeadBar = (props) => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open Menu">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar >{username.charAt(0).toUpperCase()}</Avatar>
+                  <Avatar sx={{bgcolor: "#5dac90"}} >{username.charAt(0).toUpperCase()}</Avatar>
                 </IconButton>
               </Tooltip>
               <Menu

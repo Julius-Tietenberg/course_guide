@@ -37,8 +37,10 @@ function CourseDetail () {
   return (
     <Box sx={{ minWidth: "900px" }}>
       <HeadBar />
-      <Box sx={{ p: "5%", bgcolor: "rgb(209 233 213 / 80%)" }}>
-        {/* banner */}
+      <Box sx={{ p: "5%", bgcolor:"#E6ECF5" }}>
+      
+        {/*  /bgcolor: "rgb(209 233 213 / 80%)" 
+          banner */}
         <Paper sx={{ p: "17px" }} elevation={3}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
             <Box>

@@ -69,7 +69,7 @@ function CourseOverview () {
   return (
     <Box>
       <HeadBar hiddenButton={'find'} />
-      <Box sx={{ bgcolor: "rgb(209 233 213 / 80%)", pt: "40px" }}>
+      <Box sx={{ bgcolor: "#E6ECF5" , pt: "40px" }}>
         <Grid sx={{ ml:"1%" }} container spacing={5} justifyContent="center" alignItems="center">
           <Grid  item xs={4}>
             <Typography sx={{

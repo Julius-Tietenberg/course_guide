@@ -56,7 +56,7 @@ function RatingCard (props) {
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography sx={{fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px", paddingTop: "5px", mb:"8px"}} variant="h5">Student Ratings</Typography>
         <Tooltip title="Click here to add your own rating for this course.">
-          <IconButton sx={{ color: "white", bgcolor: "#BD6D61" }} onClick={handleClickOpen}><AddIcon /></IconButton>
+          <IconButton sx={{ color: "white", bgcolor: "#5dac90" }} onClick={handleClickOpen}><AddIcon /></IconButton>
         </Tooltip>
         {/* pop-up rating form */}
         <Dialog open={open} onClose={handleClose} scroll="body" >

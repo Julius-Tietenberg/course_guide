@@ -96,7 +96,7 @@ function UserDashboard () {
   return (
     <Box sx={{ minWidth: "900px" }}>
       <HeadBar hiddenButton={'my'} />
-      <Box sx={{ p: "5%", bgcolor: "rgb(209 233 213 / 80%)" }}>
+      <Box sx={{ p: "5%", bgcolor: "#E6ECF5" }}>
         <Grid container spacing={2} justifyContent="center" alignItems="stretch">
           {/* my course */}
           <Grid item xs={8}>
