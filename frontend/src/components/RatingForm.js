@@ -80,7 +80,7 @@ function RatingForm (props) {
       <DialogTitle>
         <IconButton onClick={() => setOpen(false)} sx={{ left: "95%", top: "-10px" }}><CloseIcon /></IconButton>
         <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-around">
-          <Typography variant="h6">{courseName}</Typography>
+          <Typography variant="h6" sx={{ fontWeight: "bold" }}>{courseName}</Typography>
           <RatingIcon field="Overall Rating" score={average} />
         </Stack>
       </DialogTitle>

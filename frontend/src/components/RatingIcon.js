@@ -18,7 +18,7 @@ function RatingIcon (props) {
 
   return (
     <Stack direction="row" spacing={1} alignItems="center" justifyContent="flex-end">
-      <Typography variant="subtitle2" sx={{ color: ratingColor }} >
+      <Typography variant="subtitle2" sx={{ pl: "6px", fontSizeAdjust: ".56" }} >
         {field}
       </Typography>
       <Avatar sx={{ bgcolor: ratingColor }}>{score?.toFixed(1)}</Avatar>

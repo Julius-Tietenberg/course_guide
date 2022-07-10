@@ -98,9 +98,9 @@ function Register () {
           alignItems: 'center',
         }}
       >
-        <img className="login-logo" src={logo} alt="" style={{ width: "50px" }} />
+        <img className="login-logo" src={logo} alt="" style={{ width: "70px" }} />
         <Typography variant="h5" >
-          Sign up
+          Registration
         </Typography>
         <Card sx={{ mt: 2 }}>
           <CardContent>
@@ -129,7 +129,7 @@ function Register () {
                   <TextField
                     required
                     fullWidth
-                    label="Username"
+                    label="Username (visible for other users)"
                     name="username"
                     autoComplete="username"
                   />
@@ -195,11 +195,12 @@ function Register () {
                 Sign Up
               </Button>
 
-              <Grid container justifyContent="flex-end">
-                Already have an account?
-                <Link to={"/login"} variant="body2">
-                  Sign in
-                </Link>
+              <Grid container justifyContent="center">
+                <Typography>
+                  Already have an account? <Link to={"/login"} variant="body2">
+                    Login Now!
+                  </Link>
+                </Typography>
               </Grid>
             </Box>
           </CardContent>

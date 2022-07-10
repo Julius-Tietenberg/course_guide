@@ -98,9 +98,9 @@ function UserDashboard () {
         <Grid container spacing={2} justifyContent="center" alignItems="stretch">
           {/* my course */}
           <Grid item xs={8}>
-            <Paper sx={{ p: "10px" }}>
+            <Paper sx={{ p: "15px" }}>
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
-                <Typography variant="h5" >My Courses</Typography>
+                <Typography variant="h5" sx={{ fontWeight: "bold", pl: "10px" }} >My Courses</Typography>
                 {/*                 <Box>
                   <Button variant="contained" size="small" onClick={handleDesc}>Desc</Button>
                   <Button variant="contained" size="small" sx={{ m: "0 15px" }} onClick={handleAsc}>Asc</Button>
@@ -130,10 +130,10 @@ function UserDashboard () {
           </Grid>
           {/* my profile */}
           <Grid item xs={4}>
-            <Paper sx={{ p: "10px", minWidth: "280px" }}>
+            <Paper sx={{ p: "15px", minWidth: "280px" }}>
               <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
-                <Typography variant="h5" >My profile</Typography>
-                <Button variant="outlined" size="small" onClick={handleClickOpen}>Edite Profile</Button>
+                <Typography variant="h5" sx={{ fontWeight: "bold", pl: "10px" }}>My Profile</Typography>
+                <Button variant="outlined" onClick={handleClickOpen}>Edit Profile</Button>
                 <Dialog open={open} onClose={handleClose} scroll="body" >
                   {/* edite profile form */}
                   <Box component="form" sx={{ p: "5%" }} onSubmit={handleProfileChange}>
@@ -201,23 +201,23 @@ function UserDashboard () {
             </Paper>
             <Paper sx={{ p: "10px", minWidth: "280px", mt: "16px" }}>
               <Container sx={{ m: "10px 0" }}>
-                <Typography >Username</Typography>
+                <Typography variant="overline">Username</Typography>
                 <Typography variant="h6" color="#2a9d8f">{username}</Typography>
               </Container>
               <Container sx={{ m: "10px 0" }}>
-                <Typography >First Name</Typography>
+                <Typography variant="overline">First Name</Typography>
                 <Typography variant="h6" color="#2a9d8f">{firstname}</Typography>
               </Container >
               <Container>
-                <Typography >Last Name</Typography>
+                <Typography variant="overline">Last Name</Typography>
                 <Typography variant="h6" color="#2a9d8f">{lastname}</Typography>
               </Container>
               <Container sx={{ m: "10px 0" }}>
-                <Typography >E-mail</Typography>
+                <Typography variant="overline">E-mail</Typography>
                 <Typography variant="h6" color="#2a9d8f" >{email}</Typography>
               </Container>
               <Container sx={{ m: "10px 0" }}>
-                <Typography >University</Typography>
+                <Typography variant="overline">University</Typography>
                 <Typography variant='h6' color="#2a9d8f">{school}</Typography>
               </Container>
             </Paper>

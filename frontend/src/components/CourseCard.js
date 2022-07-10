@@ -73,12 +73,19 @@ function CourseCard (props) {
       </Box>
       <CardActionArea sx={{ height: "180px" }} onClick={goCourseDetail}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div"
+            sx={{
+              fontWeight: "bold",
+              fontSmooth: "always",
+              paddingLeft: "5px",
+              fontSizeAdjust: ".58"
+            }}
+          >
             {name}
           </Typography>
-          {prof.map((item, index) => <Typography variant="body2" color="text.secondary" key={index}>{item}</Typography>)}
-          <Typography variant="body2" color="text.secondary">
-            language: {language}
+          {prof.map((item, index) => <Typography sx={{ paddingLeft: "5px", fontSmooth: "always", fontSizeAdjust: ".65" }} variant="subtitle1" color="text.secondary" key={index}>{item}</Typography>)}
+          <Typography sx={{ paddingLeft: "5px", fontSmooth: "always", fontSizeAdjust: ".65" }} variant="subtitle1" color="text.secondary">
+            Language: {language}
           </Typography>
         </CardContent>
       </CardActionArea>
