@@ -12,6 +12,13 @@ router.get('/add', authenticateToken, (req, res, next) => {
     ).catch(err => next(err))
 })
 
+router.get('/remove', authenticateToken, (req, res, next) => {
+    dashboardCourseService.removeFromCourse(req).then(result => {
+            res.json(result)
+        }
+    ).catch(err => next(err))
+})
+
 router.get('/my-courses', authenticateToken, (req, res, next) => {
     dashboardCourseService.get_my_course(req).then(courses => {
         res.send(courses)

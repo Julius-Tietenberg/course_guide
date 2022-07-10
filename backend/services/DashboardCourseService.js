@@ -24,6 +24,18 @@ async function addToMyCourse(req) {
     return {message: true}
 }
 
+async function removeFromCourse(req) {
+    const username = req.user["data"];
+    let user = await User.findOne({username});
+    const { course_id } = req.query;
+
+    await DashboardCourse.collection.findOneAndDelete({
+        user_id: ObjectId(user['_id']),
+        course_id : ObjectId(course_id)
+    });
+    return {message: true}
+}
+
 async function get_my_course(req) {
     const username = req.user["data"];
     const { page, size } = req.query;
@@ -57,5 +69,6 @@ async function get_my_course(req) {
 
 module.exports = {
     addToMyCourse,
+    removeFromCourse,
     get_my_course,
 };
