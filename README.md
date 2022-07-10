@@ -34,7 +34,7 @@
   <li>XXX/user/dashboard/account (to get user profile infos)</li>
   <li>XXX/user/dashboard/account_update (to update user profile)</li>
 
-  <li>XXX/user/dashboard/add?course_id=x (to a selected course from home page to your dashboard: with x the course id)</li>
-  <li>XXX/user/dashboard/my-courses (to get courses related to the user logged)</li>
+  <li>XXX/dashboard/add?course_id=x (to a selected course from home page to your dashboard: with x the course id)</li>
+  <li>XXX/dashboard/my-courses (to get courses related to the user logged)</li>
 </ul>  
 </div>

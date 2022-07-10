@@ -9,6 +9,12 @@ async function addToMyCourse(req) {
     let user = await User.findOne({username});
 
     const { course_id } = req.query;
+    let dc = await DashboardCourse.findOne({
+        course_id: course_id
+    });
+    if (dc) {
+        return {message: "already exists"}
+    }
 
     await DashboardCourse.collection.insertOne({
         user_id: ObjectId(user['_id']),
