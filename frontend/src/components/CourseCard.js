@@ -21,6 +21,7 @@ function CourseCard (props) {
   const { userStore } = useStore()
   const navigate = useNavigate()
   const [snackbarOpen, setSnackbarOpen] = React.useState(false)
+  const [error, setError] = React.useState('')
 
   const goCourseDetail = () => navigate(`/course?id=${id}`)
 
@@ -31,6 +32,8 @@ function CourseCard (props) {
       console.log('add success')
     } catch (e) {
       console.log(e)
+      setError(e.response.data.message)
+      setSnackbarOpen(true)
     }
   }
 
@@ -40,9 +43,11 @@ function CourseCard (props) {
       console.log('remove success')
     } catch (e) {
       console.log(e)
+      console.log(e)
     }
     setTrigger(!trigger)
   }
+
 
   // close snackbar
   const handleSnackbarClose = (event, reason) => {
@@ -60,7 +65,8 @@ function CourseCard (props) {
         onClose={handleSnackbarClose}
       >
         {/* If an error is caught, an error message is displayed, otherwise show success */}
-        <Alert severity="success">Add successfully</Alert>
+        {/* <Alert severity="success">Add successfully</Alert> */}
+        {error ? <Alert severity="error">{error}</Alert> : <Alert severity="success">Add successfully</Alert>}
       </Snackbar>
       <Box sx={{ p: "10px 5px 0 0" }}>
         <RatingIcon field="Student Rating" score={rating} />

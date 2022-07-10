@@ -13,7 +13,6 @@ class UserStore {
   }
 
   editeUserInfo = async ({ firstname, lastname, email, school }) => {
-    console.log(firstname, lastname)
     const res = await http.post("user/dashboard/account_update",
       {
         firstName: firstname,
