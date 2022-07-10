@@ -16,7 +16,7 @@
     "express-unless": "^2.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.7.0",
-    "mongoose": "^6.3.8",
+    "mongoose": "^6.4.4",
     "mongoose-paginate-v2": "^1.6.3"
   }
 }
