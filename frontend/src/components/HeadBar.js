@@ -66,7 +66,7 @@ const HeadBar = (props) => {
               noWrap
               sx={{
                 fontStyle: "oblique",
-                color: "#2d6a4f",
+                color: "#2b7c63",
                 fontSizeAdjust:".65",
               }}
             >
@@ -80,8 +80,8 @@ const HeadBar = (props) => {
               onClick={handleFindCourses}>
               Find Courses</Button>}
             {hiddenButton !== 'my' && <Button
-              sx={{ mr: "10%", fontWeight: "bold" }}
-              onClick={handleMyCourses}>Dashboard</Button>}
+              sx={{ ml:"5%",mr: "10%", fontWeight: "bold" }}
+              onClick={handleMyCourses}> My Dashboard</Button>}
             <Typography variant="subtitle1"sx={{ mr: "10%", ml: "10%" }}>{username}</Typography>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open Menu">

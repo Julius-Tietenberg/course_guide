@@ -76,7 +76,7 @@ function Start () {
           <Typography  sx={{
                 fontStyle: "oblique",
                 paddingLeft:"10px",
-                color: "#2d6a4f",
+                color: "#2b7c63",
                 fontSizeAdjust:"1",
                 variant:"h5"
               }}

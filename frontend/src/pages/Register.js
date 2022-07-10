@@ -87,20 +87,20 @@ function Register () {
         onClose={handleSnackbarClose}
       >
         {/* If an error is caught, an error message is displayed, otherwise show success */}
-        {error ? <Alert severity="error">{error}</Alert> : <Alert severity="success">Register successfully</Alert>}
+        {error ? <Alert severity="error">{error}</Alert> : <Alert severity="success">Your account was created successfully.</Alert>}
       </Snackbar>
       <Box
         sx={{
-          mt: 4,
+          mt: 8,
           mb: 4,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
         }}
       >
-        <img className="login-logo" src={logo} alt="" style={{ width: "50px" }} />
+        <img className="login-logo" src={logo} alt="" style={{ width: "70px", mt:"3" }} />
         <Typography variant="h5" >
-          Sign up
+          Registration
         </Typography>
         <Card sx={{ mt: 2 }}>
           <CardContent>
@@ -129,7 +129,7 @@ function Register () {
                   <TextField
                     required
                     fullWidth
-                    label="Username"
+                    label="Username (visible for other users)"
                     name="username"
                     autoComplete="username"
                   />
@@ -144,7 +144,7 @@ function Register () {
                     value={university}
                     onChange={handleUniversityChange}
                   >
-                    <MenuItem value={"Duisburg - Essen"}>Duisburg-Essen University</MenuItem>
+                    <MenuItem value={"Duisburg - Essen"}>University of Duisburg-Essen</MenuItem>
                     {/* <MenuItem value={"Other"}>Others</MenuItem> */}
                   </TextField>
                 </Grid>
@@ -170,7 +170,7 @@ function Register () {
                     type="email"
                     inputProps={{
                       pattern: "[^\r\n\t\f\v ]+@[^\r\n\t\f\v ]*uni-due.de",
-                      title: "Please enter valid university email,with the suffix uni-due.de"
+                      title: "Please enter a valid university email, with the suffix @uni-due.de"
                     }}
                   />
                 </Grid>
@@ -192,14 +192,15 @@ function Register () {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign Up
+                Create Account
               </Button>
 
-              <Grid container justifyContent="flex-end">
-                Already have an account?
-                <Link to={"/login"} variant="body2">
-                  Sign in
-                </Link>
+              <Grid container justifyContent="center">
+                <Typography>
+                 Already have an account? <Link to={"/login"} variant="body2">
+                    Login Now!
+                  </Link>
+                </Typography>
               </Grid>
             </Box>
           </CardContent>
