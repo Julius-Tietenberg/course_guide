@@ -102,9 +102,9 @@ function Login () {
           alignItems: 'center',
         }}
       >
-        <img className="login-logo" src={logo} alt="" style={{ width: "50px" }} />
+        <img className="login-logo" src={logo} alt="" style={{ width: "70px" }} />
         <Typography component="h1" variant="h5">
-          Sign in
+          Login
         </Typography>
         <Card sx={{ mt: 2 }}>
           <CardContent>
@@ -141,11 +141,11 @@ function Login () {
 
               />
 
-              <Grid container justifyContent="flex-end">
+              {/* <Grid container justifyContent="flex-end">
                 <a href="#javascript" variant="body2">
                   Forgot password?
                 </a>
-              </Grid>
+              </Grid> */}
               <FormControlLabel
                 control={<Checkbox name="remember" value="remember" color="primary" />}
                 label="Remember me"
@@ -161,10 +161,11 @@ function Login () {
 
               <Grid container justifyContent="center">
                 <Grid item>
-                  Don't have an account?
-                  <Link to={"/register"} variant="body2">
-                    Sign Up
-                  </Link>
+                  <Typography>
+                    Don't have an account yet? <Link to={"/register"} variant="body2">
+                      Register now!
+                    </Link>
+                  </Typography>
                 </Grid>
               </Grid>
             </Box>

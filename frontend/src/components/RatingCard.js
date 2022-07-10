@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
 import IconButton from "@mui/material/IconButton"
+import Button from "@mui/material/Button"
 import Card from '@mui/material/Card'
 import CardContent from "@mui/material/CardContent"
 import Dialog from "@mui/material/Dialog"
@@ -54,8 +55,11 @@ function RatingCard (props) {
   return (
     <Box sx={{ p: "10px" }}>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <Typography variant="h6">Student Ratings</Typography>
+        <Typography
+          sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px", paddingTop: "5px", mb: "8px" }}
+          variant="h5">Student Ratings</Typography>
         <IconButton sx={{ color: "#5dac90" }} onClick={handleClickOpen}><AddIcon /></IconButton>
+        {/* <Button variant='contained' onClick={handleClickOpen}>+</Button> */}
         {/* pop-up rating form */}
         <Dialog open={open} onClose={handleClose} scroll="body" >
           <RatingForm

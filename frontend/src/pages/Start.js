@@ -66,7 +66,7 @@ function Start () {
   }
 
   return (
-    <Box sx={{ width: '100%' }} minWidth="ms" >
+    <Box sx={{ height: '45rem', width: '100%', backgroundColor: "white", backgroundImage: 'linear-gradient(179deg, #FFFFFF 0%, #95d5b2 25%, #52b788 50%, #2d6a4f 75%, #174731 100%)' }} minWidth="ms" >
       <CssBaseline />
       {/* tab bar */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', p: '0 5%' }} >
@@ -92,17 +92,17 @@ function Start () {
             '& .MuiTabs-flexContainer': {
               justifyContent: 'flex-end',
               color: '#5dac90'
-            }
+            },
           }}
         >
-          <Tab label="About" {...a11yProps(0)} />
+          <Tab label="Start" {...a11yProps(0)} />
           {/* <Tab label="Team" {...a11yProps(1)} /> */}
-          <Tab label="Register" {...a11yProps(1)} />
+          <Tab label="Register" {...a11yProps(1)} onClick={() => navigate("/register")} />
           {/* start button, link to login page */}
           <Button variant="contained"
             sx={{ fontWeight: "bold", m: "5px 10px 0 10px", minWidth: "80px" }}
             onClick={login}>
-            Get Started
+            Login
           </Button>
         </Tabs>
       </Box>
@@ -110,15 +110,16 @@ function Start () {
       <TabPanel value={tabValue} index={0}>
         <Box sx={{ display: 'flex', alignItems: 'center', m: '0 10%', mr: '10%', }}>
           <Container>
-            <Typography variant='h3'>
-              Welcome to CourseGuide</Typography>
-            <Typography variant='h6' > Rate your courses</Typography>
-            <Typography variant='h6' > Empower the newbies</Typography>
-            <Typography variant='h6' > Share your experience</Typography>
+            <Typography sx={{ fontWeight: "bold", pb: "15px", color: 'white', textShadow: '4px 4px 16px #174731' }} variant='h3'>
+              Welcome to CourseGuide...</Typography>
+            <Typography sx={{ ml: '5%', pb: "8px", fontSizeAdjust: ".65", fontStyle: "oblique", color: 'white', textShadow: '4px 4px 10px #174731' }} variant='h5' > Rate your courses</Typography>
+            <Typography sx={{ ml: '5%', pb: "8px", fontSizeAdjust: ".65", fontStyle: "oblique", color: 'white', textShadow: '4px 4px 10px #174731' }} variant='h5' > Help out the newbies</Typography>
+            <Typography sx={{ ml: '5%', pb: "8px", fontSizeAdjust: ".65", fontStyle: "oblique", color: 'white', textShadow: '4px 4px 10px #174731' }} variant='h5' > Share your experiences</Typography>
 
-            <Button variant="contained" size='large'
-              sx={{ fontWeight: "bold", mt: 4, minWidth: "80px" }}
-              onClick={login}>
+
+            <Button variant="outlined" size='large'
+              sx={{ ml: '15%', fontWeight: "bold", mt: 5, minWidth: "160px", minHeight: "58px", color: 'white', borderColor: 'white', borderWidth: '3px', fontSizeAdjust: ".75", boxShadow: '4px 4px 12px #174731' }}
+              onClick={() => navigate("/register")}>
               Get Started
             </Button>
           </Container>

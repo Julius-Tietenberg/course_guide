@@ -71,7 +71,15 @@ function CourseOverview () {
       <Box sx={{ backgroundColor: "rgb(25 118 210 / 8%)", pt: "20px" }}>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           <Grid item xs={3}>
-            <Typography variant="h5">Study Program Courses</Typography>
+            <Typography sx={{
+              fontWeight: "bold",
+              fontSmooth: "always"
+            }}
+              variant="h4">UDE Courses</Typography>
+            <Typography sx={{
+              fontSmooth: "always"
+            }}
+              fontStyle='oblique' variant="h6">Computer Science and Applied Cognitive Science</Typography>
           </Grid>
           <Grid item xs={5}>
             {/* search box */}
@@ -109,9 +117,9 @@ function CourseOverview () {
             />
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={handleDesc}>Desc</Button>
-            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={handleAsc}>Asc</Button>
-            <Button variant="contained" size="small" sx={{ ml: "15px", mt: "10px" }} onClick={cleanSort}>Clean</Button>
+            <Button variant="contained" sx={{ ml: "15px", mt: "10px" }} onClick={handleDesc}>Highest</Button>
+            <Button variant="contained" sx={{ ml: "15px", mt: "10px" }} onClick={handleAsc}>Lowest</Button>
+            <Button variant="contained" sx={{ ml: "15px", mt: "10px" }} onClick={cleanSort}>Reset</Button>
           </Grid>
         </Grid>
         {/* CourseCard */}

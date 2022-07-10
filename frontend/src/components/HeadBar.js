@@ -59,18 +59,17 @@ const HeadBar = (props) => {
         <Toolbar sx={{ justifyContent: "space-between" }}>
           {/* logo & title */}
           <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer" }} onClick={() => navigate("/")}>
-            <img className="login-logo" src={logo} alt=" " style={{ width: "50px", marginTop: "5px" }} />
+            <img className="login-logo" src={logo} alt=" " style={{ width: "60px", margin: "6px" }} />
             <Typography
-              variant="h6"
+              variant="h5"
               noWrap
               sx={{
                 fontStyle: "oblique",
-                fontSize: "larger",
-                fontWeight: "lighter",
-                paddingLeft: "15px"
+                color: "#2b7c63",
+                fontSizeAdjust: ".65"
               }}
             >
-              Course Guide
+              CourseGuide
             </Typography>
           </Box>
 
@@ -81,12 +80,12 @@ const HeadBar = (props) => {
               Find Courses</Button>}
             {hiddenButton !== 'my' && <Button
               sx={{ mr: "10%", fontWeight: "bold" }}
-              onClick={handleMyCourses}>My Courses</Button>}
-            <Typography sx={{ mr: "3%" }}>{username}</Typography>
+              onClick={handleMyCourses}>My Dashboard</Button>}
+            {/* <Typography sx={{ mr: "3%" }}>{username}</Typography> */}
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar >{username.charAt(0).toUpperCase()}</Avatar>
+                  <Avatar sx={{ bgcolor: "#5dac90" }}>{username.charAt(0).toUpperCase()}</Avatar>
                 </IconButton>
               </Tooltip>
               <Menu
