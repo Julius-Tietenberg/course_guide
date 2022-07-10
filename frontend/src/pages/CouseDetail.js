@@ -64,7 +64,7 @@ function CourseDetail () {
         {error ? <Alert severity="error">{error}</Alert> : <Alert severity="success">Add successfully</Alert>}
       </Snackbar>
       <HeadBar />
-      <Box sx={{ p: "5%", bgcolor: "rgb(25 118 210 / 8%)" }}>
+      <Box sx={{ p: "5%", bgcolor: "rgb(25 118 210 / 8%)", overflow: "auto", height: '43rem' }}>
         {/* banner */}
         <Paper sx={{ p: "10px" }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
