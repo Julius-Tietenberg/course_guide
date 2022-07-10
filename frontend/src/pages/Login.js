@@ -162,8 +162,7 @@ function Login () {
               <Grid container justifyContent="center">
                 <Grid item>
                   <Typography>
-                    Don't have an account yet? 
-                    <Link to={"/register"} variant="body2">
+                    Don't have an account yet? <Link to={"/register"} variant="body2">
                      Register now!
                   </Link>
                   </Typography>
