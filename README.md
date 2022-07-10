@@ -35,6 +35,7 @@
   <li>XXX/user/dashboard/account_update (to update user profile)</li>
 
   <li>XXX/dashboard/add?course_id=x (to a selected course from home page to your dashboard: with x the course id)</li>
+  <li>XXX/dashboard/remove?course_id=x (remove a selected course from your dashboard: with x the course id)</li>
   <li>XXX/dashboard/my-courses (to get courses related to the user logged)</li>
 </ul>  
 </div>
