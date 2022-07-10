@@ -59,14 +59,14 @@ function UserDashboard () {
       setTotalPages(res.totalPages)
     }
     loadCourseList()
-  }, [page, userStore])
+  }, [trigger, page, userStore])
 
   React.useEffect(() => {
     const loadUserInfo = async () => {
       const res = await userStore.getUserInfo()
       setUsername(res.username)
-      setFirstname(res.firstname)
-      setLastname(res.lastname)
+      setFirstname(res.firstName)
+      setLastname(res.lastName)
       setEmail(res.email)
       setSchool(res.school)
     }
@@ -118,6 +118,8 @@ function UserDashboard () {
                     language={item.language}
                     rating={item.rating}
                     added={true}
+                    trigger={trigger}
+                    setTrigger={setTrigger}
                   />
                 </Grid>
               ))}

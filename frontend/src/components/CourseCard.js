@@ -17,7 +17,7 @@ const Alert = React.forwardRef(function Alert (props, ref) {
 })
 
 function CourseCard (props) {
-  const { name, prof, language, id, rating, added } = props
+  const { name, prof, language, id, rating, added, trigger, setTrigger } = props
   const { userStore } = useStore()
   const navigate = useNavigate()
   const [snackbarOpen, setSnackbarOpen] = React.useState(false)
@@ -32,6 +32,16 @@ function CourseCard (props) {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  const handleRemove = async () => {
+    try {
+      await userStore.removeCourse(id)
+      console.log('remove success')
+    } catch (e) {
+      console.log(e)
+    }
+    setTrigger(!trigger)
   }
 
   // close snackbar
@@ -68,7 +78,7 @@ function CourseCard (props) {
       </CardActionArea>
       <CardActions sx={{ justifyContent: "flex-end" }}>
         {added === true ?
-          <Button size="small"  >remove</Button> :
+          <Button size="small" onClick={handleRemove}>remove</Button> :
           <Button size="small" onClick={handleAdd} >add to my course</Button>}
       </CardActions>
     </Card>
