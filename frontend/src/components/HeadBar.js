@@ -58,7 +58,7 @@ const HeadBar = (props) => {
       <Container maxWidth="xl">
         <Toolbar sx={{ justifyContent: "space-between" }}>
           {/* logo & title */}
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer" }} onClick={() => navigate("/")}>
             <img className="login-logo" src={logo} alt=" " style={{ width: "50px", marginTop: "5px" }} />
             <Typography
               variant="h6"
