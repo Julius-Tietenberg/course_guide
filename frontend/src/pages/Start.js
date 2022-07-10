@@ -12,7 +12,6 @@ import logo from '../assent/logo.png'
 import startImg from '../assent/start.png'
 import Register from './Register'
 import { getToken } from '../utils'
-import './Start.css'
 
 // tab items
 function TabPanel (props) {
