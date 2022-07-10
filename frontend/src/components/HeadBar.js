@@ -18,8 +18,17 @@ import { useNavigate } from 'react-router-dom'
 const HeadBar = (props) => {
   const { hiddenButton } = props
   const [anchorElUser, setAnchorElUser] = React.useState(null)
-  const { loginStore } = useStore()
+  const [username, setUsername] = React.useState('')
+  const { loginStore, userStore } = useStore()
   const navigate = useNavigate()
+
+  React.useEffect(() => {
+    const getUserName = async () => {
+      const res = await userStore.getUserInfo()
+      setUsername(res.username)
+    }
+    getUserName()
+  }, [userStore])
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget)
@@ -29,14 +38,8 @@ const HeadBar = (props) => {
     setAnchorElUser(null)
   }
 
-  const handleProfile = () => {
-    console.log('handleProfile')
-  }
-  const handleAccount = () => {
-    console.log('handleAccount')
-  }
   const handleDashboard = () => {
-    console.log('handleDashboard')
+    navigate("/userdashboard")
   }
 
   const handlelogout = () => {
@@ -79,11 +82,11 @@ const HeadBar = (props) => {
             {hiddenButton !== 'my' && <Button
               sx={{ mr: "10%", fontWeight: "bold" }}
               onClick={handleMyCourses}>My Courses</Button>}
-            <Typography sx={{ mr: "3%" }}>username</Typography>
+            <Typography sx={{ mr: "3%" }}>{username}</Typography>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar >{username.charAt(0).toUpperCase()}</Avatar>
                 </IconButton>
               </Tooltip>
               <Menu
@@ -102,12 +105,6 @@ const HeadBar = (props) => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem key='profile' onClick={handleProfile}>
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
-                <MenuItem key='account' onClick={handleAccount}>
-                  <Typography textAlign="center">Account</Typography>
-                </MenuItem>
                 <MenuItem key='dashboard' onClick={handleDashboard}>
                   <Typography textAlign="center">Dashboard</Typography>
                 </MenuItem>

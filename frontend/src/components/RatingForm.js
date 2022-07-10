@@ -10,6 +10,8 @@ import Button from '@mui/material/Button'
 import RatingIcon from './RatingIcon'
 import { IconButton } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
+import { useStore } from '../store'
+import { getToken } from '../utils'
 
 function RatingBar ({ name, value, setValue }) {
   const labels = {
@@ -35,32 +37,41 @@ function RatingBar ({ name, value, setValue }) {
           value={value}
           onChange={(event, newValue) => { setValue(newValue) }}
           onChangeActive={(event, newHover) => { setHover(newHover) }} />
-        {/* {value !== null && ( */}
-        <RatingIcon score={labels[hover !== -1 ? hover : value]} />
-        {/* )} */}
+        <RatingIcon score={Number(labels[hover !== -1 ? hover : value])} />
       </Stack>
     </Box>)
 }
 
-function RatingForm ({ courseName, setOpen }) {
+function RatingForm (props) {
+  const { courseName, setOpen, id, trigger, setTrigger } = props
+  const { ratingStore } = useStore()
   const [teachingValue, setTeachingValue] = React.useState(5)
   const [learningValue, setLearningValue] = React.useState(5)
   const [wordloadValue, setWordloadValue] = React.useState(5)
   const [difficultyValue, setDifficultyValue] = React.useState(5)
 
+
   let average = (teachingValue + learningValue + wordloadValue + difficultyValue) / 4
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    console.log({
-      Teaching: teachingValue,
-      Learning: learningValue,
-      Wordload: wordloadValue,
-      Difficulty: difficultyValue,
-      Average: average,
-      Comment: data.get('comment'),
-    })
+    const token = getToken()
+    try {
+      await ratingStore.addRating(
+        {
+          content: data.get('comment'),
+          stars: {
+            teacher: teachingValue,
+            learning: learningValue,
+            workload: wordloadValue,
+            difficulty: difficultyValue
+          }
+        }, id, token)
+    } catch (e) {
+      console.log(e)
+    }
+    setTrigger(!trigger)
     setOpen(false)
   }
 
@@ -70,7 +81,7 @@ function RatingForm ({ courseName, setOpen }) {
         <IconButton onClick={() => setOpen(false)} sx={{ left: "95%", top: "-10px" }}><CloseIcon /></IconButton>
         <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-around">
           <Typography variant="h6">{courseName}</Typography>
-          <RatingIcon field="Overall Rating" score={average.toFixed(1)} />
+          <RatingIcon field="Overall Rating" score={average} />
         </Stack>
       </DialogTitle>
       <DialogContent>
@@ -97,7 +108,6 @@ function RatingForm ({ courseName, setOpen }) {
           </Stack>
         </Stack>
       </DialogContent>
-
     </Box >
   )
 }

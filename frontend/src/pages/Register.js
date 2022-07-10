@@ -28,15 +28,6 @@ function Register () {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    /*  console.log({
-       firstname: data.get('firstname'),
-       lastname: data.get('lastname'),
-       username: data.get('username'),
-       university: data.get('university'),
-       position: data.get('position'),
-       email: data.get('email'),
-       password: data.get('password'),
-     }) */
 
     // register function
     try {
@@ -179,7 +170,7 @@ function Register () {
                     type="email"
                     inputProps={{
                       pattern: "[^\r\n\t\f\v ]+@[^\r\n\t\f\v ]*uni-due.de",
-                      title: "Please enter valid university email"
+                      title: "Please enter valid university email,with the suffix uni-due.de"
                     }}
                   />
                 </Grid>

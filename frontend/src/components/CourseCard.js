@@ -5,21 +5,55 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardActions from '@mui/material/CardActions'
+import Snackbar from '@mui/material/Snackbar'
+import MuiAlert from '@mui/material/Alert'
 import RatingIcon from './RatingIcon'
 import { useNavigate } from 'react-router-dom'
 import { Box } from '@mui/system'
+import { useStore } from '../store'
 
+const Alert = React.forwardRef(function Alert (props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+})
 
-const CourseCard = (props) => {
-  const { name, prof, language, id, added } = props
+function CourseCard (props) {
+  const { name, prof, language, id, rating, added } = props
+  const { userStore } = useStore()
   const navigate = useNavigate()
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false)
 
   const goCourseDetail = () => navigate(`/course?id=${id}`)
 
+  const handleAdd = async () => {
+    try {
+      await userStore.addCourse(id)
+      setSnackbarOpen(true)
+      console.log('add success')
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  // close snackbar
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setSnackbarOpen(false)
+  }
   return (
     <Card>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+      >
+        {/* If an error is caught, an error message is displayed, otherwise show success */}
+        <Alert severity="success">Add successfully</Alert>
+      </Snackbar>
       <Box sx={{ p: "10px 5px 0 0" }}>
-        <RatingIcon field="Student Rating" score={9.8} />
+        <RatingIcon field="Student Rating" score={rating} />
       </Box>
       <CardActionArea sx={{ height: "180px" }} onClick={goCourseDetail}>
         <CardContent>
@@ -35,8 +69,7 @@ const CourseCard = (props) => {
       <CardActions sx={{ justifyContent: "flex-end" }}>
         {added === true ?
           <Button size="small"  >remove</Button> :
-          <Button size="small"  >add to my course</Button>}
-
+          <Button size="small" onClick={handleAdd} >add to my course</Button>}
       </CardActions>
     </Card>
   )
