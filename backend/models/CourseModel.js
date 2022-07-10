@@ -89,8 +89,8 @@ const CourseSchema = new Schema({
     stars: {
         type: {teacher: Number, learning: Number, workload: Number, difficulty: Number},
         required: true,
-    },
-    rating_messages: [{ type: Schema.Types.ObjectId, ref:'rating_message' }],
+    }
+    // rating_messages: [{ type: Schema.Types.ObjectId, ref:'rating_message' }],
 });
 
 CourseSchema.set('toJSON', {

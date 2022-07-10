@@ -103,7 +103,9 @@ async function findAllByIdCourse(req) {
     }
 
 }
-async function findAllByIdCourse2(req) {
+
+
+/*async function findAllByIdCourse2(req) {
     const { page, size, id_course } = req.query;
 
     const query = {
@@ -121,9 +123,9 @@ async function findAllByIdCourse2(req) {
             limit: size,
         },
 
-        /*populate: "rating_messages",
+        /!*populate: "rating_messages",
         page: page,
-        limit: size,*/
+        limit: size,*!/
     };
 
     const skips = page * (size - 1)
@@ -164,7 +166,7 @@ async function findAllByIdCourse2(req) {
 }
 
 
-/*async function add2(req, res) {
+async function add2(req, res) {
     const username = req.user["data"];
     const {id_course} = req.query;
     if (id_course !== null && id_course !== undefined) {
