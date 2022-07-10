@@ -4,8 +4,8 @@ const courseServices = require('../services/CourseService.js')
 const { getDocs } = require('../helpers/own_pagination')
 const {ownStatusCode} = require("../helpers/own_status");
 
-/*const load_courses = require('../data/courses.json')
-const { transform_elas } = require('../helpers/transfrom_courses_from_elas')*/
+const load_courses = require('../data/courses.json')
+const { transform_elas } = require('../helpers/transfrom_courses_from_elas')
 
 router.post('/add', (req, res, next) => {
     courseServices.add(req.body).then(course => {
@@ -25,8 +25,8 @@ router.get('/course_detail', (req, res, next) => {
 })
 
 router.post('/add_all', (req, res, next) => {
-    //const courses =  transform_elas(load_courses);
-    const courses = req.body;
+    const courses =  transform_elas(load_courses);
+    // const courses = req.body;
     courseServices.addAll(courses).then(courses => {
             res.send({status: true})
         }

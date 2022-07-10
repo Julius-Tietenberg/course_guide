@@ -30,7 +30,7 @@
   <li>XXX/course/search (to get all the course)</li>
   <li>XXX/course/search?page=0&size=5&course_name=x&prof_name=y&sort=desc (filter by courses)</li>
   <li>XXX/ratings/add?id_course=x (to rating)</li>
-  <li>XXX/ratings/ratings_by_ic_course?id_course=x (to get all ratings by one course_id)</li>
+  <li>XXX/ratings/ratings_by_ic_course?id_course=x&page=y&size=z (to get all ratings by one course_id, y: page number and z: the number of items)</li>
   <li>XXX/user/dashboard/account (to get user profile infos)</li>
   <li>XXX/user/dashboard/account_update (to update user profile)</li>
 
