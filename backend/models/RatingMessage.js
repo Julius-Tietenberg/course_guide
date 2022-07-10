@@ -14,7 +14,7 @@ const RatingMessageSchema = new Schema({
     },
     created_at: {
         type: Date,
-        default: Date.now(),
+        // default: Date.now(),
     },
     stars: {
         type: {teacher: Number, learning: Number, workload: Number, difficulty: Number},

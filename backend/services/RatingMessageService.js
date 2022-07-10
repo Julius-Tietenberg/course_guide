@@ -21,6 +21,7 @@ async function add(req, res) {
 
         let user = await User.findOne({username});
         body["id_user"] = ObjectId(user['_id']);
+        body['created_at'] = Date.now();
 
         const rm = await RatingMessage.collection.insertOne(body);
 
