@@ -108,7 +108,7 @@ const HeadBar = (props) => {
                   <Typography textAlign="center">Dashboard</Typography>
                 </MenuItem>
                 <MenuItem key='logout' onClick={handlelogout}>
-                  <Typography textAlign="center">logout</Typography>
+                  <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
 
               </Menu>
