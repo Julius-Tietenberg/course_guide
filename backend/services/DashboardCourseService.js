@@ -10,9 +10,10 @@ async function addToMyCourse(req) {
 
     const { course_id } = req.query;
     let dc = await DashboardCourse.findOne({
-        course_id: course_id
+        user_id: ObjectId(user['_id']),
+        course_id : ObjectId(course_id)
     });
-    if (dc) {
+    if (dc != null || dc != undefined) {
         return {status: "error", message: "already exists"}
     }
 
