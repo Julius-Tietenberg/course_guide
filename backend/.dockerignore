@@ -1,2 +1,11 @@
 node_modules/
 mongo-volume/
+node_modules
+npm-debug.log
+
+node_modules/
+mongo-volume/
+#../backend/.env
+#.env
+data/
+node_modules
