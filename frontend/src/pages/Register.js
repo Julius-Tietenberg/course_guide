@@ -32,8 +32,8 @@ function Register () {
     // register function
     try {
       await registerStore.register({
-        firstname: data.get('firstname'),
-        lastname: data.get('lastname'),
+        firstName: data.get('firstname'),
+        lastName: data.get('lastname'),
         username: data.get('username'),
         school: data.get('university'),
         position: data.get('position'),
