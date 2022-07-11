@@ -66,7 +66,7 @@ function Start () {
   }
 
   return (
-    <Box sx={{  overflow: "auto", height: '60rem', width: '100%', backgroundColor: "white", backgroundImage: 'linear-gradient(179deg, #FFFFFF 0%, #95d5b2 25%, #52b788 50%, #2d6a4f 75%, #174731 100%)' }} minWidth="ms" >
+    <Box sx={{  overflow: "auto", minHeight: '52rem', width: '100%', backgroundColor: "white", backgroundImage: 'linear-gradient(179deg, #FFFFFF 0%, #95d5b2 25%, #52b788 50%, #2d6a4f 75%, #174731 100%)' }} minWidth="ms" >
       <CssBaseline />
       {/* tab bar */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', p: '0 5%' }} >

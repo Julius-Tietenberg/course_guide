@@ -108,8 +108,8 @@ function CourseOverview () {
                       onChange={handleTypeChange}
                       sx={{ borderRadius: " 0 4px 4px 0" }}
                     >
-                      <MenuItem value="courseName">course name</MenuItem>
-                      <MenuItem value="profName">professor name</MenuItem>
+                      <MenuItem value="courseName">Course Name</MenuItem>
+                      <MenuItem value="profName">Professor Name</MenuItem>
                     </Select>
                   </InputAdornment>
                 ),
