@@ -12,6 +12,7 @@ import Pagination from "@mui/material/Pagination"
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import { useStore } from '../store'
+import { set } from "mobx"
 
 
 function CourseOverview () {
@@ -26,6 +27,10 @@ function CourseOverview () {
     setSearchType(event.target.value)
   }
   const handlePageChange = (event, value) => {
+    if (searchValue) {
+      setPage(1)
+      setPage(value)
+    }
     setPage(value)
     setTimeout(() => {
       window.scrollTo(0, 0)
@@ -58,6 +63,9 @@ function CourseOverview () {
       }
       setCourseList(res.content)
       setTotalPages(res.totalPages)
+      if (page > res.totalPages) {
+        setPage(1)
+      }
     }
     loadCourseList()
   }, [page, searchValue, searchType, sortType, courseStore])

@@ -50,7 +50,6 @@ function UserDashboard () {
       setTotalItems(res.totalItems)
       if (page > 1 && res.content.length === 0) {
         setPage(page - 1)
-        console.log(page - 1)
       }
     }
     loadCourseList()
