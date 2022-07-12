@@ -1,0 +1,21 @@
+version: '3.3'
+
+# ╔══════════════════════════════════════════════════╗
+# ║ Date of Version:                      01.07.2022 ║
+# ║ Owner:                              William Kana ║
+# ╚══════════════════════════════════════════════════╝
+
+
+services:
+  server:
+    image: course-guide:prod
+    build: .
+    container_name: course-guide
+    environment:
+      ATLAS_URI: $ATLAS_URI
+      TOKEN_SECRET: $TOKEN_SECRET
+      PORT: $PORT
+    expose:
+      - 9000
+    ports:
+      - 9000:9000
