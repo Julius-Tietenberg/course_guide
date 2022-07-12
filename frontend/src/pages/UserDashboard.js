@@ -23,6 +23,7 @@ function UserDashboard () {
   const [open, setOpen] = React.useState(false)
   const [username, setUsername] = React.useState('')
   const [firstname, setFirstname] = React.useState('')
+  const [initProfile, setInitProfile] = React.useState({})
   const [lastname, setLastname] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [school, setSchool] = React.useState('')
@@ -32,6 +33,10 @@ function UserDashboard () {
     setOpen(true)
   }
   const handleClose = () => {
+    setFirstname(initProfile.firstName)
+    setLastname(initProfile.lastName)
+    setEmail(initProfile.email)
+    setSchool(initProfile.school)
     setOpen(false)
   }
 
@@ -64,6 +69,7 @@ function UserDashboard () {
       setLastname(res.lastName)
       setEmail(res.email)
       setSchool(res.school)
+      setInitProfile(res)
     }
     loadUserInfo()
   }, [trigger, userStore])
@@ -77,7 +83,7 @@ function UserDashboard () {
         firstname: data.get('firstname'),
         lastname: data.get('lastname'),
         school: data.get('school'),
-        // email: data.get('email'),
+        email: data.get('email'),
       })
     } catch (e) {
       console.log(e)

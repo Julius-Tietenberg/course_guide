@@ -12,7 +12,6 @@ import Pagination from "@mui/material/Pagination"
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import { useStore } from '../store'
-import { set } from "mobx"
 
 
 function CourseOverview () {

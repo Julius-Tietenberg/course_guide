@@ -3,7 +3,6 @@ import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
 import IconButton from "@mui/material/IconButton"
-import Button from "@mui/material/Button"
 import Card from '@mui/material/Card'
 import CardContent from "@mui/material/CardContent"
 import Dialog from "@mui/material/Dialog"
@@ -11,7 +10,6 @@ import RatingForm from './RatingForm'
 import AddIcon from '@mui/icons-material/Add'
 import Pagination from '@mui/material/Pagination'
 import { useStore } from '../store'
-import { getToken } from '../utils'
 import moment from 'moment-timezone'
 
 function CommentCard (props) {
@@ -55,7 +53,6 @@ function RatingCard (props) {
   }
 
   React.useEffect(() => {
-    const token = getToken()
     const loadRatingInfo = async () => {
       const res = await ratingStore.getRatingMessage(courseId, page)
       setRatingInfo(res.content)
