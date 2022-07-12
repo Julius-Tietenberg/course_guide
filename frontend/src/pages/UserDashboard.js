@@ -48,8 +48,13 @@ function UserDashboard () {
       setCourseList(res.content)
       setTotalPages(res.totalPages)
       setTotalItems(res.totalItems)
+      if (page > 1 && res.content.length === 0) {
+        setPage(page - 1)
+        console.log(page - 1)
+      }
     }
     loadCourseList()
+
   }, [trigger, page, userStore])
 
   React.useEffect(() => {
@@ -142,6 +147,8 @@ function UserDashboard () {
                           name="firstname"
                           fullWidth
                           label="First Name"
+                          value={firstname}
+                          onChange={(e) => setFirstname(e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -149,6 +156,8 @@ function UserDashboard () {
                           name="lastname"
                           fullWidth
                           label="Last Name"
+                          value={lastname}
+                          onChange={(e) => setLastname(e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -162,8 +171,8 @@ function UserDashboard () {
                             pattern: "[^\r\n\t\f\v ]+@[^\r\n\t\f\v ]*uni-due.de",
                             title: "Please enter valid university email,with the suffix uni-due.de"
                           }}
-                          disabled
                           value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -171,6 +180,8 @@ function UserDashboard () {
                           name="school"
                           fullWidth
                           label="University"
+                          value={school}
+                          onChange={(e) => setSchool(e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12}>

@@ -23,7 +23,6 @@ function CourseOverview () {
   const [searchType, setSearchType] = React.useState('courseName')
   const [sortType, setSortType] = React.useState('')
   const handleTypeChange = (event) => {
-    console.log(event.target.value)
     setSearchType(event.target.value)
   }
   const handlePageChange = (event, value) => {
@@ -34,7 +33,6 @@ function CourseOverview () {
 
   }
   const handleSearch = (event) => {
-    console.log(event.target.value)
     event.preventDefault()
     setSearchValue(event.target.value)
   }
@@ -68,7 +66,7 @@ function CourseOverview () {
   return (
     <Box>
       <HeadBar hiddenButton={'find'} />
-      <Box sx={{ backgroundColor: "rgb(25 118 210 / 8%)", pt: "20px" }}>
+      <Box sx={{ minHeight: "35rem", backgroundColor: "rgb(25 118 210 / 8%)", pt: "20px" }}>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           <Grid item xs={3}>
             <Typography sx={{

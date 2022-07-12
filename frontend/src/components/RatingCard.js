@@ -10,9 +10,9 @@ import Dialog from "@mui/material/Dialog"
 import RatingForm from './RatingForm'
 import AddIcon from '@mui/icons-material/Add'
 import Pagination from '@mui/material/Pagination'
-import Moment from 'react-moment'
 import { useStore } from '../store'
 import { getToken } from '../utils'
+import moment from 'moment-timezone'
 
 function CommentCard (props) {
   const { name, time, text } = props
@@ -20,7 +20,9 @@ function CommentCard (props) {
   return (
     <Box sx={{ m: "5px" }}>
       <Typography component="span" variant="subtitle1">{name}  </Typography>
-      <Typography component="span" variant="caption"><Moment format="MMMM Do YYYY, h:mm:ss a">{time}</Moment></Typography>
+      <Typography component="span" variant="caption">
+        {moment.tz(time, 'Europe/Berlin').format('lll')}
+      </Typography>
       <Card variant="outlined" sx={{ bgcolor: "rgb(25 118 210 / 8%)" }}>
         <CardContent>
           <Typography>{text}</Typography>
@@ -56,7 +58,6 @@ function RatingCard (props) {
     const token = getToken()
     const loadRatingInfo = async () => {
       const res = await ratingStore.getRatingMessage(courseId, page)
-      console.log(res)
       setRatingInfo(res.content)
       setTotalPages(res.totalPages)
       setTotalItems(res.totalItems)
@@ -71,7 +72,6 @@ function RatingCard (props) {
           sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px", paddingTop: "5px", mb: "8px" }}
           variant="h5">Student Ratings</Typography>
         <IconButton sx={{ color: "#5dac90" }} onClick={handleClickOpen}><AddIcon /></IconButton>
-        {/* <Button variant='contained' onClick={handleClickOpen}>+</Button> */}
         {/* pop-up rating form */}
         <Dialog open={open} onClose={handleClose} scroll="body" >
           <RatingForm
