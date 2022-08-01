@@ -4,7 +4,7 @@ import history from "./history"
 import { getToken } from "./token"
 
 const http = axios.create({
-  baseURL: "http://localhost:9000",
+  baseURL: "https://course-guide-ude-server.herokuapp.com",
   timeout: 5000,
 })
 

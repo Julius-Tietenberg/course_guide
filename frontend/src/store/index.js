@@ -1,5 +1,4 @@
-// 把所有的模块做统一处理
-// 导出一个统一的方法useStore
+// handle all store modules uniformly
 
 import React from "react"
 import LoginStore from "./login.Store"
@@ -19,8 +18,8 @@ class RootStore {
   }
 }
 
-// 实例化根
-// 导出useStore context
+// instantiate rootStore 
+// export useStore context
 
 const rootStore = new RootStore()
 const context = React.createContext(rootStore)

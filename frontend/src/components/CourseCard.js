@@ -68,7 +68,7 @@ function CourseCard (props) {
         {error ? <Alert severity="error">{error}</Alert> : <Alert severity="success">Add successfully</Alert>}
       </Snackbar>
       <Box sx={{ p: "10px 5px 0 0" }}>
-        <RatingIcon field="Student Rating" score={rating} />
+        <RatingIcon field="Overall Rating" score={rating} />
       </Box>
       <CardActionArea sx={{ height: "180px" }} onClick={goCourseDetail}>
         <CardContent>

@@ -16,7 +16,6 @@ import { getToken } from '../utils'
 // tab items
 function TabPanel (props) {
   const { children, value, index } = props
-  console.log('value:' + value, 'index:' + index)
   return (
     <div
       role="tabpanel"

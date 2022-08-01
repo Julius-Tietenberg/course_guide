@@ -66,8 +66,9 @@ function RatingCard (props) {
     <Box sx={{ p: "10px" }}>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Typography
-          sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "10px", paddingTop: "5px", mb: "8px" }}
-          variant="h5">Student Ratings</Typography>
+          sx={{ fontWeight: "bold", fontSmooth: "always", pl: "10px", pt: "5px", mb: "8px" }}
+          variant="h5">Student Ratings
+        </Typography>
         <IconButton sx={{ color: "#5dac90" }} onClick={handleClickOpen}><AddIcon /></IconButton>
         {/* pop-up rating form */}
         <Dialog open={open} onClose={handleClose} scroll="body" >

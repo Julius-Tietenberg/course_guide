@@ -54,6 +54,7 @@ function CourseDetail () {
   }
   return (
     <Box sx={{ minWidth: "900px" }}>
+      {/* add course notification */}
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         open={snackbarOpen}
@@ -74,7 +75,7 @@ function CourseDetail () {
             </Box>
             <Stack direction="row" spacing={3} alignItems="center">
               <Button variant='outlined' onClick={handleAddCourse}>Add to my courses</Button>
-              <RatingIcon field="Student Rating" score={courseInfo.rating} />
+              <RatingIcon field="Overall Rating" score={courseInfo.rating} />
             </Stack>
           </Stack>
         </Paper>
@@ -83,40 +84,84 @@ function CourseDetail () {
           {/* course info */}
           <Paper sx={{ minWidth: "40%" }}>
             <Stack sx={{ m: "10px" }}>
-              <Typography sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", paddingTop: "10px", mb: "8px" }} variant="h5">Description</Typography>
-              <Typography sx={{ fontSmooth: "always", paddingLeft: "30px", mb: "8px", textAlign: "justify", paddingRight: "30px" }}>{courseInfo.description} </Typography>
+              <Typography
+                sx={{ fontWeight: "bold", fontSmooth: "always", pl: "20px", pt: "10px", mb: "8px" }}
+                variant="h5">Description
+              </Typography>
+              <Typography
+                sx={{ fontSmooth: "always", pl: "30px", mb: "8px", textAlign: "justify", pr: "30px" }}>
+                {courseInfo.description}
+              </Typography>
               <Divider sx={{ mb: "10px" }} variant="middle" />
-              <Typography sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb: "8px" }} variant="h5">Learning Targets</Typography>
-              <Typography sx={{ fontSmooth: "always", paddingLeft: "30px", mb: "8px", textAlign: "justify", paddingRight: "30px" }}>{courseInfo.targets} </Typography>
+              <Typography
+                sx={{ fontWeight: "bold", fontSmooth: "always", pl: "20px", mb: "8px" }}
+                variant="h5">Learning Targets
+              </Typography>
+              <Typography
+                sx={{ fontSmooth: "always", pl: "30px", mb: "8px", textAlign: "justify", pr: "30px" }}>
+                {courseInfo.targets}
+              </Typography>
               <Divider sx={{ mb: "10px" }} variant="middle" />
-              <Typography sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb: "8px" }} variant="h5">Semester</Typography>
-              <Typography sx={{ fontSmooth: "always", paddingLeft: "30px", mb: "8px", textAlign: "justify", paddingRight: "30px" }}>{courseInfo.semester}</Typography>
+              <Typography
+                sx={{ fontWeight: "bold", fontSmooth: "always", pl: "20px", mb: "8px" }}
+                variant="h5">Semester
+              </Typography>
+              <Typography
+                sx={{ fontSmooth: "always", pl: "30px", mb: "8px", textAlign: "justify", pr: "30px" }}>
+                {courseInfo.semester}
+              </Typography>
               <Divider sx={{ mb: "10px" }} variant="middle" />
-              <Typography sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb: "8px" }} variant="h5">Course Type</Typography>
-              <Typography sx={{ fontSmooth: "always", paddingLeft: "30px", mb: "8px", textAlign: "justify", paddingRight: "30px" }}>{courseInfo.subject_type}</Typography>
+              <Typography
+                sx={{ fontWeight: "bold", fontSmooth: "always", pl: "20px", mb: "8px" }}
+                variant="h5">Course Type
+              </Typography>
+              <Typography
+                sx={{ fontSmooth: "always", pl: "30px", mb: "8px", textAlign: "justify", pr: "30px" }}>
+                {courseInfo.subject_type}
+              </Typography>
               <Divider sx={{ mb: "10px" }} variant="middle" />
-              <Typography sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb: "8px" }} variant="h5">Language</Typography>
-              <Typography sx={{ fontSmooth: "always", paddingLeft: "30px", mb: "8px", textAlign: "justify", paddingRight: "30px" }}>{courseInfo.language}</Typography>
+              <Typography
+                sx={{ fontWeight: "bold", fontSmooth: "always", pl: "20px", mb: "8px" }}
+                variant="h5">Language
+              </Typography>
+              <Typography
+                sx={{ fontSmooth: "always", pl: "30px", mb: "8px", textAlign: "justify", pr: "30px" }}>
+                {courseInfo.language}
+              </Typography>
               <Divider sx={{ mb: "10px" }} variant="middle" />
-              <Typography sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb: "8px" }} variant="h5">Timeslot</Typography>
-              {courseInfo.timetable?.map((item, index) => <Typography sx={{ fontSmooth: "always", paddingLeft: "30px", mb: "8px", textAlign: "justify", paddingRight: "30px" }} key={index}>{item.day} {item.interval}</Typography>)}
+              <Typography
+                sx={{ fontWeight: "bold", fontSmooth: "always", pl: "20px", mb: "8px" }}
+                variant="h5">Timeslot
+              </Typography>
+              {courseInfo.timetable?.map((item, index) =>
+                <Typography
+                  sx={{ fontSmooth: "always", pl: "30px", mb: "8px", textAlign: "justify", pr: "30px" }}
+                  key={index}>{item.day} {item.interval}
+                </Typography>)}
               <Divider sx={{ mb: "10px" }} variant="middle" />
-              <Typography sx={{ fontWeight: "bold", fontSmooth: "always", paddingLeft: "20px", mb: "8px" }} variant="h5">Course Page </Typography>
-              <Typography sx={{ fontSmooth: "always", paddingLeft: "30px", paddingBottom: "10px", mb: "8px", textAlign: "justify", paddingRight: "30px", fontStyle: 'oblique' }} component="a" href={courseInfo.url}>
+              <Typography
+                sx={{ fontWeight: "bold", fontSmooth: "always", pl: "20px", mb: "8px" }}
+                variant="h5">Course Page
+              </Typography>
+              <Typography
+                sx={{ fontSmooth: "always", pl: "30px", pb: "10px", mb: "8px", textAlign: "justify", pr: "30px", fontStyle: 'oblique' }}
+                component="a" href={courseInfo.url}>
                 link to university page!
               </Typography>
             </Stack>
           </Paper>
           {/* rating */}
           <Stack>
+            {/* rating banner */}
             <Paper sx={{ p: "10px" }}>
               <Stack direction="row" spacing={2} sx={{ m: "5px", justifyContent: "space-around" }}>
                 <RatingIcon field="Teaching" score={courseInfo.stars?.teacher} />
                 <RatingIcon field="Learning" score={courseInfo.stars?.learning} />
-                <RatingIcon field="Wordload" score={courseInfo.stars?.workload} />
+                <RatingIcon field="Workload" score={courseInfo.stars?.workload} />
                 <RatingIcon field="Difficulty" score={courseInfo.stars?.difficulty} />
               </Stack>
             </Paper>
+            {/* rating card */}
             <Paper sx={{ mt: "20px" }}>
               <RatingCard
                 courseName={courseInfo.name}
