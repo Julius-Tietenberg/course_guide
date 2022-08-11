@@ -90,8 +90,8 @@ function CourseCard (props) {
       </CardActionArea>
       <CardActions sx={{ justifyContent: "flex-end" }}>
         {added === true ?
-          <Button size="small" onClick={handleRemove}>remove</Button> :
-          <Button size="small" onClick={handleAdd} >add to my course</Button>}
+          <Button size="medium" color='warning' onClick={handleRemove}>remove</Button> :
+          <Button size="medium" onClick={handleAdd} >add to my courses</Button>}
       </CardActions>
     </Card>
   )

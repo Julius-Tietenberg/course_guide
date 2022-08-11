@@ -65,7 +65,7 @@ function CourseDetail () {
         {error ? <Alert severity="error">{error}</Alert> : <Alert severity="success">Add successfully</Alert>}
       </Snackbar>
       <HeadBar />
-      <Box sx={{ p: "5%", bgcolor: "rgb(25 118 210 / 8%)" }}>
+      <Box sx={{ p: "5%", bgcolor: "rgb(25 118 210 / 8%)" , minHeight: "44rem"}}>
         {/* banner */}
         <Paper sx={{ p: "10px" }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
@@ -146,7 +146,7 @@ function CourseDetail () {
               <Typography
                 sx={{ fontSmooth: "always", pl: "30px", pb: "10px", mb: "8px", textAlign: "justify", pr: "30px", fontStyle: 'oblique' }}
                 component="a" href={courseInfo.url}>
-                link to university page!
+                Link to the university page!
               </Typography>
             </Stack>
           </Paper>
