@@ -1,3 +1,61 @@
+# Course Guide
+
+An app to help students choose the suitable course. Users can search for courses, view courses detail information, rate courses and view the feedback on courses from other users.
+
+# Technical Architecture
+
+We are using MERN stack as our main architecture:
+
+- Frontend : React + Material UI
+- Backend : Node.js  (Express.js)
+- Database : MongoDB
+- Deployment : Heroku
+
+# Team Members
+
+name of team: SmartFinder
+
+- William Kana Tsoplefack
+- Fan Ouyang
+- Yasmine Taha Mokhtar
+- Julius Tietenberg
+- Lukas Holtbrink
+
+# Project Features
+
+### 1. Login & Registration
+
+In the current version, When registering the email must be the a email address of the University of Duisburg-Eisen. That means, the email suffix must contain "**uni-due.de**", such as course-guide@uni-due.de
+
+![image-20220815042316396](https://user-images.githubusercontent.com/102190949/184554227-3ed21d05-0086-4dc4-b89e-940b5c158313.png)
+
+### 2. Course Overview
+
+- Search for courses by course name and professor name
+- Sort courses by rating score
+- Add course to dashboard.
+
+![image-20220815042739627](https://user-images.githubusercontent.com/102190949/184554241-8781dba4-62b0-4a1d-b4ae-17f73d615a7a.png)
+
+### 3. Course Detail
+
+- View course information
+- View other students' ratings and comments on the course
+- Add rating and comment on the course
+
+![image-20220815043015566](https://user-images.githubusercontent.com/102190949/184554251-4ffc620b-ad0d-4936-a312-881d0c079d47.png)
+
+### 4. Student Profile
+
+- edit own information
+- remove added courses
+
+![image-20220815043643030](https://user-images.githubusercontent.com/102190949/184554259-f977ea0e-365e-45a1-80f6-a506a756c3a9.png)
+
+### 5. Ratings
+
+![image-20220815043716071](https://user-images.githubusercontent.com/102190949/184554268-cf6a97aa-2000-4357-a344-a33a8635732d.png)
+
 # Welcome to Course Guide Project!
 
 <div>
