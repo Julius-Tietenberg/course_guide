@@ -58,6 +58,30 @@ In the current version, when registering the email it has to be the an email add
 ![image-20220815043716071](https://user-images.githubusercontent.com/102190949/184554268-cf6a97aa-2000-4357-a344-a33a8635732d.png)
 
 
+### 6. How to run the project?
+
+#### Local Machine
+
+1. Install NodeJS on your machine.
+2. Open the Frontend Folder in your Terminal and run the commands:
+
+   yarn install
+   yarn start
+
+3. Open the local development server (http://localhost:3000/).
+4. You can now test the app, the backend is fully deployed.
+Opt. Use Ctrl+C to terminate the server. 
+
+#### Heroku
+
+Use the following link to view the deployed project on Heroku:
+xxx
+
+<div>
+   --------------------------------------------------------------
+   
+   
+</div>
 
 # Welcome to Course Guide Project!
 
