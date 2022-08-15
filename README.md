@@ -69,7 +69,7 @@ In the current version, when registering the email it has to be the an email add
    yarn start
 
 3. Open the local development server (http://localhost:3000/).
-4. You can now test the app, the backend is fully deployed.
+4. You can now test the app, the backend is fully deployed (https://course-guide-ude-server.herokuapp.com/).
 Opt. Use Ctrl+C to terminate the server. 
 
 #### Heroku
@@ -78,8 +78,8 @@ Use the following link to view the deployed project on Heroku:
 https://course-guide-ude-frontend.herokuapp.com/
 
 <div>
-   --------------------------------------------------------------
    
+   ------------------------------------------------------------------------------------------
    
 </div>
 
