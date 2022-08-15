@@ -65,7 +65,7 @@ function Start () {
   }
 
   return (
-    <Box sx={{ height: '45rem', width: '100%', backgroundColor: "white", backgroundImage: 'linear-gradient(179deg, #FFFFFF 0%, #95d5b2 25%, #52b788 50%, #2d6a4f 75%, #174731 100%)' }} minWidth="ms" >
+    <Box sx={{ height: '60rem', width: '100%', backgroundColor: "white", backgroundImage: 'linear-gradient(179deg, #FFFFFF 0%, #95d5b2 25%, #52b788 50%, #2d6a4f 75%, #174731 100%)' }} minWidth="ms" >
       <CssBaseline />
       {/* tab bar */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', p: '0 5%' }} >
@@ -107,7 +107,7 @@ function Start () {
       </Box>
       {/* About */}
       <TabPanel value={tabValue} index={0}>
-        <Box sx={{ display: 'flex', alignItems: 'center', m: '0 10%', mr: '10%', }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', m: '0 10%', mr: '10%', mt:'7%' }}>
           <Container>
             <Typography sx={{ fontWeight: "bold", pb: "15px", color: 'white', textShadow: '4px 4px 16px #174731' }} variant='h3'>
               Welcome to CourseGuide...</Typography>

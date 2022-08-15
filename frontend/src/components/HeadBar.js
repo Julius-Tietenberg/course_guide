@@ -105,10 +105,10 @@ const HeadBar = (props) => {
                 onClose={handleCloseUserMenu}
               >
                 <MenuItem key='dashboard' onClick={handleDashboard}>
-                  <Typography textAlign="center">Dashboard</Typography>
+                  <Typography textAlign="center">My Profile</Typography>
                 </MenuItem>
                 <MenuItem key='logout' onClick={handlelogout}>
-                  <Typography textAlign="center">logout</Typography>
+                  <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
 
               </Menu>

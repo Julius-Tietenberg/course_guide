@@ -73,7 +73,7 @@ function CourseOverview () {
   return (
     <Box>
       <HeadBar hiddenButton={'find'} />
-      <Box sx={{ minHeight: "35rem", backgroundColor: "rgb(25 118 210 / 8%)", pt: "20px" }}>
+      <Box sx={{ minHeight: "50rem", backgroundColor: "rgb(25 118 210 / 8%)", pt: "40px", pb:"20px" }}>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           <Grid item xs={3}>
             <Typography sx={{
@@ -113,8 +113,8 @@ function CourseOverview () {
                       onChange={handleTypeChange}
                       sx={{ borderRadius: " 0 4px 4px 0" }}
                     >
-                      <MenuItem value="courseName">course name</MenuItem>
-                      <MenuItem value="profName">professor name</MenuItem>
+                      <MenuItem value="courseName">Course Name</MenuItem>
+                      <MenuItem value="profName">Professor Name</MenuItem>
                     </Select>
                   </InputAdornment>
                 ),
