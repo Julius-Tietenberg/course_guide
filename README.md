@@ -1,4 +1,4 @@
-# Course Guide
+# CourseGuide (University Project)
 
 An app to help students choose suitable courses for them. Users can browse and search for courses, view detailed information on courses (scraped from the university website), rate courses and read the feedback on those courses given by other users.
 
