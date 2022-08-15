@@ -59,17 +59,9 @@ In the current version, When registering the email must be the a email address o
 # Welcome to Course Guide Project!
 
 <div>
-    <h3>Where can push changes</h3>
+    <h3>Where can you push changes?</h3>
     <p>
     Only the team leader can push changes made by another members
-    </p>
-</div>
-
-<div>
-    <h3>Creating Branch for Issue ticket</h3>
-    <p>
-    Please always make sure that the branch you created have 
-    the same name (short name) for the issue ticket you are working on.
     </p>
 </div>
 
