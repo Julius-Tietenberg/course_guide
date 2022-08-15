@@ -43,6 +43,7 @@ In the current version, when registering the email it has to be the an email add
 - View detailed course information
 - View other students' ratings and comments on the courses
 - Add ratings and comments to the courses
+- Link to the university website
 
 ![image-20220815043015566](https://user-images.githubusercontent.com/102190949/184554251-4ffc620b-ad0d-4936-a312-881d0c079d47.png)
 
@@ -55,6 +56,9 @@ In the current version, when registering the email it has to be the an email add
 ![image-20220815043643030](https://user-images.githubusercontent.com/102190949/184554259-f977ea0e-365e-45a1-80f6-a506a756c3a9.png)
 
 ### 5. Ratings
+
+- Rate courses based on four dimensions
+- Add a short comment
 
 ![image-20220815043716071](https://user-images.githubusercontent.com/102190949/184554268-cf6a97aa-2000-4357-a344-a33a8635732d.png)
 
