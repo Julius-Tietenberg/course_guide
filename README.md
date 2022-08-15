@@ -75,7 +75,7 @@ Opt. Use Ctrl+C to terminate the server.
 #### Heroku
 
 Use the following link to view the deployed project on Heroku:
-xxx
+https://course-guide-ude-frontend.herokuapp.com/
 
 <div>
    --------------------------------------------------------------
