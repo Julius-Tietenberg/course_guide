@@ -1,6 +1,6 @@
 # Course Guide
 
-An app to help students choose suitable courses for them. Users can browse and search for courses, view detailed information on courses, rate courses and read the feedback on those courses given by other users.
+An app to help students choose suitable courses for them. Users can browse and search for courses, view detailed information on courses (scraped from the university website), rate courses and read the feedback on those courses given by other users.
 
 # Technical Architecture
 
@@ -10,6 +10,7 @@ We are using the MERN stack as our main architecture:
 - Backend : Node.js  (Express.js)
 - Database : MongoDB
 - Deployment : Heroku
+- Data: Scraping Tool from ELAS (https://github.com/ude-soco/ELAS)
 
 # Team Members
 
