@@ -1,10 +1,10 @@
 # Course Guide
 
-An app to help students choose the suitable course. Users can search for courses, view courses detail information, rate courses and view the feedback on courses from other users.
+An app to help students choose suitable courses for them. Users can browse and search for courses, view detailed information on courses, rate courses and read the feedback on those courses given by other users.
 
 # Technical Architecture
 
-We are using MERN stack as our main architecture:
+We are using the MERN stack as our main architecture:
 
 - Frontend : React + Material UI
 - Backend : Node.js  (Express.js)
@@ -13,7 +13,7 @@ We are using MERN stack as our main architecture:
 
 # Team Members
 
-name of team: SmartFinder
+Name of team: SmartFinder
 
 - William Kana Tsoplefack
 - Fan Ouyang
@@ -25,37 +25,39 @@ name of team: SmartFinder
 
 ### 1. Login & Registration
 
-In the current version, When registering the email must be the a email address of the University of Duisburg-Essen. That means, the email suffix must contain "**uni-due.de**", such as course-guide@uni-due.de
+In the current version, when registering the email it has to be the an email address of the University of Duisburg-Essen. That means, the email suffix must contain "**uni-due.de**", such as in course-guide@uni-due.de
 
 ![image-20220815042316396](https://user-images.githubusercontent.com/102190949/184554227-3ed21d05-0086-4dc4-b89e-940b5c158313.png)
 
 ### 2. Course Overview
 
-- Search for courses by course name and professor name
-- Sort courses by rating score
-- Add course to dashboard.
+- Search for courses based on course name and professor name
+- Sort courses by average rating score
+- Add course to your dashboard
 
 ![image-20220815042739627](https://user-images.githubusercontent.com/102190949/184554241-8781dba4-62b0-4a1d-b4ae-17f73d615a7a.png)
 
 ### 3. Course Detail
 
 - View detailed course information
-- View other students' ratings and comments on the course
-- Add ratings and comments to the course
+- View other students' ratings and comments on the courses
+- Add ratings and comments to the courses
 
 ![image-20220815043015566](https://user-images.githubusercontent.com/102190949/184554251-4ffc620b-ad0d-4936-a312-881d0c079d47.png)
 
 ### 4. Student Profile
 
-- edit personal information
-- access your course selection
-- remove added courses
+- Edit your personal information
+- Access your course selection
+- Remove added courses
 
 ![image-20220815043643030](https://user-images.githubusercontent.com/102190949/184554259-f977ea0e-365e-45a1-80f6-a506a756c3a9.png)
 
 ### 5. Ratings
 
 ![image-20220815043716071](https://user-images.githubusercontent.com/102190949/184554268-cf6a97aa-2000-4357-a344-a33a8635732d.png)
+
+
 
 # Welcome to Course Guide Project!
 
