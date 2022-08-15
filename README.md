@@ -25,7 +25,7 @@ name of team: SmartFinder
 
 ### 1. Login & Registration
 
-In the current version, When registering the email must be the a email address of the University of Duisburg-Eisen. That means, the email suffix must contain "**uni-due.de**", such as course-guide@uni-due.de
+In the current version, When registering the email must be the a email address of the University of Duisburg-Essen. That means, the email suffix must contain "**uni-due.de**", such as course-guide@uni-due.de
 
 ![image-20220815042316396](https://user-images.githubusercontent.com/102190949/184554227-3ed21d05-0086-4dc4-b89e-940b5c158313.png)
 
@@ -39,15 +39,16 @@ In the current version, When registering the email must be the a email address o
 
 ### 3. Course Detail
 
-- View course information
+- View detailed course information
 - View other students' ratings and comments on the course
-- Add rating and comment on the course
+- Add ratings and comments to the course
 
 ![image-20220815043015566](https://user-images.githubusercontent.com/102190949/184554251-4ffc620b-ad0d-4936-a312-881d0c079d47.png)
 
 ### 4. Student Profile
 
-- edit own information
+- edit personal information
+- access your course selection
 - remove added courses
 
 ![image-20220815043643030](https://user-images.githubusercontent.com/102190949/184554259-f977ea0e-365e-45a1-80f6-a506a756c3a9.png)
@@ -61,7 +62,7 @@ In the current version, When registering the email must be the a email address o
 <div>
     <h3>Where can you push changes?</h3>
     <p>
-    Only the team leader can push changes made by another members
+    Only the team leader can push changes made by other members
     </p>
 </div>
 
